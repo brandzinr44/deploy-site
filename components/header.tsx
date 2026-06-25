@@ -169,12 +169,12 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
-  const navLinks = ['Work', 'Services', 'About', 'Contact']
+  const navLinks = ['Work', 'Contact']
   const desktopNavLinks = ['Work', 'Contact']
 
   const socialLinks = [
-    { name: 'Instagram', link: 'https://www.instagram.com/lozinr/' },
-    { name: 'Facebook', link: 'https://www.facebook.com/lozinr/' },
+    { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif/' },
+    { name: 'Facebook', link: 'https://www.facebook.com/adnan.o.akif/' },
   ]
 
   const handleNavClick = (link: string) => {

@@ -12,18 +12,14 @@ const letterData = [
 ]
 
 const navLinks = [
-  { name: 'About', href: '' },
+  
   { name: 'Work', href: '' },
-  
-  { name: 'Services', href: '' },
-  
   { name: 'Contact', href: '' },
 ]
 
 const socialLinks = [
-  { name: 'Instagram', url: 'https://www.instagram.com/adnaanakif/' },
-  { name: 'YouTube', url: 'https://www.youtube.com/adnanahmedakif' },
-  { name: 'Facebook', url: 'https://web.facebook.com/adnan.o.akif' },
+  { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif/' },
+  { name: 'Facebook', link: 'https://www.facebook.com/adnan.o.akif/' },
 ]
 
 const rowVariants = {
@@ -79,7 +75,7 @@ export default function FooterSection() {
             {socialLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.url}
+                href={link.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[16px] text-background underline underline-offset-4 decoration-background"
