@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import PageTransition from '@/components/page-transition'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://lozinr.com'),
@@ -112,7 +109,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
       </head>
-      <body className={`${inter.className} antialiased bg-transparent text-foreground transition-colors duration-300`}>
+      <body className="antialiased bg-transparent text-foreground transition-colors duration-300">
         <PageTransition>{children}</PageTransition>
         <Analytics />
       </body>

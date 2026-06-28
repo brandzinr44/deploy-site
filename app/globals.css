@@ -94,7 +94,7 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback';
+  --font-sans: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -286,9 +286,9 @@
 .hero-svg g:nth-child(5) { animation-delay: 0.25s; }
 .hero-svg g:nth-child(6) { animation-delay: 0.3s; }
 
-/* All fonts - Inter */
+/* All fonts - Helvetica Neue */
 body, h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans), 'Inter', sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* Text highlight styling */
