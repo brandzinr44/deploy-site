@@ -101,15 +101,17 @@ export default function FooterSection() {
           </div>
         </motion.div>
 
-        {/* Logo */}
-        <div className="w-full mt-16 md:mt-24">
+      </div>
+
+      {/* Logo - Full width container */}
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-16 md:py-24 bg-foreground">
+        <div className="flex justify-center">
           <img
             src="/footer-wordmark.svg"
             alt="Lozinr"
             className="w-full h-auto max-w-2xl"
           />
         </div>
-
       </div>
     </footer>
   )
