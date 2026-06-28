@@ -22,7 +22,7 @@ function WorkHero() {
 
   useEffect(() => { setIsMounted(true) }, [])
 
- const heroImage = '/work-hero.jpg'
+ const heroImage = '/work-hero.svg'
 
   return (
     <div
@@ -35,13 +35,10 @@ function WorkHero() {
           className="w-full h-full"
           style={{ y: heroImageY, scale: heroImageScale }}
         >
-          <Image
+          <img
             src={heroImage}
             alt="Work"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
         </motion.div>
       )}
