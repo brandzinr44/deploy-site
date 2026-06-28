@@ -5,92 +5,92 @@
 
 /* Lozinr Theme Colors */
 :root {
-  --color-bg: #efefef;
-  --color-text: #1A1A1A;
+  --color-bg: #ebebeb;
+  --color-text: #1a1a1a;
   --color-card: #FFFFFF;
-  --color-accent: #C4714F;
+  --color-accent: #dd491b;
   --color-border: rgba(26, 26, 26, 0.08);
 }
 
 .dark {
-  --color-bg: #1A1A1A;
-  --color-text: #efefef;
+  --color-bg: #1a1a1a;
+  --color-text: #ebebeb;
   --color-card: #2A2A2A;
-  --color-accent: #E8A894;
-  --color-border: rgba(245, 242, 238, 0.1);
+  --color-accent: #dd491b;
+  --color-border: rgba(235, 235, 235, 0.1);
 }
 
 :root {
-  --background: #efefef;
-  --foreground: #000000;
+  --background: #ebebeb;
+  --foreground: #1a1a1a;
   --card: #FFFFFF;
-  --card-foreground: #1A1A1A;
-  --process: #E8A894;
+  --card-foreground: #1a1a1a;
+  --process: #dd491b;
   --popover: #FFFFFF;
-  --popover-foreground: #1A1A1A;
-  --primary: #efefef;
-  --primary-foreground: #1A1A1A;
-  --secondary: #E8A894;
-  --secondary-foreground: #1A1A1A;
-  --muted: #D9D3CB;
-  --muted-foreground: #5A5550;
-  --accent: #C4714F;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --primary-foreground: #ebebeb;
+  --secondary: #ebebeb;
+  --secondary-foreground: #1a1a1a;
+  --muted: #d9d3cb;
+  --muted-foreground: #5a5550;
+  --accent: #dd491b;
   --accent-foreground: #FFFFFF;
-  --destructive: #C4714F;
+  --destructive: #dd491b;
   --destructive-foreground: #FFFFFF;
-  --border: #D9D3CB;
+  --border: #d9d3cb;
   --input: #FFFFFF;
-  --ring: #C4714F;
-  --chart-1: #C4714F;
-  --chart-2: #E8A894;
+  --ring: #dd491b;
+  --chart-1: #dd491b;
+  --chart-2: #ebebeb;
   --chart-3: #8B4D38;
-  --chart-4: #D9D3CB;
-  --chart-5: #1A1A1A;
+  --chart-4: #d9d3cb;
+  --chart-5: #1a1a1a;
   --radius: 0.625rem;
-  --sidebar: #F5F2EE;
-  --sidebar-foreground: #1A1A1A;
+  --sidebar: #ebebeb;
+  --sidebar-foreground: #1a1a1a;
   --sidebar-primary: #FFFFFF;
-  --sidebar-primary-foreground: #1A1A1A;
-  --sidebar-accent: #C4714F;
+  --sidebar-primary-foreground: #1a1a1a;
+  --sidebar-accent: #dd491b;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #D9D3CB;
-  --sidebar-ring: #C4714F;
+  --sidebar-border: #d9d3cb;
+  --sidebar-ring: #dd491b;
 }
 
 .dark {
-  --background: #1A1A1A;
-  --foreground: #F5F2EE;
+  --background: #1a1a1a;
+  --foreground: #ebebeb;
   --card: #2A2A2A;
-  --card-foreground: #F5F2EE;
-  --process: #E8A894;
+  --card-foreground: #ebebeb;
+  --process: #dd491b;
   --popover: #2A2A2A;
-  --popover-foreground: #F5F2EE;
-  --primary: #1A1A1A;
-  --primary-foreground: #F5F2EE;
-  --secondary: #E8A894;
-  --secondary-foreground: #1A1A1A;
+  --popover-foreground: #ebebeb;
+  --primary: #1a1a1a;
+  --primary-foreground: #ebebeb;
+  --secondary: #ebebeb;
+  --secondary-foreground: #1a1a1a;
   --muted: #3A3A3A;
-  --muted-foreground: #C0BBAE;
-  --accent: #E8A894;
-  --accent-foreground: #1A1A1A;
-  --destructive: #E8A894;
-  --destructive-foreground: #1A1A1A;
+  --muted-foreground: #c0bbae;
+  --accent: #dd491b;
+  --accent-foreground: #ebebeb;
+  --destructive: #dd491b;
+  --destructive-foreground: #ebebeb;
   --border: #3A3A3A;
   --input: #2A2A2A;
-  --ring: #E8A894;
-  --chart-1: #E8A894;
-  --chart-2: #C4714F;
+  --ring: #dd491b;
+  --chart-1: #dd491b;
+  --chart-2: #ebebeb;
   --chart-3: #8B4D38;
-  --chart-4: #D9D3CB;
-  --chart-5: #F5F2EE;
-  --sidebar: #1A1A1A;
-  --sidebar-foreground: #F5F2EE;
+  --chart-4: #d9d3cb;
+  --chart-5: #ebebeb;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ebebeb;
   --sidebar-primary: #2A2A2A;
-  --sidebar-primary-foreground: #F5F2EE;
-  --sidebar-accent: #E8A894;
-  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-primary-foreground: #ebebeb;
+  --sidebar-accent: #dd491b;
+  --sidebar-accent-foreground: #ebebeb;
   --sidebar-border: #3A3A3A;
-  --sidebar-ring: #E8A894;
+  --sidebar-ring: #dd491b;
 }
 
 @theme inline {
@@ -293,18 +293,18 @@ body, h1, h2, h3, h4, h5, h6 {
 
 /* Text highlight styling */
 mark {
-  background-color: #C4714F;
+  background-color: #dd491b;
   color: white;
   padding: 0 0.25em;
 }
 
 /* Text selection styling */
 ::selection {
-  background-color: #C4714F;
+  background-color: #dd491b;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #C4714F;
+  background-color: #dd491b;
   color: white;
 }
