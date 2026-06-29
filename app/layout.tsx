@@ -75,7 +75,7 @@ export default function RootLayout({
     name: 'Lozinr',
     description: 'Premium branding agency specializing in brand identity design, logo design, and brand strategy for startups and ambitious founders.',
     url: 'https://lozinr.com',
-    logo: 'https://lozinr.com/favicon.png',
+    logo: 'https://lozinr.com/favicon.svg',
     priceRange: '$$$$',
     contactPoint: {
       '@type': 'ContactPoint',
