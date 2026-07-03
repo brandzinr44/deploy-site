@@ -10,7 +10,7 @@ const navLinks = [
 
 const socialLinks = [
   { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif/' },
-  { name: 'Facebook', link: 'https://www.facebook.com/adnan.o.akif/' },
+  { name: 'Facebook', link: 'https://www.facebook.com/adnaanakif/' },
 ]
 
 const rowVariants = {
