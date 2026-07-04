@@ -130,16 +130,27 @@ function TiltCard({
             <p className="text-[16px] font-medium text-foreground/60 leading-tight tracking-tight">
               {project.description}
             </p>
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-1"
-            >
-              <span className="inline-block text-[11px] md:text-[12px] bg-foreground/10 font-medium tracking-tight text-foreground rounded-full px-3 py-1">
-                {project.industry}
-              </span>
-            </motion.div>
+            <div className="mt-1 flex items-center gap-2">
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
+              >
+                <span className="inline-block text-[11px] md:text-[12px] bg-foreground/10 font-medium tracking-tight text-foreground rounded-full px-3 py-1">
+                  {project.category}
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              >
+                <span className="inline-block text-[11px] md:text-[12px] bg-foreground/10 font-medium tracking-tight text-foreground rounded-full px-3 py-1">
+                  {project.year}
+                </span>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </Link>
