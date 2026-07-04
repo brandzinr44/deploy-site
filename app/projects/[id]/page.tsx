@@ -255,18 +255,18 @@ export default function ProjectPage() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-full"
             >
-              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
+              <h2 className="text-[16px] font-medium tracking-tight text-foreground mb-12 leading-tight">
                 Reflection
               </h2>
               
               <div className="space-y-6">
-                <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                <p className="text-[28px] tracking-tight font-regular leading-tight text-foreground">
                   {project.reflection.line1}
                 </p>
-                <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                <p className="text-[28px] tracking-tight font-regular leading-tight text-foreground">
                   {project.reflection.line2}
                 </p>
-                <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                <p className="text-[28px] font-regular tracking-tight leading-tight text-foreground">
                   {project.reflection.line3}
                 </p>
               </div>
