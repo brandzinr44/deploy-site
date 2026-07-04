@@ -173,8 +173,8 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
   const desktopNavLinks = ['Work', 'Contact']
 
   const socialLinks = [
-    { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif/' },
-    { name: 'Facebook', link: 'https://www.facebook.com/adnaanakif/' },
+    { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
+  { name: 'X', link: 'https://x.com/adnaanakif' },
   ]
 
   const handleNavClick = (link: string) => {

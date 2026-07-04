@@ -17,6 +17,11 @@ export interface Project {
   strategicDirection?: string
   deliverables?: string[]
   duration?: string
+  reflection?: {
+    line1: string
+    line2: string
+    line3: string
+  }
   sections: {
     challenge: ProjectSection
     strategy: ProjectSection
@@ -51,6 +56,11 @@ export const projectsData: Project[] = [
       { label: 'Visual Identity' },
       { label: 'Website' }
     ],
+    reflection: {
+      line1: 'Every brand we build starts long before the first logo is designed.',
+      line2: 'This project reminded us that strong brands are rarely the result of more creativity—they\'re the result of clearer decisions. Every element, from positioning to typography, was designed to reinforce trust and long-term consistency rather than short-term attention.',
+      line3: 'That\'s the standard we bring to every brand we build.'
+    },
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%202-L9cyRymuIKcWCg9UcBExt3YwMLe6Yb.jpg',
@@ -105,6 +115,11 @@ export const projectsData: Project[] = [
       { label: 'Brand Strategy' },
       { label: 'Visual Identity' }
     ],
+    reflection: {
+      line1: 'Personal branding is perhaps the most challenging category of work because the brand must be authentic while remaining professional.',
+      line2: 'For Adnan Akif, we focused on translating his creative vision and expertise into a visual language that communicates both sophistication and approachability. The identity needed to work across diverse platforms—from portfolio presentations to social media—while maintaining a consistent voice.',
+      line3: 'The result is a personal brand that feels genuinely distinctive in a crowded creative landscape.'
+    },
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adnan%20Akif%2001-cG6CTg0P6GqBrKieXI434Bk8dmam2B.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adnan%20Akif%2002-sMaS68iIm16ONNyZe75THLYjsck1Eo.jpg',

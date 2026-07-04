@@ -245,6 +245,44 @@ export default function ProjectPage() {
           </div>
         </section>
 
+        {/* ─── Reflection Section ─── */}
+        {project.reflection && (
+          <section className="px-2 lg:px-4 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+            >
+              {/* Left Column — 20% */}
+              <div className="md:col-span-1">
+                <h2 className="text-[16px] font-medium tracking-tight text-foreground leading-tight">
+                  Reflection
+                </h2>
+              </div>
+
+              {/* Middle Column — 40% */}
+              <div className="md:col-span-2">
+                <div className="space-y-6">
+                  <p className="text-[24px] md:text-[28px] leading-tight tracking-tight text-foreground font-regular">
+                    {project.reflection.line1}
+                  </p>
+                  <p className="text-[24px] md:text-[28px] leading-tight tracking-tight text-foreground font-regular">
+                    {project.reflection.line2}
+                  </p>
+                  <p className="ttext-[24px] md:text-[28px] leading-tight tracking-tight text-foreground font-regular">
+                    {project.reflection.line3}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column — 40% (Empty) */}
+              <div className="md:col-span-2"></div>
+            </motion.div>
+          </section>
+        )}
+
       </main>
       <FooterSection />
     </>

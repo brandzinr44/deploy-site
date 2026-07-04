@@ -124,15 +124,27 @@ function ProjectRow({
           {project.description}
         </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="inline-block text-[10px] bg-background/30 font-medium tracking-tight text-background rounded-full px-3 py-1">
-            {project.industry}
-          </span>
-        </motion.div>
+        <div className="flex items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
+          >
+            <span className="inline-block text-[10px] bg-background/30 font-medium tracking-tight text-background rounded-full px-3 py-1">
+              {project.category}
+            </span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          >
+            <span className="inline-block text-[10px] bg-background/30 font-medium tracking-tight text-background rounded-full px-3 py-1">
+              {project.year}
+            </span>
+          </motion.div>
+        </div>
       </div>
     </Link>
   )
