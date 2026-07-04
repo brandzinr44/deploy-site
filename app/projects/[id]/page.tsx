@@ -253,23 +253,32 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-full"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
-              <h2 className="text-[16px] font-medium tracking-tight text-foreground mb-12 leading-tight">
-                Reflection
-              </h2>
-              
-              <div className="space-y-6">
-                <p className="text-[28px] tracking-tight font-regular leading-tight text-foreground">
-                  {project.reflection.line1}
-                </p>
-                <p className="text-[28px] tracking-tight font-regular leading-tight text-foreground">
-                  {project.reflection.line2}
-                </p>
-                <p className="text-[28px] font-regular tracking-tight leading-tight text-foreground">
-                  {project.reflection.line3}
-                </p>
+              {/* Left Column — 20% */}
+              <div className="md:col-span-1">
+                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                  Reflection
+                </h2>
               </div>
+
+              {/* Middle Column — 40% */}
+              <div className="md:col-span-2">
+                <div className="space-y-6">
+                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    {project.reflection.line1}
+                  </p>
+                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    {project.reflection.line2}
+                  </p>
+                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    {project.reflection.line3}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column — 40% (Empty) */}
+              <div className="md:col-span-2"></div>
             </motion.div>
           </section>
         )}
