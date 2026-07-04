@@ -172,12 +172,11 @@ export default function ProjectPage() {
                   {project.description}
                 </p>
                 <div className="flex gap-3 flex-wrap">
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
-                    Brand Identity
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
-                    Entertainment
-                  </span>
+                  {project.ctas.map((cta, idx) => (
+                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
+                      {cta.label}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
             </div>
