@@ -251,7 +251,7 @@ export default function ProjectPage() {
                 className="hidden lg:block lg:w-1/2"
               >
                 <div className="lg:sticky lg:top-32">
-                  <h3 className="text-[16px] font-medium tracking-tight text-foreground mb-4">About the project</h3>
+                  <h3 className="text-[16px] font-medium tracking-tight text-foreground mb-4">Behind the Brand</h3>
                   <p className="text-[16px] text-foreground/70 leading-relaxed tracking-tight">{project.description}</p>
                   <MetaGrid />
                 </div>
