@@ -22,7 +22,7 @@ export default function OurBeliefSection() {
         >
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 rounded-full bg-foreground flex-shrink-0" />
-            <h2 className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground">
+            <h2 className="text-[16px] font-medium text-foreground tracking-tight">
               {OUR_BELIEF_TEXT}
             </h2>
           </div>
