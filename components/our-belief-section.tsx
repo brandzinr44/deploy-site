@@ -18,7 +18,7 @@ export default function OurBeliefSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: '-100px' }}
-          className="w-full md:w-1/5 flex flex-col gap-6"
+          className="w-full md:w-1/6 flex flex-col gap-6"
         >
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 rounded-full bg-foreground flex-shrink-0" />
@@ -36,7 +36,7 @@ export default function OurBeliefSection() {
           viewport={{ once: true, margin: '-100px' }}
           className="w-full md:w-2/5"
         >
-          <p className="text-base md:text-lg leading-relaxed tracking-tight text-foreground/90 font-normal whitespace-pre-line">
+          <p className="text-[24px] md:text-[36px] leading-tight tracking-tight text-foreground font-regular">
             {BELIEF_DESCRIPTION}
           </p>
         </motion.div>
