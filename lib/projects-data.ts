@@ -12,6 +12,14 @@ export interface Project {
   year: string
   ctas: { label: string }[]
   images: string[]
+  client?: string
+  clientUrl?: string
+  sector?: string
+  discipline?: string
+  office?: string
+  partner?: string
+  partnerUrl?: string
+  team?: string[]
   sections: {
     challenge: ProjectSection
     strategy: ProjectSection
@@ -29,6 +37,14 @@ export const projectsData: Project[] = [
     category: 'Branding, Campaign & Content',
     industry: 'Design Agency',
     year: '2024',
+    client: 'Lozinr Design Studio',
+    clientUrl: 'https://lozinr.com',
+    sector: 'Design & Creative',
+    discipline: 'Brand Identity, Visual System',
+    office: 'Comilla, Bangladesh',
+    partner: 'Adnan Akif',
+    partnerUrl: 'https://lozinr.com',
+    team: ['Adnan Akif', 'Design Team', 'Creative Director', 'Strategist'],
     ctas: [
       { label: 'Brand Strategy' },
       { label: 'Brand Design' }
@@ -73,6 +89,12 @@ export const projectsData: Project[] = [
     category: 'Branding',
     industry: 'Personal Branding',
     year: '2024',
+    client: 'Adnan Akif',
+    sector: 'Personal Branding & Portfolio',
+    discipline: 'Brand Identity, Web Design',
+    office: 'Comilla, Bangladesh',
+    partner: 'Creative Director',
+    team: ['Adnan Akif', 'Branding Specialist', 'Digital Designer'],
     ctas: [
       { label: 'Brand Strategy' },
       { label: 'Visual Identity' }

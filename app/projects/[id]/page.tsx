@@ -39,16 +39,15 @@ export default function ProjectPage() {
   const galleryImages = validImages.slice(0, 10)
   const infoImage = validImages[0]
 
-  const projectAny = project as any
   const meta = {
-    client: projectAny.client || project.name,
-    clientUrl: projectAny.clientUrl,
-    sector: projectAny.sector || 'Brand Identity',
-    discipline: projectAny.discipline || 'Brand Identity',
-    office: projectAny.office || 'New York',
-    partner: projectAny.partner || 'Natasha Jen',
-    partnerUrl: projectAny.partnerUrl,
-    team: projectAny.team || ['Alex Hulme', 'Saundra Marcel', 'David Dai', 'Donovan Brien', 'Yubin Won'],
+    client: project.client || project.name,
+    clientUrl: project.clientUrl,
+    sector: project.sector,
+    discipline: project.discipline,
+    office: project.office,
+    partner: project.partner,
+    partnerUrl: project.partnerUrl,
+    team: project.team || [],
   }
 
   const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
