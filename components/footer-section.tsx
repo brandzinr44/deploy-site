@@ -9,8 +9,8 @@ const navLinks = [
 ]
 
 const socialLinks = [
-  { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif/' },
-  { name: 'Facebook', link: 'https://www.facebook.com/adnaanakif/' },
+  { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
+  { name: 'X', link: 'https://x.com/adnaanakif' },
 ]
 
 const rowVariants = {
@@ -92,10 +92,10 @@ export default function FooterSection() {
               href="mailto:adnanakif.co@gmail.com"
               className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3"
             >
-              Click on email
+              Start a project
             </a>
             <p className="text-[16px] text-background leading-snug">
-              Comilla, Chittagong, Bangladesh<br />
+              Based in Bangladesh<br />
               Working Worldwide.
             </p>
           </div>
