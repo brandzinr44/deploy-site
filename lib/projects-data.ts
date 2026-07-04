@@ -47,8 +47,8 @@ export const projectsData: Project[] = [
     team: ['Adnan Akif', 'Design Team', 'Creative Director', 'Strategist'],
     ctas: [
       { label: 'Independent Branding Studio' },
-      { label: 'Brand Strategy' }
-      { label: 'Visual Identity' }
+      { label: 'Brand Strategy' },
+      { label: 'Visual Identity' },
       { label: 'Website' }
     ],
     images: [
