@@ -9,7 +9,7 @@ const processSteps = [
     number: '01',
     title: 'Discovery',
     description:
-      'Before we design a single pixel, we need to understand everything about your business. Discovery is where we ask the questions most designers never ask — about your audience, your competitors, your values, and the feeling you want your brand to create.',
+      'Every strong brand begins with understanding. We uncover the business, audience, market, and perception gaps before making a single design decision.',
     deliverables: [
       'Brand discovery questionnaire & deep-dive interview',
       'Competitor landscape analysis',
@@ -23,7 +23,7 @@ const processSteps = [
     number: '02',
     title: 'Strategy',
     description:
-      "Discovery tells us where you are. Strategy decides where you're going — and how your brand gets you there. This is where we define your brand's positioning, personality, voice, and the story you'll tell the world.",
+      "We define positioning, messaging, and brand direction to ensure every creative decision supports a business objective.",
     deliverables: [
       'Brand positioning statement',
       'Brand personality framework',
@@ -37,7 +37,7 @@ const processSteps = [
     number: '03',
     title: 'Visual Direction',
     description:
-      'Before a single logo is drawn, we define the aesthetic language of your brand — the mood, the feeling, the world it lives in. This ensures every design decision that follows is intentional, not accidental.',
+      'We establish the visual principles that shape how the brand should be seen, remembered, and experienced.',
     deliverables: [
       '3 distinct moodboard concepts',
       'Color palette exploration',
@@ -51,7 +51,7 @@ const processSteps = [
     number: '04',
     title: 'Identity',
     description:
-      'This is where strategy becomes visual. Using the approved direction, we design your complete brand identity system — every element crafted with intention, every decision rooted in your strategy.',
+      'We build a cohesive identity system designed for consistency, flexibility, and long-term recognition.',
     deliverables: [
       'Primary logo & variations',
       'Brand mark & icon set',
@@ -66,7 +66,7 @@ const processSteps = [
     number: '05',
     title: 'Guidelines',
     description:
-      'A brand without guidelines is a brand without protection. Your Brand Guidelines ensure your identity stays consistent and powerful — across every platform, every touchpoint, forever.',
+      'Every decision is documented into a practical system, making the brand easier to scale across teams and platforms.',
     deliverables: [
       'Brand guidelines document',
       'Logo usage rules & restrictions',
