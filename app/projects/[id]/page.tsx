@@ -202,6 +202,35 @@ export default function ProjectPage() {
           </div>
         </section>
 
+        {/* ─── Reflection Section ─── */}
+        {project.reflection && (
+          <section className="px-2 lg:px-4 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-full"
+            >
+              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
+                Reflection
+              </h2>
+              
+              <div className="space-y-6">
+                <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                  {project.reflection.line1}
+                </p>
+                <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                  {project.reflection.line2}
+                </p>
+                <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                  {project.reflection.line3}
+                </p>
+              </div>
+            </motion.div>
+          </section>
+        )}
+
         {/* ─── Images — no scroll animation ─── */}
         <section className="pb-16 md:pb-24">
           <div className={`flex flex-col gap-2 ${showAbout ? 'lg:flex-row lg:gap-8 py-5 px-2 lg:px-4' : ''}`}>
