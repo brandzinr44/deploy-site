@@ -10,7 +10,7 @@ interface HeroSectionProps {
   triggerAnimation?: boolean
 }
 
-const ROTATING_WORDS = ['Funded Founders', 'D2C Brands', 'SaaS Startups']
+const ROTATING_WORDS = ['Funded Founders', 'D2C Brands', 'SaaS Startups', 'Revenue-Generating Founders', 'AI Companies',]
 
 export default function HeroSection({ triggerAnimation = false }: HeroSectionProps) {
   const sectionRef = useRef<HTMLSectionElement>(null)
@@ -51,7 +51,7 @@ export default function HeroSection({ triggerAnimation = false }: HeroSectionPro
                 transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[32px] md:text-[52px] font-medium tracking-tighter leading-[1] text-white text-center flex items-center justify-center flex-wrap gap-x-[0.28em]"
               >
-                <motion.span layout="position">Brands Built to Last for</motion.span>
+                <motion.span layout="position">Brand Systems for</motion.span>
 
                 <motion.span
                   layout
