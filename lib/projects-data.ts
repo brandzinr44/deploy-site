@@ -50,7 +50,6 @@ export const projectsData: Project[] = [
       { label: 'Brand Strategy' }
       { label: 'Visual Identity' }
       { label: 'Website' }
-    
     ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
