@@ -33,7 +33,7 @@ export const projectsData: Project[] = [
   {
     id: 1,
     name: 'Lozinr',
-    description: 'A brand design studio built on one belief — that the most powerful ideas are hidden in plain sight. We created a complete visual identity system rooted in a single conceptual discovery.',
+    description: 'Lozinr Studio was built to prove that world-class branding isnt defined by geography. Its defined by clear thinking, intentional systems, and craftsmanship that lasts.',
     category: 'Branding, Campaign & Content',
     industry: 'Design Agency',
     year: '2024',
