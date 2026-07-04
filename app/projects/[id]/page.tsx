@@ -193,7 +193,7 @@ export default function ProjectPage() {
                 aria-expanded={showAbout}
                 className="flex items-center justify-between lg:justify-start lg:gap-4 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-lg px-4 py-3 w-full text-left cursor-pointer"
               >
-                <h3 className="text-[16px] font-medium tracking-tight text-white">About the project</h3>
+                <h3 className="text-[16px] font-medium tracking-tight text-white">Behind the Brand</h3>
                 <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
               </button>
 
