@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Work from '@/components/work'
 import Process from '@/components/process'
+import OurBeliefSection from '@/components/our-belief-section'
 import FooterSection from '@/components/footer-section'
 
 interface HeroSectionProps {
@@ -79,6 +80,7 @@ export default function HeroSection({ triggerAnimation = false }: HeroSectionPro
       </section>
 
       <Work />
+      <OurBeliefSection />
       <Process />
       <FooterSection />
     </main>
