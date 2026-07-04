@@ -50,30 +50,31 @@ export default function ProjectPage() {
   const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
     const labelClass = theme === 'dark' ? 'text-white/50' : 'text-foreground/40'
     const valueClass = theme === 'dark' ? 'text-white' : 'text-foreground'
+    const borderClass = theme === 'dark' ? 'border-white/10' : 'border-foreground/10'
 
     return (
-      <div className="grid grid-cols-1 gap-y-12 pt-8">
+      <div className="pt-8">
         {meta.overview && (
-          <div>
-            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Overview</p>
+          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
+            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Overview</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.overview}</p>
           </div>
         )}
         {meta.challengeDesc && (
-          <div>
-            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Challenge</p>
+          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
+            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Challenge</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.challengeDesc}</p>
           </div>
         )}
         {meta.strategicDirection && (
-          <div>
-            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Strategic Direction</p>
+          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
+            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Strategic Direction</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.strategicDirection}</p>
           </div>
         )}
         {meta.deliverables.length > 0 && (
-          <div>
-            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Deliverables</p>
+          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
+            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Deliverables</p>
             <div className="flex flex-wrap gap-2">
               {meta.deliverables.map((item: string, i: number) => (
                 <span key={i} className={`text-[16px] tracking-tight ${valueClass}`}>
@@ -86,7 +87,7 @@ export default function ProjectPage() {
         )}
         {meta.duration && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Duration</p>
+            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Duration</p>
             <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.duration}</p>
           </div>
         )}
