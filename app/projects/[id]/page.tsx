@@ -257,7 +257,7 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% */}
               <div className="md:col-span-1">
-                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                <h2 className="text-[16px] font-medium tracking-tight text-foreground leading-tight">
                   Reflection
                 </h2>
               </div>
@@ -265,13 +265,13 @@ export default function ProjectPage() {
               {/* Middle Column — 40% */}
               <div className="md:col-span-2">
                 <div className="space-y-6">
-                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                  <p className="text-[28px] tracking-tight leading-tight text-foreground">
                     {project.reflection.line1}
                   </p>
-                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                  <p className="text-[28px] tracking-tight leading-tight text-foreground">
                     {project.reflection.line2}
                   </p>
-                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                  <p className="text-[28px] tracking-tight leading-tight text-foreground">
                     {project.reflection.line3}
                   </p>
                 </div>
