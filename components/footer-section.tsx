@@ -29,13 +29,25 @@ export default function FooterSection() {
     <footer className="relative w-full bg-foreground">
       <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-10 md:pb-14">
 
+        {/* Row 0 — Divider with tagline */}
+        <motion.div
+          className="py-8 md:py-10 border-t border-background"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: '-40px' }}
+          custom={0}
+          variants={rowVariants}
+        >
+          <p className="text-[16px] text-background font-medium">Built for founders who think long term.</p>
+        </motion.div>
+
         {/* Row 1 — Nav */}
         <motion.div
           className="grid grid-cols-2 py-8 md:py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
-          custom={0}
+          custom={1}
           variants={rowVariants}
         >
           <span className="text-[16px] text-background font-medium">Nav</span>
@@ -58,7 +70,7 @@ export default function FooterSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
-          custom={1}
+          custom={2}
           variants={rowVariants}
         >
           <span className="text-[16px] text-background font-medium">Social</span>
@@ -83,7 +95,7 @@ export default function FooterSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
-          custom={2}
+          custom={3}
           variants={rowVariants}
         >
           <span className="text-[16px] text-background font-medium">Address</span>
