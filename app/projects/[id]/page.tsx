@@ -40,72 +40,56 @@ export default function ProjectPage() {
   const infoImage = validImages[0]
 
   const meta = {
-    client: project.client || project.name,
-    clientUrl: project.clientUrl,
-    sector: project.sector,
-    discipline: project.discipline,
-    office: project.office,
-    partner: project.partner,
-    partnerUrl: project.partnerUrl,
-    team: project.team || [],
+    overview: project.overview,
+    challengeDesc: project.challengeDesc,
+    strategicDirection: project.strategicDirection,
+    deliverables: project.deliverables || [],
+    duration: project.duration,
   }
 
   const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
     const labelClass = theme === 'dark' ? 'text-white/50' : 'text-foreground/40'
     const valueClass = theme === 'dark' ? 'text-white' : 'text-foreground'
-    const linkClass =
-      theme === 'dark'
-        ? 'text-white underline underline-offset-2 hover:text-white/70'
-        : 'text-foreground underline underline-offset-2 hover:text-foreground/70'
 
     return (
-      <div className="grid grid-cols-2 gap-x-8 gap-y-8 pt-8">
-        <div className="flex flex-col gap-8">
+      <div className="grid grid-cols-1 gap-y-12 pt-8">
+        {meta.overview && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-1 ${labelClass}`}>Client</p>
-            {meta.clientUrl ? (
-              <a href={meta.clientUrl} target="_blank" rel="noopener noreferrer" className={`text-[16px] tracking-tight transition-colors ${linkClass}`}>
-                {meta.client}
-              </a>
-            ) : (
-              <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.client}</p>
-            )}
+            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Overview</p>
+            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.overview}</p>
           </div>
+        )}
+        {meta.challengeDesc && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-1 ${labelClass}`}>Sector</p>
-            <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.sector}</p>
+            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Challenge</p>
+            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.challengeDesc}</p>
           </div>
+        )}
+        {meta.strategicDirection && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-1 ${labelClass}`}>Discipline</p>
-            <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.discipline}</p>
+            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Strategic Direction</p>
+            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.strategicDirection}</p>
           </div>
-        </div>
-        <div className="flex flex-col gap-8">
+        )}
+        {meta.deliverables.length > 0 && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-1 ${labelClass}`}>Office</p>
-            <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.office}</p>
-          </div>
-          <div>
-            <p className={`text-[16px] tracking-tight mb-1 ${labelClass}`}>Partner</p>
-            {meta.partnerUrl ? (
-              <a href={meta.partnerUrl} target="_blank" rel="noopener noreferrer" className={`text-[16px] tracking-tight transition-colors ${linkClass}`}>
-                {meta.partner}
-              </a>
-            ) : (
-              <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.partner}</p>
-            )}
-          </div>
-          {meta.team.length > 0 && (
-            <div>
-              <p className={`text-[16px] tracking-tight mb-1 ${labelClass}`}>Project team</p>
-              <div className="flex flex-col">
-                {meta.team.map((member: string, i: number) => (
-                  <p key={i} className={`text-[16px] tracking-tight ${valueClass}`}>{member}</p>
-                ))}
-              </div>
+            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Deliverables</p>
+            <div className="flex flex-wrap gap-2">
+              {meta.deliverables.map((item: string, i: number) => (
+                <span key={i} className={`text-[16px] tracking-tight ${valueClass}`}>
+                  {item}
+                  {i < meta.deliverables.length - 1 && <span className="mx-2">/</span>}
+                </span>
+              ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
+        {meta.duration && (
+          <div>
+            <p className={`text-[16px] tracking-tight mb-3 ${labelClass}`}>Duration</p>
+            <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.duration}</p>
+          </div>
+        )}
       </div>
     )
   }

@@ -12,14 +12,11 @@ export interface Project {
   year: string
   ctas: { label: string }[]
   images: string[]
-  client?: string
-  clientUrl?: string
-  sector?: string
-  discipline?: string
-  office?: string
-  partner?: string
-  partnerUrl?: string
-  team?: string[]
+  overview?: string
+  challengeDesc?: string
+  strategicDirection?: string
+  deliverables?: string[]
+  duration?: string
   sections: {
     challenge: ProjectSection
     strategy: ProjectSection
@@ -36,14 +33,18 @@ export const projectsData: Project[] = [
     description: 'Lozinr Studio was built to prove that world-class branding isnt defined by geography. Its defined by clear thinking, intentional systems, and craftsmanship that lasts.',
     category: 'Branding, Campaign & Content',
     industry: 'Design Agency',
-    year: '2024',
-    client: 'Lozinr Design Studio',
-    clientUrl: 'https://lozinr.com',
-    sector: 'Design & Creative',
-    discipline: 'Brand Identity, Visual System',
-    office: 'Comilla, Bangladesh',
-    partner: 'Adnan Akif',
-    team: ['Adnan Akif', 'Design Team', 'Creative Director', 'Strategist'],
+    year: '2026',
+    overview: 'Lozinr was built as an independent branding studio focused on creating strategic brand systems for ambitious founders.',
+    challengeDesc: 'How do you build a branding studio that feels premium, timeless, and trustworthy without relying on trends or visual excess?',
+    strategicDirection: 'We built every decision around one principle: Brands built to last. This philosophy shaped the positioning, identity, website, and communication system.',
+    deliverables: [
+      'Brand Strategy',
+      'Positioning',
+      'Visual Identity',
+      'Website Design',
+      'Brand Guidelines'
+    ],
+    duration: '2024 - 2026',
     ctas: [
       { label: 'Independent Branding Studio' },
       { label: 'Brand Strategy' },
@@ -90,12 +91,16 @@ export const projectsData: Project[] = [
     category: 'Branding',
     industry: 'Personal Branding',
     year: '2024',
-    client: 'Adnan Akif',
-    sector: 'Personal Branding & Portfolio',
-    discipline: 'Brand Identity, Web Design',
-    office: 'Comilla, Bangladesh',
-    partner: 'Creative Director',
-    team: ['Adnan Akif', 'Branding Specialist', 'Digital Designer'],
+    overview: 'Personal branding project focused on establishing a unique visual identity for creative professional.',
+    challengeDesc: 'Creating a distinctive personal brand identity that stands out in a competitive creative landscape while maintaining authenticity.',
+    strategicDirection: 'Developed a comprehensive brand strategy leveraging unique perspective and creative expertise to build a memorable personal brand.',
+    deliverables: [
+      'Brand Strategy',
+      'Visual Identity',
+      'Website Design',
+      'Brand Guidelines'
+    ],
+    duration: '2024 - 2025',
     ctas: [
       { label: 'Brand Strategy' },
       { label: 'Visual Identity' }
