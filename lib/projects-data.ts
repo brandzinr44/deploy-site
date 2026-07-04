@@ -46,8 +46,11 @@ export const projectsData: Project[] = [
     partnerUrl: 'https://lozinr.com',
     team: ['Adnan Akif', 'Design Team', 'Creative Director', 'Strategist'],
     ctas: [
-      { label: 'Brand Strategy' },
-      { label: 'Brand Design' }
+      { label: 'Independent Branding Studio' },
+      { label: 'Brand Strategy' }
+      { label: 'Visual Identity' }
+      { label: 'Website' }
+    
     ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
