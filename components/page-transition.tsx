@@ -11,16 +11,25 @@ interface PageTransitionProps {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
-  const [preloaderDone, setPreloaderDone] = useState(false)
+  const [showPreloader, setShowPreloader] = useState(true)
 
   useEffect(() => {
-    setPreloaderDone(true)
+    // Only show preloader on first page load (not on subsequent navigations)
+    if (showPreloader) {
+      // Keep track that we've shown the preloader
+      const hasShownPreloader = sessionStorage.getItem('preloaderShown')
+      if (hasShownPreloader) {
+        setShowPreloader(false)
+      } else {
+        sessionStorage.setItem('preloaderShown', 'true')
+      }
+    }
   }, [])
 
   return (
     <>
       {/* Preloader on first load */}
-      {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
+      {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
 
       {/* Page transition overlay */}
       <AnimatePresence initial={false}>
