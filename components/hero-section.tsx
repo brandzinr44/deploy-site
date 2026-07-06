@@ -29,7 +29,7 @@ export default function HeroSection({ triggerAnimation = false }: HeroSectionPro
   const heroOpacity = useTransform(scrollY, [0, 350], [1, 0])
 
   return (
-    <main className="min-h-screen bg-foreground">
+    <main className="min-h-screen bg-background">
 
       {/* Hero Logo Section — space for preloader logo handoff */}
       <section ref={sectionRef} className="bg-transparent overflow-hidden pt-0 py-85 md:py-48">
@@ -50,7 +50,7 @@ export default function HeroSection({ triggerAnimation = false }: HeroSectionPro
                 initial={{ y: '100%', opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[32px] md:text-[52px] font-medium tracking-tighter leading-[1] text-white text-center flex items-center justify-center flex-wrap gap-x-[0.28em]"
+                className="text-[32px] md:text-[52px] font-medium tracking-tighter leading-[1] text-black text-center flex items-center justify-center flex-wrap gap-x-[0.28em]"
               >
                 <motion.span layout="position">Brand Systems for</motion.span>
 
