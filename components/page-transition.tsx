@@ -1,7 +1,9 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+import Preloader from '@/components/preloader'
 
 interface PageTransitionProps {
   children: React.ReactNode
@@ -9,11 +11,18 @@ interface PageTransitionProps {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
+  const [preloaderDone, setPreloaderDone] = useState(false)
+
+  useEffect(() => {
+    setPreloaderDone(true)
+  }, [])
 
   return (
     <>
-      {/* initial={false} on AnimatePresence skips this on first page load —
-          it only fires on real client-side navigations between routes */}
+      {/* Preloader on first load */}
+      {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
+
+      {/* Page transition overlay */}
       <AnimatePresence initial={false}>
         <motion.div
           key={pathname}
