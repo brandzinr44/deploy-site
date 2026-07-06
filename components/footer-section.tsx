@@ -38,7 +38,7 @@ export default function FooterSection() {
           custom={0}
           variants={rowVariants}
         >
-          <p className="text-[36px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
+          <p className="md:text-[36px] text-[24px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
         </motion.div>
 
         {/* Row 1 — Nav */}

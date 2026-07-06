@@ -103,24 +103,24 @@ function ProjectRow({
       {/* Full-container-width divider, anchored to the row (not the image column),
           positioned right below the thumbnail's actual rendered height */}
       <div
-        className="hidden absolute left-0 right-0 h-px bg-background"
+        className="hidden absolute left-0 right-0 h-px bg-foreground"
         style={{ top: imgHeight + 16 }}
       />
 
       {/* Text — top aligned */}
       <div className="flex flex-col gap-3 mt-8 md:mt-0">
-        <span className="inline-flex w-fit items-center text-[10px] font-medium text-background tracking-tight border border-background rounded-full px-1 py-0.5">
+        <span className="inline-flex w-fit items-center text-[10px] font-medium text-background tracking-tight bg-foreground rounded-full px-1 py-0.5">
           {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
 
-        <h3 className="text-[16px] font-medium text-background tracking-tight leading-tight">
+        <h3 className="text-[16px] font-medium text-foreground tracking-tight leading-tight">
           {project.name}
         </h3>
 
         {/* Divider under the title */}
-        <div className="h-px w-full bg-background" />
+        <div className="h-px w-full bg-foreground" />
 
-        <p className="text-[16px] font-medium text-background/80 leading-tight tracking-tight">
+        <p className="text-[16px] font-medium text-foreground/80 leading-tight tracking-tight">
           {project.description}
         </p>
 
@@ -130,7 +130,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
-            <span className="inline-block text-[10px] bg-background/30 font-medium tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[10px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
               {project.category}
             </span>
           </motion.div>
@@ -140,7 +140,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <span className="inline-block text-[10px] bg-background/30 font-medium tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[10px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
               {project.year}
             </span>
           </motion.div>
@@ -155,12 +155,12 @@ export default function Work() {
   const displayProjects = projectsData.filter((p) => p.images[0] !== '#')
 
   return (
-    <section id="work-section" className="bg-foreground py-12 md:py-24 px-3 lg:px-6">
+    <section id="work-section" className="bg-background py-12 md:py-24 px-3 lg:px-6">
       <div className="flex flex-col md:flex-row md:items-start gap-x-6 md:gap-x-4">
         {/* Mobile: full width, sits on top. Desktop: 20% column on the left */}
         <div className="w-full md:w-1/6 flex items-center gap-2 mb-8 md:mb-0 md:self-start">
-          <span className="w-[12px] h-[12px] rounded-full bg-background" />
-          <span className="text-[16px] font-medium text-background tracking-tight">
+          <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
+          <span className="text-[16px] font-medium text-foreground tracking-tight">
             Work
           </span>
         </div>
