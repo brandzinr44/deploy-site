@@ -109,7 +109,7 @@ function ProjectRow({
 
       {/* Text — top aligned */}
       <div className="flex flex-col gap-3 mt-8 md:mt-0">
-        <span className="inline-flex w-fit items-center text-[10px] font-medium text-foreground tracking-tight border border-foreground rounded-full px-1 py-0.5">
+        <span className="inline-flex w-fit items-center text-[10px] font-medium text-background tracking-tight bg-foreground rounded-full px-1 py-0.5">
           {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
 
