@@ -141,18 +141,10 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
       }
       lastScrollYRef.current = currentScrollY
 
-      // ── Background visibility: only show once past threshold from top,
-      // and hide again once within threshold of the bottom of the page.
-      const docHeight = document.documentElement.scrollHeight
-      const windowHeight = window.innerHeight
-      const distanceFromBottom = docHeight - (currentScrollY + windowHeight)
-
-      const pastTop = currentScrollY > SCROLL_THRESHOLD
-      const nearBottom = distanceFromBottom < SCROLL_THRESHOLD
-
-      setShowHeaderBg(pastTop && !nearBottom)
-      setIsDark(pastTop)
-      setIsDarkMobile(currentScrollY > SCROLL_THRESHOLD_MOBILE)
+      // ── Background visibility: always show, content always dark
+      setShowHeaderBg(true)
+      setIsDark(true)
+      setIsDarkMobile(true)
     }
 
     handleScroll() // run once on mount
