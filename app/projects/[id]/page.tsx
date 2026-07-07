@@ -202,6 +202,146 @@ export default function ProjectPage() {
           </div>
         </section>
 
+        {/* ─── For The Challenge Section ─── */}
+        {project.detailChallenge && (
+          <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-4xl"
+            >
+              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
+                For The Challenge
+              </h2>
+              
+              <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-8 uppercase">
+                {project.detailChallenge.thinking}
+              </p>
+              
+              <div className="space-y-6">
+                {project.detailChallenge.body.split('\n').map((line, idx) => (
+                  line.trim() && (
+                    <p key={idx} className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                      {line}
+                    </p>
+                  )
+                ))}
+              </div>
+            </motion.div>
+          </section>
+        )}
+
+        {/* ─── Divider ─── */}
+        <div className="h-px bg-foreground/10 mx-2 lg:mx-4" />
+
+        {/* ─── Strategy Section ─── */}
+        {project.detailStrategy && (
+          <section className="px-2 lg:px-4 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-4xl"
+            >
+              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
+                Strategy
+              </h2>
+              
+              <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
+                {project.detailStrategy.thinking}
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                <div>
+                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Positioning</p>
+                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    {project.detailStrategy.positioning}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Audience</p>
+                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    {project.detailStrategy.audience}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Brand Personality</p>
+                  <div className="flex flex-wrap gap-3">
+                    {project.detailStrategy.personality.map((trait, idx) => (
+                      <span key={idx} className="px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-[13px] font-medium tracking-tight text-foreground">
+                        {trait}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Objective</p>
+                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    {project.detailStrategy.objective}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </section>
+        )}
+
+        {/* ─── Divider ─── */}
+        <div className="h-px bg-foreground/10 mx-2 lg:mx-4" />
+
+        {/* ─── Process Section ─── */}
+        {project.detailProcess && (
+          <section className="px-2 lg:px-4 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-4xl"
+            >
+              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
+                Process
+              </h2>
+              
+              <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
+                Strong identities are built through decisions—not inspiration.
+              </p>
+
+              <div className="space-y-8 md:space-y-12">
+                {project.detailProcess.map((step, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.1 }}
+                    className="flex gap-6 md:gap-8"
+                  >
+                    <div className="flex-shrink-0">
+                      <span className="text-[32px] md:text-[40px] font-medium tracking-tight text-foreground/30">
+                        {step.number}
+                      </span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-[18px] font-medium tracking-tight text-foreground mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-[16px] tracking-tight leading-relaxed text-foreground/70">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+        )}
+
         {/* ─── Images — no scroll animation ─── */}
         <section className="pb-16 md:pb-24">
           <div className={`flex flex-col gap-2 ${showAbout ? 'lg:flex-row lg:gap-8 py-5 px-2 lg:px-4' : ''}`}>

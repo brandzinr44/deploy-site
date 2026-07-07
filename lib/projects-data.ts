@@ -3,6 +3,17 @@ export interface ProjectSection {
   description: string
 }
 
+export interface ProjectDetailSection {
+  thinking: string
+  body: string
+}
+
+export interface ProcessStep {
+  number: string
+  title: string
+  description: string
+}
+
 export interface Project {
   id: number
   name: string
@@ -22,6 +33,15 @@ export interface Project {
     line2: string
     line3: string
   }
+  detailChallenge?: ProjectDetailSection
+  detailStrategy?: {
+    thinking: string
+    positioning: string
+    audience: string
+    personality: string[]
+    objective: string
+  }
+  detailProcess?: ProcessStep[]
   sections: {
     challenge: ProjectSection
     strategy: ProjectSection
@@ -61,6 +81,44 @@ export const projectsData: Project[] = [
       line2: 'This project reminded us that strong brands are rarely the result of more creativity—they\'re the result of clearer decisions. Every element, from positioning to typography, was designed to reinforce trust and long-term consistency rather than short-term attention.',
       line3: 'That\'s the standard we bring to every brand we build.'
     },
+    detailChallenge: {
+      thinking: 'Thinking Statement',
+      body: 'Every growing business eventually outgrows its identity.\n\nThe original brand had done its job.\n\nBut Lozinr had changed.\n\nThe work became more strategic.\nThe clients became more ambitious.\nThe identity stayed behind.\n\nThis wasn\'t about creating a better logo.\n\nIt was about creating a brand that reflected the standard behind the work.'
+    },
+    detailStrategy: {
+      thinking: 'Before people trust your work, they trust what your brand communicates.',
+      positioning: 'Brand systems for founders building companies worth remembering.',
+      audience: 'Founders investing in long-term growth—not short-term attention.',
+      personality: ['Calm', 'Precise', 'Confident', 'Timeless'],
+      objective: 'Create a brand that earns trust before the first conversation.'
+    },
+    detailProcess: [
+      {
+        number: '01',
+        title: 'Discovery',
+        description: 'Understand the business before touching design.'
+      },
+      {
+        number: '02',
+        title: 'Positioning',
+        description: 'Define what the brand should be known for.'
+      },
+      {
+        number: '03',
+        title: 'Exploration',
+        description: 'Explore typography, color, composition, and direction. Remove everything that doesn\'t support the strategy.'
+      },
+      {
+        number: '04',
+        title: 'System Building',
+        description: 'Turn individual assets into one consistent identity system.'
+      },
+      {
+        number: '05',
+        title: 'Refinement',
+        description: 'Reduce visual noise until every element has a purpose.'
+      }
+    ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%202-L9cyRymuIKcWCg9UcBExt3YwMLe6Yb.jpg',
