@@ -214,21 +214,21 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% */}
               <div className="md:col-span-1">
-                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Challenge
                 </h2>
               </div>
 
               {/* Middle Column — 60% */}
               <div className="md:col-span-3">
-                <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-8 uppercase">
+                <p className="text-[16px] font-medium tracking-tight text-foreground mb-8 uppercase">
                   {project.detailChallenge.thinking}
                 </p>
                 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {project.detailChallenge.body.split('\n').map((line, idx) => (
                     line.trim() && (
-                      <p key={idx} className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                      <p key={idx} className="text-[16px] tracking-tight leading-tight text-foreground">
                         {line}
                       </p>
                     )
@@ -243,7 +243,7 @@ export default function ProjectPage() {
         )}
 
         {/* ─── Divider ─── */}
-        <div className="h-px bg-foreground/10 mx-2 lg:mx-4" />
+        <div className="h-px bg-foreground mx-2 lg:mx-4" />
 
         {/* ─── Strategy Section ─── */}
         {project.detailStrategy && (
@@ -257,37 +257,37 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% */}
               <div className="md:col-span-1">
-                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Strategy
                 </h2>
               </div>
 
               {/* Middle Column — 60% */}
               <div className="md:col-span-3">
-                <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
+                <p className="text-[16px] font-medium tracking-tight text-foreground mb-12 uppercase">
                   {project.detailStrategy.thinking}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
                   <div>
-                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Positioning</p>
-                    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Positioning</p>
+                    <p className="text-[16px] tracking-tight leading-tight text-foreground">
                       {project.detailStrategy.positioning}
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Audience</p>
-                    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Audience</p>
+                    <p className="text-[16px] tracking-tight leading-tight text-foreground">
                       {project.detailStrategy.audience}
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Brand Personality</p>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Brand Personality</p>
                     <div className="flex flex-wrap gap-3">
                       {project.detailStrategy.personality.map((trait, idx) => (
-                        <span key={idx} className="px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-[13px] font-medium tracking-tight text-foreground">
+                        <span key={idx} className="px-4 py-1.4 rounded-full bg-foreground border border-foreground text-[16px] font-medium tracking-tight text-background">
                           {trait}
                         </span>
                       ))}
