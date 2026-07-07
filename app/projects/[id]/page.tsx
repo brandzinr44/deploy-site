@@ -252,11 +252,11 @@ export default function ProjectPage() {
                 </div>
               </div>
 
-              {/* Middle Column — 70% (Content) */}
+              {/* Middle Column — 40% (Content) */}
               <AnimatePresence>
                 {expandedSections.challenge && (
                   <motion.div
-                    className="md:col-span-7"
+                    className="md:col-span-2"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
@@ -279,8 +279,8 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 10% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-1 justify-end items-start">
+              {/* Right Column — 40% (Plus Icon) */}
+              <div className="hidden md:flex md:col-span-2 justify-end items-start">
                 <button
                   onClick={() => toggleSection('challenge')}
                   className="p-2"
@@ -316,10 +316,10 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-10 gap-6 md:gap-4 items-start"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
               {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-1">
                 <div className="flex items-start justify-between">
                   <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                     Strategy
@@ -346,11 +346,11 @@ export default function ProjectPage() {
                 </div>
               </div>
 
-              {/* Middle Column — 70% (Content) */}
+              {/* Middle Column — 40% (Content) */}
               <AnimatePresence>
                 {expandedSections.strategy && (
                   <motion.div
-                    className="md:col-span-7"
+                    className="md:col-span-2"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
@@ -397,8 +397,8 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 10% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-1 justify-end items-start">
+              {/* Right Column — 40% (Plus Icon) */}
+              <div className="hidden md:flex md:col-span-2 justify-end items-start">
                 <button
                   onClick={() => toggleSection('strategy')}
                   className="p-2"
@@ -434,10 +434,10 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-10 gap-6 md:gap-4 items-start"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
               {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-1">
                 <div className="flex items-start justify-between">
                   <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                     Process
@@ -464,11 +464,11 @@ export default function ProjectPage() {
                 </div>
               </div>
 
-              {/* Middle Column — 70% (Content) */}
+              {/* Middle Column — 40% (Content) */}
               <AnimatePresence>
                 {expandedSections.process && (
                   <motion.div
-                    className="md:col-span-7"
+                    className="md:col-span-2"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
@@ -508,8 +508,8 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 10% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-1 justify-end items-start">
+              {/* Right Column — 40% (Plus Icon) */}
+              <div className="hidden md:flex md:col-span-2 justify-end items-start">
                 <button
                   onClick={() => toggleSection('process')}
                   className="p-2"
@@ -585,10 +585,10 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-10 gap-6 md:gap-4 items-start"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-2">
+              {/* Left Column — 20% */}
+              <div className="md:col-span-1">
                 <h2 className="text-[16px] font-medium tracking-tight text-foreground leading-tight">
                   Reflection
                 </h2>
