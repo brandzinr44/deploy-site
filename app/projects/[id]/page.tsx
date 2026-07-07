@@ -15,6 +15,18 @@ export default function ProjectPage() {
   const project = projectsData.find(p => p.name.toLowerCase().replace(/\s+/g, '-') === projectName)
   const [preloaderDone, setPreloaderDone] = useState(true)
   const [showAbout, setShowAbout] = useState(false)
+  const [expandedSections, setExpandedSections] = useState({
+    challenge: true,
+    strategy: true,
+    process: true
+  })
+
+  const toggleSection = (section: 'challenge' | 'strategy' | 'process') => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
+  }
 
   const heroSectionRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress: heroScroll } = useScroll({
@@ -201,6 +213,326 @@ export default function ProjectPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* ─── For The Challenge Section ─── */}
+        {project.detailChallenge && (
+          <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+            >
+              {/* Left Column — 20% (Headline) */}
+              <div className="md:col-span-1">
+                <div className="flex items-start justify-between">
+                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                    Challenge
+                  </h2>
+                  <button
+                    onClick={() => toggleSection('challenge')}
+                    className="md:hidden"
+                    aria-label="Toggle challenge section"
+                  >
+                    <motion.svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </motion.svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Middle Column — 40% (Content) */}
+              <AnimatePresence>
+                {expandedSections.challenge && (
+                  <motion.div
+                    className="md:col-span-2"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <p className="text-[16px] font-medium tracking-tight text-foreground mb-8 uppercase">
+                      {project.detailChallenge.thinking}
+                    </p>
+                    
+                    <div className="space-y-4">
+                      {project.detailChallenge.body.split('\n').map((line, idx) => (
+                        line.trim() && (
+                          <p key={idx} className="text-[16px] tracking-tight leading-tight text-foreground">
+                            {line}
+                          </p>
+                        )
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Right Column — 40% (Plus Icon) */}
+              <div className="hidden md:flex md:col-span-2 justify-end items-start">
+                <button
+                  onClick={() => toggleSection('challenge')}
+                  className="p-2"
+                  aria-label="Toggle challenge section"
+                >
+                  <motion.svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </motion.svg>
+                </button>
+              </div>
+            </motion.div>
+          </section>
+        )}
+
+        {/* ─── Divider ─── */}
+        <div className="h-px bg-foreground mx-2 lg:mx-4" />
+
+        {/* ─── Strategy Section ─── */}
+        {project.detailStrategy && (
+          <section className="px-2 lg:px-4 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+            >
+              {/* Left Column — 20% (Headline) */}
+              <div className="md:col-span-1">
+                <div className="flex items-start justify-between">
+                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                    Strategy
+                  </h2>
+                  <button
+                    onClick={() => toggleSection('strategy')}
+                    className="md:hidden"
+                    aria-label="Toggle strategy section"
+                  >
+                    <motion.svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </motion.svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Middle Column — 40% (Content) */}
+              <AnimatePresence>
+                {expandedSections.strategy && (
+                  <motion.div
+                    className="md:col-span-2"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                <p className="text-[16px] font-medium tracking-tight text-foreground mb-12 uppercase">
+                  {project.detailStrategy.thinking}
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                  <div>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Positioning</p>
+                    <p className="text-[16px] tracking-tight leading-tight text-foreground">
+                      {project.detailStrategy.positioning}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Audience</p>
+                    <p className="text-[16px] tracking-tight leading-tight text-foreground">
+                      {project.detailStrategy.audience}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Brand Personality</p>
+                    <div className="flex flex-wrap gap-3">
+                      {project.detailStrategy.personality.map((trait, idx) => (
+                        <span key={idx} className="px-4 py-1.5 rounded-full bg-foreground border border-foreground text-[16px] font-medium tracking-tight text-background">
+                          {trait}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Objective</p>
+                    <p className="text-[16px] tracking-tight leading-tight text-foreground">
+                      {project.detailStrategy.objective}
+                    </p>
+                  </div>
+                </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Right Column — 40% (Plus Icon) */}
+              <div className="hidden md:flex md:col-span-2 justify-end items-start">
+                <button
+                  onClick={() => toggleSection('strategy')}
+                  className="p-2"
+                  aria-label="Toggle strategy section"
+                >
+                  <motion.svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </motion.svg>
+                </button>
+              </div>
+            </motion.div>
+          </section>
+        )}
+
+        {/* ─── Divider ─── */}
+        <div className="h-px bg-foreground mx-2 lg:mx-4" />
+
+        {/* ─── Process Section ─── */}
+        {project.detailProcess && (
+          <section className="px-2 lg:px-4 py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+            >
+              {/* Left Column — 20% (Headline) */}
+              <div className="md:col-span-1">
+                <div className="flex items-start justify-between">
+                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                    Process
+                  </h2>
+                  <button
+                    onClick={() => toggleSection('process')}
+                    className="md:hidden"
+                    aria-label="Toggle process section"
+                  >
+                    <motion.svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      animate={{ rotate: expandedSections.process ? 0 : 45 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </motion.svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Middle Column — 40% (Content) */}
+              <AnimatePresence>
+                {expandedSections.process && (
+                  <motion.div
+                    className="md:col-span-2"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                <p className="text-[16px] font-medium tracking-tight text-foreground mb-12 uppercase">
+                  Strong identities are built through decisions—not inspiration.
+                </p>
+
+                <div className="space-y-8 md:space-y-12">
+                  {project.detailProcess.map((step, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-40px' }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.1 }}
+                      className="flex gap-6 md:gap-8"
+                    >
+                      <div className="flex-shrink-0">
+                        <span className="text-[32px] md:text-[40px] font-medium tracking-tight text-foreground">
+                          {step.number}
+                        </span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-[16px] font-medium tracking-tight text-foreground mb-3">
+                          {step.title}
+                        </h3>
+                        <p className="text-[16px] tracking-tight leading-tight text-foreground">
+                          {step.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Right Column — 40% (Plus Icon) */}
+              <div className="hidden md:flex md:col-span-2 justify-end items-start">
+                <button
+                  onClick={() => toggleSection('process')}
+                  className="p-2"
+                  aria-label="Toggle process section"
+                >
+                  <motion.svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    animate={{ rotate: expandedSections.process ? 0 : 45 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </motion.svg>
+                </button>
+              </div>
+            </motion.div>
+          </section>
+        )}
 
         {/* ─── Images — no scroll animation ─── */}
         <section className="pb-16 md:pb-24">

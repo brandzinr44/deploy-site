@@ -3,6 +3,17 @@ export interface ProjectSection {
   description: string
 }
 
+export interface ProjectDetailSection {
+  thinking: string
+  body: string
+}
+
+export interface ProcessStep {
+  number: string
+  title: string
+  description: string
+}
+
 export interface Project {
   id: number
   name: string
@@ -22,6 +33,15 @@ export interface Project {
     line2: string
     line3: string
   }
+  detailChallenge?: ProjectDetailSection
+  detailStrategy?: {
+    thinking: string
+    positioning: string
+    audience: string
+    personality: string[]
+    objective: string
+  }
+  detailProcess?: ProcessStep[]
   sections: {
     challenge: ProjectSection
     strategy: ProjectSection
@@ -36,12 +56,12 @@ export const projectsData: Project[] = [
     id: 1,
     name: 'Lozinr',
     description: 'Lozinr Studio was built to prove that world-class branding isnt defined by geography. Its defined by clear thinking, intentional systems, and craftsmanship that lasts.',
-    category: 'Branding, Campaign & Content',
+    category: 'Branding Agency, Creative Company',
     industry: 'Design Agency',
     year: '2026',
-    overview: 'Lozinr was built as an independent branding studio focused on creating strategic brand systems for ambitious founders.',
-    challengeDesc: 'How do you build a branding studio that feels premium, timeless, and trustworthy without relying on trends or visual excess?',
-    strategicDirection: 'We built every decision around one principle: Brands built to last. This philosophy shaped the positioning, identity, website, and communication system.',
+    overview: 'Lozinr Studio is a brand identity studio focused on building strategic brand systems for ambitious founders. This rebrand aligned every part of the business—from positioning to visual identity—into one clear, consistent system.',
+    challengeDesc: 'The previous identity no longer reflected the quality of the work or the direction of the studio.',
+    strategicDirection: 'Design less. Think deeper. Every decision was made to increase clarity, consistency, and long-term recognition.',
     deliverables: [
       'Brand Strategy',
       'Positioning',
@@ -51,16 +71,54 @@ export const projectsData: Project[] = [
     ],
     duration: '2024 - 2026',
     ctas: [
-      { label: 'Independent Branding Studio' },
       { label: 'Brand Strategy' },
+      { label: 'Positioning' },
       { label: 'Visual Identity' },
-      { label: 'Website' }
+      { label: 'Brand Guidelines' }
     ],
     reflection: {
       line1: 'Every brand we build starts long before the first logo is designed.',
       line2: 'This project reminded us that strong brands are rarely the result of more creativity—they\'re the result of clearer decisions. Every element, from positioning to typography, was designed to reinforce trust and long-term consistency rather than short-term attention.',
       line3: 'That\'s the standard we bring to every brand we build.'
     },
+    detailChallenge: {
+      thinking: 'Thinking Statement',
+      body: 'Every growing business eventually outgrows its identity.\n\nThe original brand had done its job.\n\nBut Lozinr had changed.\n\nThe work became more strategic.\nThe clients became more ambitious.\nThe identity stayed behind.\n\nThis wasn\'t about creating a better logo.\n\nIt was about creating a brand that reflected the standard behind the work.'
+    },
+    detailStrategy: {
+      thinking: 'Before people trust your work, they trust what your brand communicates.',
+      positioning: 'Brand systems for founders building companies worth remembering.',
+      audience: 'Founders investing in long-term growth—not short-term attention.',
+      personality: ['Calm', 'Precise', 'Confident', 'Timeless'],
+      objective: 'Create a brand that earns trust before the first conversation.'
+    },
+    detailProcess: [
+      {
+        number: '01',
+        title: 'Discovery',
+        description: 'Understand the business before touching design.'
+      },
+      {
+        number: '02',
+        title: 'Positioning',
+        description: 'Define what the brand should be known for.'
+      },
+      {
+        number: '03',
+        title: 'Exploration',
+        description: 'Explore typography, color, composition, and direction. Remove everything that doesn\'t support the strategy.'
+      },
+      {
+        number: '04',
+        title: 'System Building',
+        description: 'Turn individual assets into one consistent identity system.'
+      },
+      {
+        number: '05',
+        title: 'Refinement',
+        description: 'Reduce visual noise until every element has a purpose.'
+      }
+    ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%202-L9cyRymuIKcWCg9UcBExt3YwMLe6Yb.jpg',
@@ -120,6 +178,44 @@ export const projectsData: Project[] = [
       line2: 'For Adnan Akif, we focused on translating his creative vision and expertise into a visual language that communicates both sophistication and approachability. The identity needed to work across diverse platforms—from portfolio presentations to social media—while maintaining a consistent voice.',
       line3: 'The result is a personal brand that feels genuinely distinctive in a crowded creative landscape.'
     },
+    detailChallenge: {
+      thinking: 'How do you build a personal brand that feels human, not corporate?',
+      body: 'In a sea of generic personal brands, standing out requires more than a nice portfolio.\n\nAdnan Akif\'s challenge was clear: establish a personal brand that reflects creative excellence without losing the human element.\n\nThe work needed to communicate mastery, but never arrogance.\n\nProfessionalism, but never coldness.\n\nThis is the paradox of personal branding—the brand must be strategic and intentional, while still feeling authentic and approachable.'
+    },
+    detailStrategy: {
+      thinking: 'A personal brand is only credible if it\'s genuine.',
+      positioning: 'Creative strategist building brands with intention and clarity.',
+      audience: 'Ambitious founders and creative leaders seeking authentic personal positioning.',
+      personality: ['Creative', 'Thoughtful', 'Approachable', 'Strategic'],
+      objective: 'Create a personal brand that reflects expertise while maintaining authentic human connection.'
+    },
+    detailProcess: [
+      {
+        number: '01',
+        title: 'Story Alignment',
+        description: 'Understand the personal narrative and unique perspective that defines the professional identity.'
+      },
+      {
+        number: '02',
+        title: 'Audience Clarity',
+        description: 'Identify who the brand speaks to and what value it delivers to them.'
+      },
+      {
+        number: '03',
+        title: 'Visual Language',
+        description: 'Develop a distinctive visual system that communicates professionalism with personality.'
+      },
+      {
+        number: '04',
+        title: 'Platform Integration',
+        description: 'Ensure consistency across all digital and physical touchpoints.'
+      },
+      {
+        number: '05',
+        title: 'Ongoing Refinement',
+        description: 'Build a scalable system that evolves with the personal brand growth.'
+      }
+    ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adnan%20Akif%2001-cG6CTg0P6GqBrKieXI434Bk8dmam2B.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adnan%20Akif%2002-sMaS68iIm16ONNyZe75THLYjsck1Eo.jpg',
