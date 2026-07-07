@@ -41,9 +41,7 @@ export const projectsData: Project[] = [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%205-4Ffal1MVK7oLMe7ixqa4gEDcFSMtN8.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%206-4vVCO2ICAEfzg1NKBwLYtBljY3LdXO.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%207-Fy1geWoBOPQS0OaPwotE3H6aPV8kQh.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%208-jViUshaVSc6389CSO7w8J6LOP2hlIB.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Phone%20Mockup.png-Lca94JkanTFXrpWHZSIHsMxd3g1Bj3.jpeg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Business%20card%20Mockup.png-ddaLbkAit5ycl1hhsYXsr8a4CXSJjj.jpeg'
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%208-jViUshaVSc6389CSO7w8J6LOP2hlIB.jpg'
     ],
     sections: {
       challenge: {
