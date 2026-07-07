@@ -178,6 +178,44 @@ export const projectsData: Project[] = [
       line2: 'For Adnan Akif, we focused on translating his creative vision and expertise into a visual language that communicates both sophistication and approachability. The identity needed to work across diverse platforms—from portfolio presentations to social media—while maintaining a consistent voice.',
       line3: 'The result is a personal brand that feels genuinely distinctive in a crowded creative landscape.'
     },
+    detailChallenge: {
+      thinking: 'How do you build a personal brand that feels human, not corporate?',
+      body: 'In a sea of generic personal brands, standing out requires more than a nice portfolio.\n\nAdnan Akif\'s challenge was clear: establish a personal brand that reflects creative excellence without losing the human element.\n\nThe work needed to communicate mastery, but never arrogance.\n\nProfessionalism, but never coldness.\n\nThis is the paradox of personal branding—the brand must be strategic and intentional, while still feeling authentic and approachable.'
+    },
+    detailStrategy: {
+      thinking: 'A personal brand is only credible if it\'s genuine.',
+      positioning: 'Creative strategist building brands with intention and clarity.',
+      audience: 'Ambitious founders and creative leaders seeking authentic personal positioning.',
+      personality: ['Creative', 'Thoughtful', 'Approachable', 'Strategic'],
+      objective: 'Create a personal brand that reflects expertise while maintaining authentic human connection.'
+    },
+    detailProcess: [
+      {
+        number: '01',
+        title: 'Story Alignment',
+        description: 'Understand the personal narrative and unique perspective that defines the professional identity.'
+      },
+      {
+        number: '02',
+        title: 'Audience Clarity',
+        description: 'Identify who the brand speaks to and what value it delivers to them.'
+      },
+      {
+        number: '03',
+        title: 'Visual Language',
+        description: 'Develop a distinctive visual system that communicates professionalism with personality.'
+      },
+      {
+        number: '04',
+        title: 'Platform Integration',
+        description: 'Ensure consistency across all digital and physical touchpoints.'
+      },
+      {
+        number: '05',
+        title: 'Ongoing Refinement',
+        description: 'Build a scalable system that evolves with the personal brand growth.'
+      }
+    ],
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adnan%20Akif%2001-cG6CTg0P6GqBrKieXI434Bk8dmam2B.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adnan%20Akif%2002-sMaS68iIm16ONNyZe75THLYjsck1Eo.jpg',
