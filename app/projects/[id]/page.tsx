@@ -216,7 +216,28 @@ export default function ProjectPage() {
 
         {/* ─── For The Challenge Section ─── */}
         {project.detailChallenge && (
-          <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+          <section className="relative px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+            {/* Absolute positioned button for mobile */}
+            <button
+              onClick={() => toggleSection('challenge')}
+              className="absolute right-2 top-16 md:hidden"
+              aria-label="Toggle challenge section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -226,30 +247,9 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% (Headline) */}
               <div className="md:col-span-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                    Challenge
-                  </h2>
-                  <button
-                    onClick={() => toggleSection('challenge')}
-                    className="md:hidden"
-                    aria-label="Toggle challenge section"
-                  >
-                    <motion.svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </motion.svg>
-                  </button>
-                </div>
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                  Challenge
+                </h2>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -279,29 +279,28 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 40% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-2 justify-end items-start">
-                <button
-                  onClick={() => toggleSection('challenge')}
-                  className="p-2"
-                  aria-label="Toggle challenge section"
-                >
-                  <motion.svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </motion.svg>
-                </button>
-              </div>
             </motion.div>
+
+            {/* Absolute positioned button for desktop */}
+            <button
+              onClick={() => toggleSection('challenge')}
+              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              aria-label="Toggle challenge section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
           </section>
         )}
 
@@ -310,7 +309,28 @@ export default function ProjectPage() {
 
         {/* ─── Strategy Section ─── */}
         {project.detailStrategy && (
-          <section className="px-2 lg:px-4 py-16 md:py-24">
+          <section className="relative px-2 lg:px-4 py-16 md:py-24">
+            {/* Absolute positioned button for mobile */}
+            <button
+              onClick={() => toggleSection('strategy')}
+              className="absolute right-2 top-16 md:hidden"
+              aria-label="Toggle strategy section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -320,30 +340,9 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% (Headline) */}
               <div className="md:col-span-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                    Strategy
-                  </h2>
-                  <button
-                    onClick={() => toggleSection('strategy')}
-                    className="md:hidden"
-                    aria-label="Toggle strategy section"
-                  >
-                    <motion.svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </motion.svg>
-                  </button>
-                </div>
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                  Strategy
+                </h2>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -397,29 +396,28 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 40% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-2 justify-end items-start">
-                <button
-                  onClick={() => toggleSection('strategy')}
-                  className="p-2"
-                  aria-label="Toggle strategy section"
-                >
-                  <motion.svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </motion.svg>
-                </button>
-              </div>
             </motion.div>
+
+            {/* Absolute positioned button for desktop */}
+            <button
+              onClick={() => toggleSection('strategy')}
+              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              aria-label="Toggle strategy section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
           </section>
         )}
 
@@ -428,7 +426,28 @@ export default function ProjectPage() {
 
         {/* ─── Process Section ─── */}
         {project.detailProcess && (
-          <section className="px-2 lg:px-4 py-16 md:py-24">
+          <section className="relative px-2 lg:px-4 py-16 md:py-24">
+            {/* Absolute positioned button for mobile */}
+            <button
+              onClick={() => toggleSection('process')}
+              className="absolute right-2 top-16 md:hidden"
+              aria-label="Toggle process section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.process ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -438,30 +457,9 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% (Headline) */}
               <div className="md:col-span-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                    Process
-                  </h2>
-                  <button
-                    onClick={() => toggleSection('process')}
-                    className="md:hidden"
-                    aria-label="Toggle process section"
-                  >
-                    <motion.svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      animate={{ rotate: expandedSections.process ? 0 : 45 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </motion.svg>
-                  </button>
-                </div>
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                  Process
+                </h2>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -508,73 +506,227 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 40% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-2 justify-end items-start">
-                <button
-                  onClick={() => toggleSection('process')}
-                  className="p-2"
-                  aria-label="Toggle process section"
-                >
-                  <motion.svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    animate={{ rotate: expandedSections.process ? 0 : 45 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </motion.svg>
-                </button>
-              </div>
             </motion.div>
+
+            {/* Absolute positioned button for desktop */}
+            <button
+              onClick={() => toggleSection('process')}
+              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              aria-label="Toggle process section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.process ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
           </section>
         )}
 
         {/* ─── Images — no scroll animation ─── */}
-        <section className="pb-16 md:pb-24">
-          <div className={`flex flex-col gap-2 ${showAbout ? 'lg:flex-row lg:gap-8 py-5 px-2 lg:px-4' : ''}`}>
-            <div className={`flex flex-col gap-2 ${showAbout ? 'w-full lg:w-1/2' : 'w-full'}`}>
-              {galleryImages.map((image, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={`w-screen -mx-[calc(50vw-50%)] ${showAbout ? 'lg:w-full lg:mx-0' : ''}`}
-                >
-                  <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-                    <Image
-                      src={image}
-                      alt={`${project.name} ${idx + 1}`}
-                      fill
-                      sizes="100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </motion.div>
-              ))}
+        {/* ─── Logo Variations Section ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 space-y-2">
+          {/* Logo 01 - Grid Construction */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2002-KaqnpyY1ZifajnLEHfJvT9wKzQbmgq.png"
+                alt="Lozinr Logo Construction Grid"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Logo 02 - Split Variation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2003-LZ9wMZbuwTvqVREeQCyFU3Ukbv1ZLI.png"
+                alt="Lozinr Logo and Typography Variation"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Logo 03 - Primary Lockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-HGJSSbYrWDNpMXahvFVPxKScz0knzm.png"
+                alt="Lozinr Studio Primary Lockup"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ─── Identity Section ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+          >
+            {/* Left Column — 20% (Headline) */}
+            <div className="md:col-span-1">
+              <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                Identity
+              </h2>
             </div>
 
-            {showAbout && (
-              <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="hidden lg:block lg:w-1/2"
-              >
-                <div className="lg:sticky lg:top-32">
-                  <h3 className="text-[16px] font-medium tracking-tight text-foreground mb-4">Behind the Brand</h3>
-                  <p className="text-[16px] text-foreground/70 leading-relaxed tracking-tight">{project.description}</p>
-                  <MetaGrid />
+            {/* Middle Column — 60% (Thinking Statement + Body) */}
+            <div className="md:col-span-3">
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Thinking Statement
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    Recognition comes from repetition, not complexity.
+                  </p>
                 </div>
-              </motion.div>
-            )}
-          </div>
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Body
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    The identity was designed as a flexible system—not a single logo. Every variation follows the same principles, making the brand recognizable across every touchpoint.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column — 20% (Empty) */}
+            <div className="md:col-span-1"></div>
+          </motion.div>
+        </section>
+
+        {/* ─── Typography & Color Images ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 space-y-2">
+          {/* Typography Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Typography-cq2D7qokmf5awn4uIFOIjwdi8hBWr6.png"
+                alt="Helvetica Neue Typography System"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Color Palette Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2040-k58aXEAs8w3raJoN8gRlYBndSRP7UF.png"
+                alt="Color Palette - Autumn Orange, Off-White, Charcoal"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ─── Visual Identity Section ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+          >
+            {/* Left Column — 20% (Headline) */}
+            <div className="md:col-span-1">
+              <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                Visual Identity
+              </h2>
+            </div>
+
+            {/* Middle Column — 60% (Thinking Statement + Content) */}
+            <div className="md:col-span-3">
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Thinking Statement
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    Every visual choice should reinforce the same perception.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Color
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    Three colors. One purpose. Confidence through restraint.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Typography
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    One type family. Nine weights. Unlimited flexibility. Helvetica Neue became the foundation of the entire system because consistency scales better than variety.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column — 20% (Empty) */}
+            <div className="md:col-span-1"></div>
+          </motion.div>
         </section>
 
         {/* ─── Reflection Section ─── */}
