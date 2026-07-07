@@ -216,7 +216,28 @@ export default function ProjectPage() {
 
         {/* ─── For The Challenge Section ─── */}
         {project.detailChallenge && (
-          <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+          <section className="relative px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+            {/* Absolute positioned button for mobile */}
+            <button
+              onClick={() => toggleSection('challenge')}
+              className="absolute right-2 top-16 md:hidden"
+              aria-label="Toggle challenge section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -226,30 +247,9 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% (Headline) */}
               <div className="md:col-span-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                    Challenge
-                  </h2>
-                  <button
-                    onClick={() => toggleSection('challenge')}
-                    className="md:hidden"
-                    aria-label="Toggle challenge section"
-                  >
-                    <motion.svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </motion.svg>
-                  </button>
-                </div>
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                  Challenge
+                </h2>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -279,29 +279,28 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 40% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-2 justify-end items-start">
-                <button
-                  onClick={() => toggleSection('challenge')}
-                  className="p-2"
-                  aria-label="Toggle challenge section"
-                >
-                  <motion.svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </motion.svg>
-                </button>
-              </div>
             </motion.div>
+
+            {/* Absolute positioned button for desktop */}
+            <button
+              onClick={() => toggleSection('challenge')}
+              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              aria-label="Toggle challenge section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
           </section>
         )}
 
@@ -310,7 +309,28 @@ export default function ProjectPage() {
 
         {/* ─── Strategy Section ─── */}
         {project.detailStrategy && (
-          <section className="px-2 lg:px-4 py-16 md:py-24">
+          <section className="relative px-2 lg:px-4 py-16 md:py-24">
+            {/* Absolute positioned button for mobile */}
+            <button
+              onClick={() => toggleSection('strategy')}
+              className="absolute right-2 top-16 md:hidden"
+              aria-label="Toggle strategy section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -320,30 +340,9 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% (Headline) */}
               <div className="md:col-span-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                    Strategy
-                  </h2>
-                  <button
-                    onClick={() => toggleSection('strategy')}
-                    className="md:hidden"
-                    aria-label="Toggle strategy section"
-                  >
-                    <motion.svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </motion.svg>
-                  </button>
-                </div>
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                  Strategy
+                </h2>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -397,29 +396,28 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 40% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-2 justify-end items-start">
-                <button
-                  onClick={() => toggleSection('strategy')}
-                  className="p-2"
-                  aria-label="Toggle strategy section"
-                >
-                  <motion.svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </motion.svg>
-                </button>
-              </div>
             </motion.div>
+
+            {/* Absolute positioned button for desktop */}
+            <button
+              onClick={() => toggleSection('strategy')}
+              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              aria-label="Toggle strategy section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
           </section>
         )}
 
@@ -428,7 +426,28 @@ export default function ProjectPage() {
 
         {/* ─── Process Section ─── */}
         {project.detailProcess && (
-          <section className="px-2 lg:px-4 py-16 md:py-24">
+          <section className="relative px-2 lg:px-4 py-16 md:py-24">
+            {/* Absolute positioned button for mobile */}
+            <button
+              onClick={() => toggleSection('process')}
+              className="absolute right-2 top-16 md:hidden"
+              aria-label="Toggle process section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.process ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -438,30 +457,9 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% (Headline) */}
               <div className="md:col-span-1">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                    Process
-                  </h2>
-                  <button
-                    onClick={() => toggleSection('process')}
-                    className="md:hidden"
-                    aria-label="Toggle process section"
-                  >
-                    <motion.svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      animate={{ rotate: expandedSections.process ? 0 : 45 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                    </motion.svg>
-                  </button>
-                </div>
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                  Process
+                </h2>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -508,29 +506,28 @@ export default function ProjectPage() {
                 )}
               </AnimatePresence>
 
-              {/* Right Column — 40% (Plus Icon) */}
-              <div className="hidden md:flex md:col-span-2 justify-end items-start">
-                <button
-                  onClick={() => toggleSection('process')}
-                  className="p-2"
-                  aria-label="Toggle process section"
-                >
-                  <motion.svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    animate={{ rotate: expandedSections.process ? 0 : 45 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </motion.svg>
-                </button>
-              </div>
             </motion.div>
+
+            {/* Absolute positioned button for desktop */}
+            <button
+              onClick={() => toggleSection('process')}
+              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              aria-label="Toggle process section"
+            >
+              <motion.svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                animate={{ rotate: expandedSections.process ? 0 : 45 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </motion.svg>
+            </button>
           </section>
         )}
 
