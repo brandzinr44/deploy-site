@@ -51,10 +51,10 @@ export const projectsData: Project[] = [
     ],
     duration: '2024 - 2026',
     ctas: [
-      { label: 'Independent Branding Studio' },
       { label: 'Brand Strategy' },
+      { label: 'Positioning' },
       { label: 'Visual Identity' },
-      { label: 'Website' }
+      { label: 'Brand Guidelines' }
     ],
     reflection: {
       line1: 'Every brand we build starts long before the first logo is designed.',
