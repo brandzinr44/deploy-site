@@ -15,22 +15,11 @@ export default function ProjectPage() {
   const project = projectsData.find(p => p.name.toLowerCase().replace(/\s+/g, '-') === projectName)
   const [preloaderDone, setPreloaderDone] = useState(true)
   const [showAbout, setShowAbout] = useState(false)
-  const [allSectionsOpen, setAllSectionsOpen] = useState(true)
   const [expandedSections, setExpandedSections] = useState({
     challenge: true,
     strategy: true,
     process: true
   })
-
-  const toggleAllSections = () => {
-    const newState = !allSectionsOpen
-    setAllSectionsOpen(newState)
-    setExpandedSections({
-      challenge: newState,
-      strategy: newState,
-      process: newState
-    })
-  }
 
   const toggleSection = (section: 'challenge' | 'strategy' | 'process') => {
     setExpandedSections(prev => ({
@@ -135,54 +124,6 @@ export default function ProjectPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
       />
-
-      {/* ─── Fixed Toggle Button ─── */}
-      <motion.button
-        onClick={toggleAllSections}
-        className="fixed right-4 top-4 z-[99999] p-3 rounded-lg bg-foreground text-background hover:bg-foreground/90 transition-colors"
-        aria-label="Toggle sections"
-        aria-expanded={allSectionsOpen}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {allSectionsOpen ? (
-          <motion.svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            key="cross"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </motion.svg>
-        ) : (
-          <motion.svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            key="plus"
-            initial={{ rotate: 90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </motion.svg>
-        )}
-      </motion.button>
-
       <main className="min-h-screen bg-background">
 
         {/* ─── Project Info ─── */}
