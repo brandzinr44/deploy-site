@@ -215,7 +215,7 @@ export default function ProjectPage() {
               {/* Left Column — 20% */}
               <div className="md:col-span-1">
                 <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
-                  For The Challenge
+                  Challenge
                 </h2>
               </div>
 
