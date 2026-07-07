@@ -1,11 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter, usePathname } from 'next/navigation'
 
 interface HeaderProps {
-  onWorkClick?: () => void
   preloaderDone?: boolean
 }
 
@@ -28,58 +27,25 @@ const SCROLL_THRESHOLD = 800
 // Separate, larger threshold for mobile logo + hamburger color flip.
 const SCROLL_THRESHOLD_MOBILE = 1200
 
-function useScramble(text: string) {
-  const [display, setDisplay] = useState(text)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-  const scramble = useCallback(() => {
-    let iteration = 0
-    if (intervalRef.current) clearInterval(intervalRef.current)
-    intervalRef.current = setInterval(() => {
-      setDisplay(
-        text.split('').map((char, i) => {
-          if (char === ' ') return ' '
-          if (i < iteration) return text[i]
-          return chars[Math.floor(Math.random() * chars.length)]
-        }).join('')
-      )
-      iteration += 0.6
-      if (iteration >= text.length) {
-        clearInterval(intervalRef.current!)
-        setDisplay(text)
-      }
-    }, 40)
-  }, [text])
-
-  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current) }, [])
-  return { display, scramble }
-}
 
 function DesktopNavItem({
   label,
   isActive,
-  isDark,
   onClick,
 }: {
   label: string
   isActive: boolean
-  isDark: boolean
   onClick: () => void
 }) {
-  const { display, scramble } = useScramble(label)
-
   return (
     <motion.button
       onClick={onClick}
-      onMouseEnter={scramble}
-      className={`text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground ${
-        isDark ? 'md:text-black' : 'md:text-white'
-      }`}
+      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black"
       whileHover={{ x: 4 }}
       transition={{ duration: 0.2 }}
     >
-      {display}
+      {label}
     </motion.button>
   )
 }
@@ -97,12 +63,9 @@ function MobileNavItem({
   isMenuOpen: boolean
   onClick: () => void
 }) {
-  const { display, scramble } = useScramble(label)
-
   return (
     <motion.button
       onClick={onClick}
-      onMouseEnter={scramble}
       className={`text-[60px] font-medium tracking-tighter leading-[0.9em] transition-colors duration-200 ${
         isActive ? 'text-[#C4714F]' : 'text-foreground'
       }`}
@@ -110,20 +73,17 @@ function MobileNavItem({
       animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
       transition={{ delay, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
-      {display}
+      {label}
     </motion.button>
   )
 }
 
-export default function Header({ onWorkClick, preloaderDone = false }: HeaderProps) {
+export default function Header({ preloaderDone = false }: HeaderProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
-  const [showHeaderBg, setShowHeaderBg] = useState(false)
-  const [isDark, setIsDark] = useState(false)
-  const [isDarkMobile, setIsDarkMobile] = useState(false)
   const lastScrollYRef = useRef(0)
 
   useEffect(() => { setIsMounted(true) }, [])
@@ -140,11 +100,6 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
         setIsHeaderVisible(true)
       }
       lastScrollYRef.current = currentScrollY
-
-      // ── Background visibility: always show, content always dark
-      setShowHeaderBg(true)
-      setIsDark(true)
-      setIsDarkMobile(true)
     }
 
     handleScroll() // run once on mount
@@ -171,17 +126,14 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
 
   const handleNavClick = (link: string) => {
     if (link === 'Home') router.push('/')
-    else if (link === 'Work') { router.push('/work'); onWorkClick?.() }
+    else if (link === 'Work') router.push('/work')
     else if (link === 'Contact') window.open(CONTACT_LINK, '_blank', 'noopener,noreferrer')
   }
 
-  // Mobile logo color: black when menu is open OR scrolled past mobile threshold, else white.
-  const mobileLogoColor = isMenuOpen || isDarkMobile ? 'text-black' : 'text-white'
-  // Desktop logo color: black once scrolled past desktop threshold, else white.
-  const desktopLogoColor = isDark ? 'md:text-black' : 'md:text-white'
-
-  // Hamburger lines follow the same mobile rule as the logo.
-  const hamburgerColor = isMenuOpen || isDarkMobile ? 'bg-black' : 'bg-white'
+  // Mobile logo and hamburger colors
+  const mobileLogoColor = isMenuOpen ? 'text-black' : 'text-white'
+  const desktopLogoColor = 'md:text-black'
+  const hamburgerColor = isMenuOpen ? 'bg-black' : 'bg-white'
 
   const Logo = () => (
     <img
@@ -189,7 +141,7 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
       alt="Lozinr"
       className={`h-4 md:h-5 w-auto transition-colors duration-300 ${mobileLogoColor} ${desktopLogoColor}`}
       style={{
-        filter: (isMenuOpen || isDarkMobile) ? 'invert(1)' : (isDark ? 'invert(1)' : 'invert(0)'),
+        filter: isMenuOpen ? 'invert(1)' : 'invert(0)',
       }}
     />
   )
@@ -204,12 +156,7 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Background layer — fades in only between threshold from top and threshold from bottom */}
-        <motion.div
-          className="absolute inset-0 bg-background/70 backdrop-blur-md"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: showHeaderBg ? 1 : 0 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        />
+      <div className="absolute inset-0 bg-background/70 backdrop-blur-md" />
 
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
@@ -240,7 +187,6 @@ export default function Header({ onWorkClick, preloaderDone = false }: HeaderPro
                   key={link}
                   label={link}
                   isActive={isActive}
-                  isDark={isDark}
                   onClick={() => handleNavClick(link)}
                 />
               )
