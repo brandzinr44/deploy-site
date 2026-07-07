@@ -532,46 +532,107 @@ export default function ProjectPage() {
         )}
 
         {/* ─── Images — no scroll animation ─── */}
-        <section className="pb-16 md:pb-24">
-          <div className={`flex flex-col gap-2 ${showAbout ? 'lg:flex-row lg:gap-8 py-5 px-2 lg:px-4' : ''}`}>
-            <div className={`flex flex-col gap-2 ${showAbout ? 'w-full lg:w-1/2' : 'w-full'}`}>
-              {galleryImages.map((image, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={`w-screen -mx-[calc(50vw-50%)] ${showAbout ? 'lg:w-full lg:mx-0' : ''}`}
-                >
-                  <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-                    <Image
-                      src={image}
-                      alt={`${project.name} ${idx + 1}`}
-                      fill
-                      sizes="100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </motion.div>
-              ))}
+        {/* ─── Logo Variations Section ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 space-y-2">
+          {/* Logo 01 - Grid Construction */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2002-KaqnpyY1ZifajnLEHfJvT9wKzQbmgq.png"
+                alt="Lozinr Logo Construction Grid"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Logo 02 - Split Variation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2003-LZ9wMZbuwTvqVREeQCyFU3Ukbv1ZLI.png"
+                alt="Lozinr Logo and Typography Variation"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Logo 03 - Primary Lockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-HGJSSbYrWDNpMXahvFVPxKScz0knzm.png"
+                alt="Lozinr Studio Primary Lockup"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ─── Identity Section ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+          >
+            {/* Left Column — 20% (Headline) */}
+            <div className="md:col-span-1">
+              <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                Identity
+              </h2>
             </div>
 
-            {showAbout && (
-              <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="hidden lg:block lg:w-1/2"
-              >
-                <div className="lg:sticky lg:top-32">
-                  <h3 className="text-[16px] font-medium tracking-tight text-foreground mb-4">Behind the Brand</h3>
-                  <p className="text-[16px] text-foreground/70 leading-relaxed tracking-tight">{project.description}</p>
-                  <MetaGrid />
+            {/* Middle Column — 60% (Thinking Statement + Body) */}
+            <div className="md:col-span-3">
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Thinking Statement
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    Recognition comes from repetition, not complexity.
+                  </p>
                 </div>
-              </motion.div>
-            )}
-          </div>
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Body
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    The identity was designed as a flexible system—not a single logo. Every variation follows the same principles, making the brand recognizable across every touchpoint.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column — 20% (Empty) */}
+            <div className="md:col-span-1"></div>
+          </motion.div>
         </section>
 
         {/* ─── Reflection Section ─── */}
