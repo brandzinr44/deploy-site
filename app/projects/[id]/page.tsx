@@ -635,6 +635,100 @@ export default function ProjectPage() {
           </motion.div>
         </section>
 
+        {/* ─── Typography & Color Images ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 space-y-2">
+          {/* Typography Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Typography-cq2D7qokmf5awn4uIFOIjwdi8hBWr6.png"
+                alt="Helvetica Neue Typography System"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+
+          {/* Color Palette Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-screen -mx-[calc(50vw-50%)]"
+          >
+            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2040-k58aXEAs8w3raJoN8gRlYBndSRP7UF.png"
+                alt="Color Palette - Autumn Orange, Off-White, Charcoal"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ─── Visual Identity Section ─── */}
+        <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+          >
+            {/* Left Column — 20% (Headline) */}
+            <div className="md:col-span-1">
+              <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                Visual Identity
+              </h2>
+            </div>
+
+            {/* Middle Column — 60% (Thinking Statement + Content) */}
+            <div className="md:col-span-3">
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Thinking Statement
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    Every visual choice should reinforce the same perception.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Color
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    Three colors. One purpose. Confidence through restraint.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                    Typography
+                  </p>
+                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                    One type family. Nine weights. Unlimited flexibility. Helvetica Neue became the foundation of the entire system because consistency scales better than variety.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column — 20% (Empty) */}
+            <div className="md:col-span-1"></div>
+          </motion.div>
+        </section>
+
         {/* ─── Reflection Section ─── */}
         {project.reflection && (
           <section className="px-2 lg:px-4 py-16 md:py-24">
