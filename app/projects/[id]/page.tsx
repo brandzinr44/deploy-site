@@ -287,7 +287,7 @@ export default function ProjectPage() {
                     <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Brand Personality</p>
                     <div className="flex flex-wrap gap-3">
                       {project.detailStrategy.personality.map((trait, idx) => (
-                        <span key={idx} className="px-4 py-1.4 rounded-full bg-foreground border border-foreground text-[16px] font-medium tracking-tight text-background">
+                        <span key={idx} className="px-4 py-1.5 rounded-full bg-foreground border border-foreground text-[16px] font-medium tracking-tight text-background">
                           {trait}
                         </span>
                       ))}
@@ -295,8 +295,8 @@ export default function ProjectPage() {
                   </div>
 
                   <div>
-                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Objective</p>
-                    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                    <p className="text-[16px] font-medium tracking-tight text-foreground uppercase mb-3">Objective</p>
+                    <p className="text-[16px] tracking-tight leading-tight text-foreground">
                       {project.detailStrategy.objective}
                     </p>
                   </div>
@@ -310,7 +310,7 @@ export default function ProjectPage() {
         )}
 
         {/* ─── Divider ─── */}
-        <div className="h-px bg-foreground/10 mx-2 lg:mx-4" />
+        <div className="h-px bg-foreground mx-2 lg:mx-4" />
 
         {/* ─── Process Section ─── */}
         {project.detailProcess && (
@@ -324,14 +324,14 @@ export default function ProjectPage() {
             >
               {/* Left Column — 20% */}
               <div className="md:col-span-1">
-                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Process
                 </h2>
               </div>
 
               {/* Middle Column — 60% */}
               <div className="md:col-span-3">
-                <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
+                <p className="text-[16px] font-medium tracking-tight text-foreground mb-12 uppercase">
                   Strong identities are built through decisions—not inspiration.
                 </p>
 
@@ -346,15 +346,15 @@ export default function ProjectPage() {
                       className="flex gap-6 md:gap-8"
                     >
                       <div className="flex-shrink-0">
-                        <span className="text-[32px] md:text-[40px] font-medium tracking-tight text-foreground/30">
+                        <span className="text-[32px] md:text-[40px] font-medium tracking-tight text-foreground">
                           {step.number}
                         </span>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-[18px] font-medium tracking-tight text-foreground mb-3">
+                        <h3 className="text-[16px] font-medium tracking-tight text-foreground mb-3">
                           {step.title}
                         </h3>
-                        <p className="text-[16px] tracking-tight leading-relaxed text-foreground/70">
+                        <p className="text-[16px] tracking-tight leading-tight text-foreground">
                           {step.description}
                         </p>
                       </div>
