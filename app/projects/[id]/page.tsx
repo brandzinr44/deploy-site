@@ -210,25 +210,34 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-4xl"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
-              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
-                For The Challenge
-              </h2>
-              
-              <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-8 uppercase">
-                {project.detailChallenge.thinking}
-              </p>
-              
-              <div className="space-y-6">
-                {project.detailChallenge.body.split('\n').map((line, idx) => (
-                  line.trim() && (
-                    <p key={idx} className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                      {line}
-                    </p>
-                  )
-                ))}
+              {/* Left Column — 20% */}
+              <div className="md:col-span-1">
+                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                  For The Challenge
+                </h2>
               </div>
+
+              {/* Middle Column — 60% */}
+              <div className="md:col-span-3">
+                <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-8 uppercase">
+                  {project.detailChallenge.thinking}
+                </p>
+                
+                <div className="space-y-6">
+                  {project.detailChallenge.body.split('\n').map((line, idx) => (
+                    line.trim() && (
+                      <p key={idx} className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                        {line}
+                      </p>
+                    )
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column — 20% (Empty) */}
+              <div className="md:col-span-1"></div>
             </motion.div>
           </section>
         )}
@@ -244,49 +253,58 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-4xl"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
-              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
-                Strategy
-              </h2>
-              
-              <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
-                {project.detailStrategy.thinking}
-              </p>
+              {/* Left Column — 20% */}
+              <div className="md:col-span-1">
+                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                  Strategy
+                </h2>
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-                <div>
-                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Positioning</p>
-                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                    {project.detailStrategy.positioning}
-                  </p>
-                </div>
+              {/* Middle Column — 60% */}
+              <div className="md:col-span-3">
+                <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
+                  {project.detailStrategy.thinking}
+                </p>
 
-                <div>
-                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Audience</p>
-                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                    {project.detailStrategy.audience}
-                  </p>
-                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                  <div>
+                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Positioning</p>
+                    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                      {project.detailStrategy.positioning}
+                    </p>
+                  </div>
 
-                <div>
-                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Brand Personality</p>
-                  <div className="flex flex-wrap gap-3">
-                    {project.detailStrategy.personality.map((trait, idx) => (
-                      <span key={idx} className="px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-[13px] font-medium tracking-tight text-foreground">
-                        {trait}
-                      </span>
-                    ))}
+                  <div>
+                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Audience</p>
+                    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                      {project.detailStrategy.audience}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Brand Personality</p>
+                    <div className="flex flex-wrap gap-3">
+                      {project.detailStrategy.personality.map((trait, idx) => (
+                        <span key={idx} className="px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-[13px] font-medium tracking-tight text-foreground">
+                          {trait}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Objective</p>
+                    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                      {project.detailStrategy.objective}
+                    </p>
                   </div>
                 </div>
-
-                <div>
-                  <p className="text-[13px] font-medium tracking-tight text-foreground/40 uppercase mb-3">Objective</p>
-                  <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                    {project.detailStrategy.objective}
-                  </p>
-                </div>
               </div>
+
+              {/* Right Column — 20% (Empty) */}
+              <div className="md:col-span-1"></div>
             </motion.div>
           </section>
         )}
@@ -302,42 +320,51 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-4xl"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
             >
-              <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground mb-12 leading-tight">
-                Process
-              </h2>
-              
-              <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
-                Strong identities are built through decisions—not inspiration.
-              </p>
-
-              <div className="space-y-8 md:space-y-12">
-                {project.detailProcess.map((step, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.1 }}
-                    className="flex gap-6 md:gap-8"
-                  >
-                    <div className="flex-shrink-0">
-                      <span className="text-[32px] md:text-[40px] font-medium tracking-tight text-foreground/30">
-                        {step.number}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-[18px] font-medium tracking-tight text-foreground mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-[16px] tracking-tight leading-relaxed text-foreground/70">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+              {/* Left Column — 20% */}
+              <div className="md:col-span-1">
+                <h2 className="text-[32px] md:text-[56px] font-medium tracking-tight text-foreground leading-tight">
+                  Process
+                </h2>
               </div>
+
+              {/* Middle Column — 60% */}
+              <div className="md:col-span-3">
+                <p className="text-[16px] font-medium tracking-tight text-foreground/60 mb-12 uppercase">
+                  Strong identities are built through decisions—not inspiration.
+                </p>
+
+                <div className="space-y-8 md:space-y-12">
+                  {project.detailProcess.map((step, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-40px' }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.1 }}
+                      className="flex gap-6 md:gap-8"
+                    >
+                      <div className="flex-shrink-0">
+                        <span className="text-[32px] md:text-[40px] font-medium tracking-tight text-foreground/30">
+                          {step.number}
+                        </span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-[18px] font-medium tracking-tight text-foreground mb-3">
+                          {step.title}
+                        </h3>
+                        <p className="text-[16px] tracking-tight leading-relaxed text-foreground/70">
+                          {step.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column — 20% (Empty) */}
+              <div className="md:col-span-1"></div>
             </motion.div>
           </section>
         )}
