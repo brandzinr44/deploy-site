@@ -1,3 +1,8 @@
+export interface ProjectSection {
+  label: string
+  description: string
+}
+
 export interface ProjectDetailSection {
   thinking: string
   body: string
@@ -18,6 +23,10 @@ export interface Project {
   year: string
   ctas: { label: string }[]
   images: string[]
+  overview?: string
+  challengeDesc?: string
+  strategicDirection?: string
+  deliverables?: string[]
   duration?: string
   reflection?: {
     line1: string
@@ -33,6 +42,13 @@ export interface Project {
     objective: string
   }
   detailProcess?: ProcessStep[]
+  sections: {
+    challenge: ProjectSection
+    strategy: ProjectSection
+    identity: ProjectSection
+    application: ProjectSection
+    outcome: ProjectSection
+  }
 }
 
 export const projectsData: Project[] = [
@@ -43,6 +59,16 @@ export const projectsData: Project[] = [
     category: 'Branding Agency, Creative Company',
     industry: 'Design Agency',
     year: '2026',
+    overview: 'Lozinr Studio is a brand identity studio focused on building strategic brand systems for ambitious founders. This rebrand aligned every part of the business—from positioning to visual identity—into one clear, consistent system.',
+    challengeDesc: 'The previous identity no longer reflected the quality of the work or the direction of the studio.',
+    strategicDirection: 'Design less. Think deeper. Every decision was made to increase clarity, consistency, and long-term recognition.',
+    deliverables: [
+      'Brand Strategy',
+      'Positioning',
+      'Visual Identity',
+      'Website Design',
+      'Brand Guidelines'
+    ],
     duration: '2024 - 2026',
     ctas: [
       { label: 'Brand Strategy' },
@@ -102,7 +128,29 @@ export const projectsData: Project[] = [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%206-4vVCO2ICAEfzg1NKBwLYtBljY3LdXO.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%207-Fy1geWoBOPQS0OaPwotE3H6aPV8kQh.jpg',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%208-jViUshaVSc6389CSO7w8J6LOP2hlIB.jpg'
-    ]
+    ],
+    sections: {
+      challenge: {
+        label: 'Challenge',
+        description: 'Building a brand identity for a design studio from scratch presents a unique pressure — the studio itself becomes the proof of concept. Every design decision is scrutinised because the audience is designers, founders, and businesses who judge quality instantly. The challenge was to create an identity that was not just visually strong, but conceptually undeniable. It had to communicate intelligence, craft, and humanity — all without a single word.'
+      },
+      strategy: {
+        label: 'Strategy',
+        description: 'Rather than designing a logo first, we started with a question: what if the identity came entirely from the name itself? This constraint-led approach pushed us away from generic geometric shapes and toward something genuinely discovered. The strategy was to build the entire visual system around a single insight — one idea strong enough to carry every touchpoint from business card to website. Three colours, two fonts, one concept. Maximum restraint for maximum impact.'
+      },
+      identity: {
+        label: 'Identity',
+        description: 'Inside the first two letters — "L" and "o" — we discovered a hidden face: two eyes and a nose formed by the negative space between them. This became the heart of Lozinr\'s identity. The logomark is both a letterform and a human expression — conceptual yet warm, minimal yet full of meaning. The colour system is built on Solid Black (#0E0C0A) as the primary canvas, Light Silver (#E2E2E2) for contrast and warmth, and Tribal Green (#26775C) as the accent that gives the brand its distinct, memorable personality. Typography is set in a single geometric sans-serif — clean, confident, and consistent across all applications.'
+      },
+      application: {
+        label: 'Application',
+        description: 'The identity was applied across every touchpoint a design studio encounters — business cards, letterhead, envelopes, tote bags, and digital platforms. Each application was designed to feel intentional: the business card uses the green as the primary face with the logomark anchoring the front, while the back carries the wordmark bold and full-bleed in black. The stationery suite uses the green as a surface, with black materials layered on top — creating a visual system that is immediately recognisable across print and screen. The website carries the same palette and typographic rhythm, ensuring consistency from first impression to final interaction.'
+      },
+      outcome: {
+        label: 'Outcome',
+        description: 'The Lozinr identity achieved what every studio brand should — it became a portfolio piece in itself. The hidden face concept gives clients and collaborators an immediate story to hold onto, turning a logo into a talking point. More importantly, it established a clear visual language that now extends across all Lozinr projects — a foundation that scales as the studio grows.'
+      }
+    }
   },
   {
     id: 2,
