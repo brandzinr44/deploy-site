@@ -133,7 +133,7 @@ export default function ProjectPage() {
   style={{ minHeight: 'min(100vh, calc(100vw * 16 / 9))' }}
 >
           {infoImage && (
-            <div className="absolute bottom-0 right-0 w-full lg:w-1/2 h-2/3 overflow-hidden">
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
               <motion.div
                 className="absolute inset-0"
                 style={{ y: heroImageY }}
@@ -151,7 +151,7 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative z-10 flex flex-col items-start gap-8 lg:w-1/2">
+          <div className="relative z-10 flex flex-col items-start gap-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
