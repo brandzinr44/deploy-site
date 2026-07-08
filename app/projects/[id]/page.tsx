@@ -232,13 +232,13 @@ export default function ProjectPage() {
                     {/* Left — Overview + Challenge */}
                     <div>
                       {project.overview && (
-                        <div className="mb-12">
-                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
-                            Overview
-                          </h3>
-                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                            {project.overview}
-                          </p>
+  <div className="mb-6 pb-6 border-b border-foreground/10">
+    <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+      Overview
+    </h3>
+    <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+      {project.overview}
+    </p>
                         </div>
                       )}
 
