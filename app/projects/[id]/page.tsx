@@ -192,24 +192,15 @@ export default function ProjectPage() {
             </motion.div>
 
             <motion.button
-              onClick={() => setShowAbout(v => !v)}
-              aria-expanded={showAbout}
+              onClick={() => setShowAbout(true)}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className={`flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 ${
-                showAbout
-                  ? 'fixed bottom-8 right-4 lg:bottom-16 lg:right-8 z-[110] bg-black border border-black'
-                  : 'lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
-              }`}
+              className="flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
             >
-              <h3 className={`text-[13px] font-medium tracking-tight transition-colors duration-300 ${
-                showAbout ? 'text-white' : 'text-white'
-              }`}>Behind the Brand</h3>
-              <span className={`text-[18px] transition-all duration-300 ${
-                showAbout ? 'text-white rotate-45' : 'text-white/70'
-              }`}>+</span>
+              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
+              <span className="text-[18px] text-white/70">+</span>
             </motion.button>
           </div>
         </section>
@@ -218,11 +209,7 @@ export default function ProjectPage() {
         <AnimatePresence>
           {showAbout && (
             <motion.div
-              onClick={(e) => {
-                if (e.target === e.currentTarget) {
-                  setShowAbout(false)
-                }
-              }}
+              onClick={() => setShowAbout(false)}
               initial={{ y: '-100%' }}
               animate={{ y: 0 }}
               exit={{ y: '-100%' }}
@@ -231,23 +218,21 @@ export default function ProjectPage() {
               style={{ height: '100vh' }}
             >
               {/* Overlay content wrapper */}
-              <div 
-                className="w-full overflow-y-auto px-2 lg:px-4 pt-20 lg:pt-32 pb-16"
-              >
+              <div className="w-full h-full overflow-y-auto px-2 lg:px-4 pt-20 lg:pt-32 pb-16">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="max-w-7xl mx-auto"
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto"
                 >
-                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12">
-                    Behind the Brand
-                  </h2>
+                  {/* Left 50% */}
+                  <div>
+                    <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12">
+                      Behind the Brand
+                    </h2>
 
-                  {/* Two column layout for Overview and Challenge */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
                     {/* Overview Section */}
-                    <div>
+                    <div className="mb-12">
                       <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">Overview</h3>
                       <div className="space-y-4">
                         {project.detailOverview && project.detailOverview.body.split('\n').map((line, idx) => (
@@ -275,8 +260,10 @@ export default function ProjectPage() {
                     </div>
                   </div>
 
-                  {/* Meta Grid */}
-                  <MetaGrid theme="light" />
+                  {/* Right 50% */}
+                  <div>
+                    <MetaGrid theme="light" />
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
