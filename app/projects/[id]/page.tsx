@@ -151,28 +151,31 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative z-10 flex flex-col items-start gap-8">
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-8"
             >
-              <h1
-                className="font-medium tracking-tight text-white leading-none mb-6"
-                style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
-              >
-                {project.name}
-              </h1>
-              <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
-                {project.description}
-              </p>
-              <div className="flex gap-3 flex-wrap items-center">
-                {project.ctas.map((cta, idx) => (
-                  <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
-                    {cta.label}
-                  </span>
-                ))}
+              <div>
+                <h1
+                  className="font-medium tracking-tight text-white leading-none mb-6"
+                  style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
+                >
+                  {project.name}
+                </h1>
+                <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
+                  {project.description}
+                </p>
+                <div className="flex gap-3 flex-wrap items-center">
+                  {project.ctas.map((cta, idx) => (
+                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
+                      {cta.label}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
 
@@ -183,7 +186,7 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-lg px-4 py-3 cursor-pointer"
+              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-lg px-4 py-3 cursor-pointer"
             >
               <h3 className="text-[16px] font-medium tracking-tight text-white">Behind the Brand</h3>
               <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
