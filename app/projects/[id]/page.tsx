@@ -38,12 +38,23 @@ export default function ProjectPage() {
   // Prevent scroll when overlay is open
   useEffect(() => {
     if (showAbout) {
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.left = '0'
+      document.body.style.right = '0'
       document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
+      document.documentElement.style.overflow = 'hidden'
+
+      return () => {
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.left = ''
+        document.body.style.right = ''
+        document.body.style.overflow = ''
+        document.documentElement.style.overflow = ''
+        window.scrollTo(0, scrollY)
+      }
     }
   }, [showAbout])
 
@@ -71,20 +82,20 @@ export default function ProjectPage() {
     duration: project.duration,
   }
 
-  const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
+  const MetaGrid = ({ theme = 'light' as 'light' | 'dark', skipOverviewChallenge = false }) => {
     const labelClass = theme === 'dark' ? 'text-white/50' : 'text-foreground/40'
     const valueClass = theme === 'dark' ? 'text-white' : 'text-foreground'
     const borderClass = theme === 'dark' ? 'border-white/10' : 'border-foreground/10'
 
     return (
       <div className="pt-8">
-        {meta.overview && (
+        {!skipOverviewChallenge && meta.overview && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
             <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Overview</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.overview}</p>
           </div>
         )}
-        {meta.challengeDesc && (
+        {!skipOverviewChallenge && meta.challengeDesc && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
             <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Challenge</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.challengeDesc}</p>
@@ -262,7 +273,7 @@ export default function ProjectPage() {
 
                   {/* Right 50% */}
                   <div>
-                    <MetaGrid theme="light" />
+                    <MetaGrid theme="light" skipOverviewChallenge />
                   </div>
                 </motion.div>
               </div>
