@@ -242,25 +242,7 @@ export default function ProjectPage() {
 
 
 
-              {/* Mobile Close Button */}
-              <button
-                onClick={() => setShowAbout(false)}
-                className="lg:hidden absolute top-6 right-4 z-50 p-2 hover:bg-foreground/10 rounded-lg transition-colors"
-                aria-label="Close overlay"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="text-foreground"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
+
             </motion.div>
           )}
         </AnimatePresence>
