@@ -163,7 +163,7 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative z-[60] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative z-[110] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -198,7 +198,7 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className={`lg:self-end flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer relative z-[60] transition-all duration-300 ${
+              className={`lg:self-end flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer relative z-[110] transition-all duration-300 ${
                 showAbout
                   ? 'bg-black border border-black'
                   : 'bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
@@ -222,7 +222,7 @@ export default function ProjectPage() {
               animate={{ y: 0 }}
               exit={{ y: '-100%' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 top-0 left-0 right-0 bg-background z-50 flex overflow-hidden"
+              className="fixed inset-0 top-0 left-0 right-0 bg-background z-[100] flex overflow-hidden"
               style={{ height: '100vh' }}
             >
               {/* Left Side - 70% Content */}
