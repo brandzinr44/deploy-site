@@ -335,7 +335,7 @@ export default function ProjectPage() {
             {/* Absolute positioned button for desktop */}
             <button
               onClick={() => toggleSection('challenge')}
-              className="hidden md:flex absolute right-2 lg:right-4 top-16 md:top-24 w-6 h-6 flex-col items-center justify-center gap-1"
+              className="hidden md:flex absolute right-2 lg:right-4 top-8 md:top-12 w-6 h-6 flex-col items-center justify-center gap-1"
               aria-label="Toggle challenge section"
             >
               <motion.span
@@ -447,7 +447,7 @@ export default function ProjectPage() {
             {/* Absolute positioned button for desktop */}
             <button
               onClick={() => toggleSection('strategy')}
-              className="hidden md:flex absolute right-2 lg:right-4 top-16 md:top-24 w-6 h-6 flex-col items-center justify-center gap-1"
+              className="hidden md:flex absolute right-2 lg:right-4 top-8 md:top-12 w-6 h-6 flex-col items-center justify-center gap-1"
               aria-label="Toggle strategy section"
             >
               <motion.span
@@ -552,7 +552,7 @@ export default function ProjectPage() {
             {/* Absolute positioned button for desktop */}
             <button
               onClick={() => toggleSection('process')}
-              className="hidden md:flex absolute right-2 lg:right-4 top-16 md:top-24 w-6 h-6 flex-col items-center justify-center gap-1"
+              className="hidden md:flex absolute right-2 lg:right-4 top-8 md:top-12 w-6 h-6 flex-col items-center justify-center gap-1"
               aria-label="Toggle process section"
             >
               <motion.span
