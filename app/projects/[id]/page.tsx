@@ -229,10 +229,10 @@ export default function ProjectPage() {
               >
                 <button
                   onClick={() => setShowAbout(false)}
-                  className="flex items-center gap-2 bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors rounded-lg px-4 py-3 cursor-pointer"
+                  className="flex items-center gap-2 bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors rounded-full px-3 py-1.5 cursor-pointer"
                   aria-label="Close overlay"
                 >
-                  <h3 className="text-[16px] font-medium tracking-tight text-foreground">Behind the Brand</h3>
+                  <h3 className="text-[13px] font-medium tracking-tight text-foreground">Behind the Brand</h3>
                   <span className="text-[18px] text-foreground/70 transition-transform duration-300 rotate-45">+</span>
                 </button>
               </motion.div>
