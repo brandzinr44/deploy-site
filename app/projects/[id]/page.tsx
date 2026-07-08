@@ -200,7 +200,7 @@ export default function ProjectPage() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className={`flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 ${
                 showAbout
-                  ? 'fixed top-8 right-4 lg:top-8 lg:right-8 z-[110] bg-black border border-black'
+                  ? 'fixed bottom-8 right-4 lg:bottom-16 lg:right-8 z-[110] bg-black border border-black'
                   : 'lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
               }`}
             >
