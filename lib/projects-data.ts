@@ -14,6 +14,23 @@ export interface ProcessStep {
   description: string
 }
 
+// ─── Generic Detail Block ───────────────────────────────────────────────────
+// Used to build the flexible "Identity / Visual Identity / Application / ..."
+// area of a case study. Each project defines its own `detailSections` array —
+// mix as many 'images' and 'content' blocks, in any order, as the case study
+// needs. The page template just maps over this array and renders it.
+//
+//  { type: 'images', images: [{ src, alt }, ...] }
+//    → one or more full-bleed 16:9 images stacked in a row
+//
+//  { type: 'content', heading: 'Identity', fields: [{ label, text }, ...] }
+//    → headline + any number of label/text pairs (Thinking Statement, Body,
+//      Color, Typography, Positioning — whatever the case study needs)
+// ─────────────────────────────────────────────────────────────────────────────
+export type DetailBlock =
+  | { type: 'images'; images: { src: string; alt: string }[] }
+  | { type: 'content'; heading: string; fields: { label: string; text: string }[] }
+
 export interface Project {
   id: number
   name: string
@@ -42,6 +59,7 @@ export interface Project {
     objective: string
   }
   detailProcess?: ProcessStep[]
+  detailSections?: DetailBlock[]
   sections: {
     challenge: ProjectSection
     strategy: ProjectSection
@@ -119,6 +137,73 @@ export const projectsData: Project[] = [
         description: 'Reduce visual noise until every element has a purpose.'
       }
     ],
+
+    // ─── Flexible Identity / Visual Identity / Application area ───────────
+    // Reorder, remove, or add blocks freely — page.tsx just maps over this.
+    detailSections: [
+      {
+        type: 'images',
+        images: [
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2002-KaqnpyY1ZifajnLEHfJvT9wKzQbmgq.png', alt: 'Lozinr Logo Construction Grid' },
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2003-LZ9wMZbuwTvqVREeQCyFU3Ukbv1ZLI.png', alt: 'Lozinr Logo and Typography Variation' },
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-HGJSSbYrWDNpMXahvFVPxKScz0knzm.png', alt: 'Lozinr Studio Primary Lockup' },
+        ]
+      },
+      {
+        type: 'content',
+        heading: 'Identity',
+        fields: [
+          { label: 'Thinking Statement', text: 'Recognition comes from repetition, not complexity.' },
+          { label: 'Body', text: 'The identity was designed as a flexible system—not a single logo. Every variation follows the same principles, making the brand recognizable across every touchpoint.' },
+        ]
+      },
+      {
+        type: 'images',
+        images: [
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Typography-cq2D7qokmf5awn4uIFOIjwdi8hBWr6.png', alt: 'Helvetica Neue Typography System' },
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2040-k58aXEAs8w3raJoN8gRlYBndSRP7UF.png', alt: 'Color Palette - Autumn Orange, Off-White, Charcoal' },
+        ]
+      },
+      {
+        type: 'content',
+        heading: 'Visual Identity',
+        fields: [
+          { label: 'Thinking Statement', text: 'Every visual choice should reinforce the same perception.' },
+          { label: 'Color', text: 'Three colors. One purpose. Confidence through restraint.' },
+          { label: 'Typography', text: 'One type family. Nine weights. Unlimited flexibility. Helvetica Neue became the foundation of the entire system because consistency scales better than variety.' },
+        ]
+      },
+      {
+        type: 'images',
+        images: [
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg', alt: 'Lozinr Application 1' },
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%202-L9cyRymuIKcWCg9UcBExt3YwMLe6Yb.jpg', alt: 'Lozinr Application 2' },
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%203-vZ58nxLG71FNWlMeFqKKh5x3LkUxU4.jpg', alt: 'Lozinr Application 3' },
+        ]
+      },
+      {
+        type: 'content',
+        heading: 'Application',
+        fields: [
+          { label: 'Body', text: 'The identity was applied across every touchpoint a design studio encounters — business cards, letterhead, envelopes, tote bags, and digital platforms. The stationery suite uses green as a surface with black materials layered on top, creating a system immediately recognisable across print and screen.' },
+        ]
+      },
+      {
+        type: 'images',
+        images: [
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%204-fspfqdrqvw1fiSrAJ6afFiFVkwmLFI.jpg', alt: 'Lozinr Outcome 1' },
+          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%205-4Ffal1MVK7oLMe7ixqa4gEDcFSMtN8.jpg', alt: 'Lozinr Outcome 2' },
+        ]
+      },
+      {
+        type: 'content',
+        heading: 'Outcome',
+        fields: [
+          { label: 'Body', text: 'The hidden face concept gives clients and collaborators an immediate story to hold onto, turning a logo into a talking point. It established a clear visual language that now extends across all Lozinr projects—a foundation that scales as the studio grows.' },
+        ]
+      },
+    ],
+
     images: [
       '/images/lozinr-hero.png',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
