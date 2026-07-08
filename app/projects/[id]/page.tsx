@@ -3,7 +3,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { projectsData } from '@/lib/projects-data'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/header'
 import FooterSection from '@/components/footer-section'
@@ -16,9 +16,9 @@ export default function ProjectPage() {
   const [preloaderDone, setPreloaderDone] = useState(true)
   const [showAbout, setShowAbout] = useState(false)
   const [expandedSections, setExpandedSections] = useState({
-    challenge: true,
-    strategy: true,
-    process: true
+    challenge: false,
+    strategy: false,
+    process: false
   })
 
   const toggleSection = (section: 'challenge' | 'strategy' | 'process') => {
@@ -35,6 +35,29 @@ export default function ProjectPage() {
   })
   const heroImageY = useTransform(heroScroll, [0, 1], ['-12%', '12%'])
 
+  // Prevent scroll when overlay is open
+  useEffect(() => {
+    if (showAbout) {
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.left = '0'
+      document.body.style.right = '0'
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+
+      return () => {
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.left = ''
+        document.body.style.right = ''
+        document.body.style.overflow = ''
+        document.documentElement.style.overflow = ''
+        window.scrollTo(0, scrollY)
+      }
+    }
+  }, [showAbout])
+
   if (!project) {
     return (
       <>
@@ -48,12 +71,9 @@ export default function ProjectPage() {
   }
 
   const validImages = project.images.filter(img => img && img !== '#')
-  const galleryImages = validImages.slice(0, 10)
   const infoImage = validImages[0]
 
   const meta = {
-    overview: project.overview,
-    challengeDesc: project.challengeDesc,
     strategicDirection: project.strategicDirection,
     deliverables: project.deliverables || [],
     duration: project.duration,
@@ -65,28 +85,16 @@ export default function ProjectPage() {
     const borderClass = theme === 'dark' ? 'border-white/10' : 'border-foreground/10'
 
     return (
-      <div className="pt-8">
-        {meta.overview && (
-          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Overview</p>
-            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.overview}</p>
-          </div>
-        )}
-        {meta.challengeDesc && (
-          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Challenge</p>
-            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.challengeDesc}</p>
-          </div>
-        )}
+      <div>
         {meta.strategicDirection && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Strategic Direction</p>
+            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Strategic Direction</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.strategicDirection}</p>
           </div>
         )}
         {meta.deliverables.length > 0 && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Deliverables</p>
+            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Deliverables</p>
             <div className="flex flex-wrap gap-2">
               {meta.deliverables.map((item: string, i: number) => (
                 <span key={i} className={`text-[16px] tracking-tight ${valueClass}`}>
@@ -99,7 +107,7 @@ export default function ProjectPage() {
         )}
         {meta.duration && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Duration</p>
+            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Duration</p>
             <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.duration}</p>
           </div>
         )}
@@ -151,7 +159,7 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -180,16 +188,15 @@ export default function ProjectPage() {
             </motion.div>
 
             <motion.button
-              onClick={() => setShowAbout(v => !v)}
-              aria-expanded={showAbout}
+              onClick={() => setShowAbout(true)}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-full px-3 py-1.5 cursor-pointer"
+              className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
             >
               <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
-              <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
+              <span className="text-[18px] text-white/70">+</span>
             </motion.button>
           </div>
         </section>
@@ -198,104 +205,102 @@ export default function ProjectPage() {
         <AnimatePresence>
           {showAbout && (
             <motion.div
+              onClick={() => setShowAbout(false)}
               initial={{ y: '-100%' }}
               animate={{ y: 0 }}
               exit={{ y: '-100%' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 top-0 left-0 right-0 bg-background z-50 flex overflow-hidden"
+              className="fixed inset-0 top-0 left-0 right-0 bg-background z-[100] flex overflow-hidden"
               style={{ height: '100vh' }}
             >
-              {/* Left Side - 70% Content */}
-              <div className="w-full lg:w-[70%] overflow-y-auto px-2 lg:px-4 pt-32 pb-16">
+              {/* Overlay content wrapper */}
+              <div className="w-full h-full overflow-y-auto px-2 lg:px-4 pt-20 lg:pt-32 pb-16">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="max-w-4xl"
+                  className="max-w-7xl mx-auto"
                 >
-                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-8">
+                  {/* Heading — full width top */}
+                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12 lg:mb-16">
                     Behind the Brand
                   </h2>
-                  <MetaGrid theme="light" />
+
+                  {/* Two-column grid below heading */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                    {/* Left — Overview + Challenge */}
+                    <div>
+                      {project.overview && (
+                        <div className="mb-12">
+                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                            Overview
+                          </h3>
+                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                            {project.overview}
+                          </p>
+                        </div>
+                      )}
+
+                      {project.detailChallenge && (
+                        <div>
+                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                            Challenge
+                          </h3>
+                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                            {project.detailChallenge.body
+                              .split('\n')
+                              .filter(line => line.trim())
+                              .join(' ')}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Right — Strategic Direction / Deliverables / Duration */}
+                    <div>
+                      <MetaGrid theme="light" />
+                    </div>
+                  </div>
                 </motion.div>
               </div>
-
-              {/* Right Side - 30% Button */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="hidden lg:flex w-[30%] items-start justify-end px-4 pt-32 border-l border-foreground/10"
-              >
-                <button
-                  onClick={() => setShowAbout(false)}
-                  className="flex items-center gap-2 bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors rounded-full px-3 py-1.5 cursor-pointer"
-                  aria-label="Close overlay"
-                >
-                  <h3 className="text-[13px] font-medium tracking-tight text-foreground">Behind the Brand</h3>
-                  <span className="text-[18px] text-foreground/70 transition-transform duration-300 rotate-45">+</span>
-                </button>
-              </motion.div>
-
-              {/* Mobile Close Button */}
-              <button
-                onClick={() => setShowAbout(false)}
-                className="lg:hidden absolute top-6 right-4 z-50 p-2 hover:bg-foreground/10 rounded-lg transition-colors"
-                aria-label="Close overlay"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="text-foreground"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* ─── For The Challenge Section ─── */}
         {project.detailChallenge && (
-          <section className="relative px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
-            {/* Absolute positioned button for mobile */}
-            <button
-              onClick={() => toggleSection('challenge')}
-              className="absolute right-2 top-16 md:hidden"
-              aria-label="Toggle challenge section"
-            >
-              <motion.svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </motion.svg>
-            </button>
+          <section className="relative px-2 lg:px-4 py-8 md:py-12 border-t border-foreground/10">
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-start"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-1">
+              {/* Left Column — 20% (Headline + mobile toggle, aligned in a flex row) */}
+              <div className="md:col-span-1 flex items-start justify-between md:block">
                 <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Challenge
                 </h2>
+
+                {/* Mobile toggle — top-aligned with headline */}
+                <button
+                  onClick={() => toggleSection('challenge')}
+                  className="md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1 flex-shrink-0 mt-1"
+                  aria-label="Toggle challenge section"
+                >
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.challenge ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.challenge ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </button>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -311,7 +316,7 @@ export default function ProjectPage() {
                     <p className="text-[16px] font-medium tracking-tight text-foreground mb-8 uppercase">
                       {project.detailChallenge.thinking}
                     </p>
-                    
+
                     <div className="space-y-4">
                       {project.detailChallenge.body.split('\n').map((line, idx) => (
                         line.trim() && (
@@ -330,22 +335,19 @@ export default function ProjectPage() {
             {/* Absolute positioned button for desktop */}
             <button
               onClick={() => toggleSection('challenge')}
-              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              className="hidden md:flex absolute right-2 lg:right-4 top-8 md:top-12 w-6 h-6 flex-col items-center justify-center gap-1"
               aria-label="Toggle challenge section"
             >
-              <motion.svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                animate={{ rotate: expandedSections.challenge ? 0 : 45 }}
+              <motion.span
+                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                animate={expandedSections.challenge ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </motion.svg>
+              />
+              <motion.span
+                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                animate={expandedSections.challenge ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              />
             </button>
           </section>
         )}
@@ -355,40 +357,38 @@ export default function ProjectPage() {
 
         {/* ─── Strategy Section ─── */}
         {project.detailStrategy && (
-          <section className="relative px-2 lg:px-4 py-16 md:py-24">
-            {/* Absolute positioned button for mobile */}
-            <button
-              onClick={() => toggleSection('strategy')}
-              className="absolute right-2 top-16 md:hidden"
-              aria-label="Toggle strategy section"
-            >
-              <motion.svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </motion.svg>
-            </button>
+          <section className="relative px-2 lg:px-4 py-8 md:py-12">
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-start"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-1">
+              {/* Left Column — 20% (Headline + mobile toggle, aligned in a flex row) */}
+              <div className="md:col-span-1 flex items-start justify-between md:block">
                 <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Strategy
                 </h2>
+
+                {/* Mobile toggle — top-aligned with headline */}
+                <button
+                  onClick={() => toggleSection('strategy')}
+                  className="md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1 flex-shrink-0 mt-1"
+                  aria-label="Toggle strategy section"
+                >
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.strategy ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.strategy ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </button>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -447,22 +447,19 @@ export default function ProjectPage() {
             {/* Absolute positioned button for desktop */}
             <button
               onClick={() => toggleSection('strategy')}
-              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              className="hidden md:flex absolute right-2 lg:right-4 top-8 md:top-12 w-6 h-6 flex-col items-center justify-center gap-1"
               aria-label="Toggle strategy section"
             >
-              <motion.svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                animate={{ rotate: expandedSections.strategy ? 0 : 45 }}
+              <motion.span
+                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                animate={expandedSections.strategy ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </motion.svg>
+              />
+              <motion.span
+                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                animate={expandedSections.strategy ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              />
             </button>
           </section>
         )}
@@ -472,40 +469,38 @@ export default function ProjectPage() {
 
         {/* ─── Process Section ─── */}
         {project.detailProcess && (
-          <section className="relative px-2 lg:px-4 py-16 md:py-24">
-            {/* Absolute positioned button for mobile */}
-            <button
-              onClick={() => toggleSection('process')}
-              className="absolute right-2 top-16 md:hidden"
-              aria-label="Toggle process section"
-            >
-              <motion.svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                animate={{ rotate: expandedSections.process ? 0 : 45 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </motion.svg>
-            </button>
+          <section className="relative px-2 lg:px-4 py-8 md:py-12">
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-start"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-1">
+              {/* Left Column — 20% (Headline + mobile toggle, aligned in a flex row) */}
+              <div className="md:col-span-1 flex items-start justify-between md:block">
                 <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Process
                 </h2>
+
+                {/* Mobile toggle — top-aligned with headline */}
+                <button
+                  onClick={() => toggleSection('process')}
+                  className="md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1 flex-shrink-0 mt-1"
+                  aria-label="Toggle process section"
+                >
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.process ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.process ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </button>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -557,261 +552,91 @@ export default function ProjectPage() {
             {/* Absolute positioned button for desktop */}
             <button
               onClick={() => toggleSection('process')}
-              className="hidden md:block absolute right-2 lg:right-4 top-16 md:top-24"
+              className="hidden md:flex absolute right-2 lg:right-4 top-8 md:top-12 w-6 h-6 flex-col items-center justify-center gap-1"
               aria-label="Toggle process section"
             >
-              <motion.svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                animate={{ rotate: expandedSections.process ? 0 : 45 }}
+              <motion.span
+                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                animate={expandedSections.process ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </motion.svg>
+              />
+              <motion.span
+                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                animate={expandedSections.process ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              />
             </button>
           </section>
         )}
 
-        {/* ─── Images — no scroll animation ─── */}
-        {/* ─── Logo Variations Section ─── */}
-        <section className="px-2 lg:px-4 py-16 md:py-24 space-y-2">
-          {/* Logo 01 - Grid Construction */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-screen -mx-[calc(50vw-50%)]"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2002-KaqnpyY1ZifajnLEHfJvT9wKzQbmgq.png"
-                alt="Lozinr Logo Construction Grid"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
+        {/* ─── Flexible Detail Sections (images + content, any order) ─── */}
+        {project.detailSections?.map((block, idx) => {
+          if (block.type === 'images') {
+            return (
+              <section key={idx} className="px-2 lg:px-4 py-8 md:py-12 space-y-2">
+                {block.images.map((img, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-screen -mx-[calc(50vw-50%)]"
+                  >
+                    <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </section>
+            )
+          }
 
-          {/* Logo 02 - Split Variation */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-screen -mx-[calc(50vw-50%)]"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2003-LZ9wMZbuwTvqVREeQCyFU3Ukbv1ZLI.png"
-                alt="Lozinr Logo and Typography Variation"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
+          if (block.type === 'content') {
+            return (
+              <section key={idx} className="px-2 lg:px-4 py-8 md:py-12 border-t border-foreground/10">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+                >
+                  <div className="md:col-span-1">
+                    <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
+                      {block.heading}
+                    </h2>
+                  </div>
 
-          {/* Logo 03 - Primary Lockup */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-screen -mx-[calc(50vw-50%)]"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-HGJSSbYrWDNpMXahvFVPxKScz0knzm.png"
-                alt="Lozinr Studio Primary Lockup"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
-        </section>
+                  <div className="md:col-span-3">
+                    <div className="space-y-6">
+                      {block.fields.map((field, i) => (
+                        <div key={i}>
+                          <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
+                            {field.label}
+                          </p>
+                          <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
+                            {field.text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-        {/* ─── Identity Section ─── */}
-        <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
-          >
-            {/* Left Column — 20% (Headline) */}
-            <div className="md:col-span-1">
-              <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                Identity
-              </h2>
-            </div>
+                  <div className="md:col-span-1"></div>
+                </motion.div>
+              </section>
+            )
+          }
 
-            {/* Middle Column — 60% (Thinking Statement + Body) */}
-            <div className="md:col-span-3">
-              <div className="space-y-6">
-                <div>
-                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
-                    Thinking Statement
-                  </p>
-                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
-                    Recognition comes from repetition, not complexity.
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
-                    Body
-                  </p>
-                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
-                    The identity was designed as a flexible system—not a single logo. Every variation follows the same principles, making the brand recognizable across every touchpoint.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column — 20% (Empty) */}
-            <div className="md:col-span-1"></div>
-          </motion.div>
-        </section>
-
-        {/* ─── Typography & Color Images ─── */}
-        <section className="px-2 lg:px-4 py-16 md:py-24 space-y-2">
-          {/* Typography Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-screen -mx-[calc(50vw-50%)]"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Typography-cq2D7qokmf5awn4uIFOIjwdi8hBWr6.png"
-                alt="Helvetica Neue Typography System"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
-
-          {/* Color Palette Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-screen -mx-[calc(50vw-50%)]"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2040-k58aXEAs8w3raJoN8gRlYBndSRP7UF.png"
-                alt="Color Palette - Autumn Orange, Off-White, Charcoal"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
-        </section>
-
-        {/* ─── Visual Identity Section ─── */}
-        <section className="px-2 lg:px-4 py-16 md:py-24 border-t border-foreground/10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
-          >
-            {/* Left Column — 20% (Headline) */}
-            <div className="md:col-span-1">
-              <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                Visual Identity
-              </h2>
-            </div>
-
-            {/* Middle Column — 60% (Thinking Statement + Content) */}
-            <div className="md:col-span-3">
-              <div className="space-y-6">
-                <div>
-                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
-                    Thinking Statement
-                  </p>
-                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
-                    Every visual choice should reinforce the same perception.
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
-                    Color
-                  </p>
-                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
-                    Three colors. One purpose. Confidence through restraint.
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-[14px] font-medium tracking-tight text-foreground/50 uppercase mb-2">
-                    Typography
-                  </p>
-                  <p className="text-[16px] tracking-tight text-foreground leading-relaxed">
-                    One type family. Nine weights. Unlimited flexibility. Helvetica Neue became the foundation of the entire system because consistency scales better than variety.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column — 20% (Empty) */}
-            <div className="md:col-span-1"></div>
-          </motion.div>
-        </section>
-
-        {/* ─── Reflection Section ─── */}
-        {project.reflection && (
-          <section className="px-2 lg:px-4 py-16 md:py-24">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
-            >
-              {/* Left Column — 20% */}
-              <div className="md:col-span-1">
-                <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
-                  Reflection
-                </h2>
-              </div>
-
-              {/* Middle Column — 40% */}
-              <div className="md:col-span-2">
-                <div className="space-y-6">
-                  <p className="text-[16px] leading-tight tracking-tight text-foreground font-regular">
-                    {project.reflection.line1}
-                  </p>
-                  <p className="text-[16px] leading-tight leading-tight tracking-tight text-foreground font-regular">
-                    {project.reflection.line2}
-                  </p>
-                  <p className="text-[16px] leading-tight leading-tight tracking-tight text-foreground font-regular">
-                    {project.reflection.line3}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right Column — 40% (Empty) */}
-              <div className="md:col-span-2"></div>
-            </motion.div>
-          </section>
-        )}
+          return null
+        })}
 
       </main>
       <FooterSection />
