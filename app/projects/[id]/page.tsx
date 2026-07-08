@@ -189,16 +189,16 @@ export default function ProjectPage() {
             </motion.div>
 
             <motion.button
-              onClick={() => setShowAbout(true)}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
-            >
-              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
-              <span className="text-[18px] text-white/70">+</span>
-            </motion.button>
+  onClick={() => setShowAbout(true)}
+  initial={{ opacity: 0, y: 24 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: '-80px' }}
+  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+  className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
+>
+  <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
+  <span className="text-[18px] text-white/70">+</span>
+</motion.button>
           </div>
         </section>
 
