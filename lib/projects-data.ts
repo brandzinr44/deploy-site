@@ -144,9 +144,9 @@ export const projectsData: Project[] = [
       {
         type: 'images',
         images: [
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2002-KaqnpyY1ZifajnLEHfJvT9wKzQbmgq.png', alt: 'Lozinr Logo Construction Grid' },
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo%2003-LZ9wMZbuwTvqVREeQCyFU3Ukbv1ZLI.png', alt: 'Lozinr Logo and Typography Variation' },
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-HGJSSbYrWDNpMXahvFVPxKScz0knzm.png', alt: 'Lozinr Studio Primary Lockup' },
+          { src: '#', alt: 'Lozinr Logo Construction Grid' },
+          { src: '#', alt: 'Lozinr Logo and Typography Variation' },
+          { src: '#', alt: 'Lozinr Studio Primary Lockup' },
         ]
       },
       {
@@ -160,8 +160,8 @@ export const projectsData: Project[] = [
       {
         type: 'images',
         images: [
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Typography-cq2D7qokmf5awn4uIFOIjwdi8hBWr6.png', alt: 'Helvetica Neue Typography System' },
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2040-k58aXEAs8w3raJoN8gRlYBndSRP7UF.png', alt: 'Color Palette - Autumn Orange, Off-White, Charcoal' },
+          { src: '#', alt: 'Helvetica Neue Typography System' },
+          { src: '#', alt: 'Color Palette - Autumn Orange, Off-White, Charcoal' },
         ]
       },
       {
@@ -176,9 +176,9 @@ export const projectsData: Project[] = [
       {
         type: 'images',
         images: [
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg', alt: 'Lozinr Application 1' },
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%202-L9cyRymuIKcWCg9UcBExt3YwMLe6Yb.jpg', alt: 'Lozinr Application 2' },
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%203-vZ58nxLG71FNWlMeFqKKh5x3LkUxU4.jpg', alt: 'Lozinr Application 3' },
+          { src: '#', alt: 'Lozinr Application 1' },
+          { src: '#', alt: 'Lozinr Application 2' },
+          { src: '#', alt: 'Lozinr Application 3' },
         ]
       },
       {
@@ -191,8 +191,8 @@ export const projectsData: Project[] = [
       {
         type: 'images',
         images: [
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%204-fspfqdrqvw1fiSrAJ6afFiFVkwmLFI.jpg', alt: 'Lozinr Outcome 1' },
-          { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%205-4Ffal1MVK7oLMe7ixqa4gEDcFSMtN8.jpg', alt: 'Lozinr Outcome 2' },
+          { src: '#', alt: 'Lozinr Outcome 1' },
+          { src: '#', alt: 'Lozinr Outcome 2' },
         ]
       },
       {
@@ -205,15 +205,7 @@ export const projectsData: Project[] = [
     ],
 
     images: [
-      '/images/lozinr-hero.png',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201-sPDYBiZdoFuMk6f9avuWkv1FKv1biV.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%202-L9cyRymuIKcWCg9UcBExt3YwMLe6Yb.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%203-vZ58nxLG71FNWlMeFqKKh5x3LkUxU4.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%204-fspfqdrqvw1fiSrAJ6afFiFVkwmLFI.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%205-4Ffal1MVK7oLMe7ixqa4gEDcFSMtN8.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%206-4vVCO2ICAEfzg1NKBwLYtBljY3LdXO.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%207-Fy1geWoBOPQS0OaPwotE3H6aPV8kQh.jpg',
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%208-jViUshaVSc6389CSO7w8J6LOP2hlIB.jpg'
+      '#',
     ],
     sections: {
       challenge: {
