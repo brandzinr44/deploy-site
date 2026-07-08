@@ -133,7 +133,7 @@ export default function ProjectPage() {
   style={{ minHeight: 'min(100vh, calc(100vw * 16 / 9))' }}
 >
           {infoImage && (
-            <div className="absolute inset-0 w-screen -mx-[calc(50vw-50%)] overflow-hidden">
+            <div className="absolute bottom-0 right-0 w-full lg:w-1/2 h-2/3 overflow-hidden">
               <motion.div
                 className="absolute inset-0"
                 style={{ y: heroImageY }}
@@ -147,11 +147,11 @@ export default function ProjectPage() {
                   priority
                 />
               </motion.div>
-              <div className="absolute inset-0 bg-black/55" />
+              <div className="absolute inset-0 bg-black/40" />
             </div>
           )}
 
-          <div className="relative z-10 flex flex-col items-start gap-8">
+          <div className="relative z-10 flex flex-col items-start gap-8 lg:w-1/2">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ export default function ProjectPage() {
               <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
                 {project.description}
               </p>
-              <div className="flex gap-3 flex-wrap">
+              <div className="flex gap-3 flex-wrap items-center">
                 {project.ctas.map((cta, idx) => (
                   <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
                     {cta.label}
@@ -195,50 +195,64 @@ export default function ProjectPage() {
         <AnimatePresence>
           {showAbout && (
             <motion.div
-              initial={{ y: '-100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: '-100%', opacity: 0 }}
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 top-0 left-0 right-0 bg-black z-50 overflow-y-auto"
+              className="fixed inset-0 top-0 left-0 right-0 bg-background z-50 flex overflow-hidden"
               style={{ height: '100vh' }}
             >
-              <div className="relative w-full h-full flex flex-col">
-                {/* Close Button */}
+              {/* Left Side - 70% Content */}
+              <div className="w-full lg:w-[70%] overflow-y-auto px-2 lg:px-4 pt-32 pb-16">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="max-w-4xl"
+                >
+                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-8">
+                    Behind the Brand
+                  </h2>
+                  <MetaGrid theme="light" />
+                </motion.div>
+              </div>
+
+              {/* Right Side - 30% Button */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="hidden lg:flex w-[30%] items-start justify-end px-4 pt-32 border-l border-foreground/10"
+              >
                 <button
                   onClick={() => setShowAbout(false)}
-                  className="absolute top-6 right-4 z-50 p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  className="flex items-center gap-2 bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors rounded-lg px-4 py-3 cursor-pointer"
                   aria-label="Close overlay"
                 >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="text-white"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
+                  <h3 className="text-[16px] font-medium tracking-tight text-foreground">Behind the Brand</h3>
+                  <span className="text-[18px] text-foreground/70 transition-transform duration-300 rotate-45">+</span>
                 </button>
+              </motion.div>
 
-                {/* Overlay Content */}
-                <div className="flex-1 overflow-y-auto px-2 lg:px-4 pt-32 pb-16">
-                  <div className="max-w-4xl">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-white mb-8">
-                        Behind the Brand
-                      </h2>
-                      <MetaGrid theme="dark" />
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
+              {/* Mobile Close Button */}
+              <button
+                onClick={() => setShowAbout(false)}
+                className="lg:hidden absolute top-6 right-4 z-50 p-2 hover:bg-foreground/10 rounded-lg transition-colors"
+                aria-label="Close overlay"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="text-foreground"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
