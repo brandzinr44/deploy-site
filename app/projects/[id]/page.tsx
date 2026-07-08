@@ -151,7 +151,7 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative z-[60] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-full px-3 py-1.5 cursor-pointer"
+              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-full px-3 py-1.5 cursor-pointer relative z-[60]"
             >
               <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
               <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
@@ -220,22 +220,7 @@ export default function ProjectPage() {
                 </motion.div>
               </div>
 
-              {/* Right Side - 30% Button */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="hidden lg:flex w-[30%] items-start justify-end px-4 pt-32 border-l border-foreground/10"
-              >
-                <button
-                  onClick={() => setShowAbout(false)}
-                  className="flex items-center gap-2 bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors rounded-full px-3 py-1.5 cursor-pointer"
-                  aria-label="Close overlay"
-                >
-                  <h3 className="text-[13px] font-medium tracking-tight text-foreground">Behind the Brand</h3>
-                  <span className="text-[18px] text-foreground/70 transition-transform duration-300 rotate-45">+</span>
-                </button>
-              </motion.div>
+
 
               {/* Mobile Close Button */}
               <button
