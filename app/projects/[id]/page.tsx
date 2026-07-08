@@ -3,7 +3,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { projectsData } from '@/lib/projects-data'
 import Image from 'next/image'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/header'
 import FooterSection from '@/components/footer-section'
@@ -34,6 +34,18 @@ export default function ProjectPage() {
     offset: ['start end', 'end start'],
   })
   const heroImageY = useTransform(heroScroll, [0, 1], ['-12%', '12%'])
+
+  // Prevent scroll when overlay is open
+  useEffect(() => {
+    if (showAbout) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [showAbout])
 
   if (!project) {
     return (
@@ -186,10 +198,18 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-full px-3 py-1.5 cursor-pointer relative z-[60]"
+              className={`lg:self-end flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer relative z-[60] transition-all duration-300 ${
+                showAbout
+                  ? 'bg-black border border-black'
+                  : 'bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
+              }`}
             >
-              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
-              <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
+              <h3 className={`text-[13px] font-medium tracking-tight transition-colors duration-300 ${
+                showAbout ? 'text-white' : 'text-white'
+              }`}>Behind the Brand</h3>
+              <span className={`text-[18px] transition-all duration-300 ${
+                showAbout ? 'text-white rotate-45' : 'text-white/70'
+              }`}>+</span>
             </motion.button>
           </div>
         </section>
