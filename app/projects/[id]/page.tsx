@@ -187,17 +187,17 @@ export default function ProjectPage() {
               </div>
             </motion.div>
 
-           <motion.button
-  onClick={() => setShowAbout(true)}
-  initial={{ opacity: 0, y: 24 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: '-80px' }}
-  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-  className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
->
-  <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
-  <span className="text-[18px] text-white/70">+</span>
-</motion.button>
+            <motion.button
+              onClick={() => setShowAbout(true)}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
+            >
+              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
+              <span className="text-[18px] text-white/70">+</span>
+            </motion.button>
           </div>
         </section>
 
@@ -270,36 +270,37 @@ export default function ProjectPage() {
         {/* ─── For The Challenge Section ─── */}
         {project.detailChallenge && (
           <section className="relative px-2 lg:px-4 py-8 md:py-12 border-t border-foreground/10">
-            {/* Absolute positioned button for mobile */}
-            <button
-              onClick={() => toggleSection('challenge')}
-              className="absolute right-2 top-16 md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1"
-              aria-label="Toggle challenge section"
-            >
-              <motion.span
-                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
-                animate={expandedSections.challenge ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              />
-              <motion.span
-                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
-                animate={expandedSections.challenge ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </button>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-start"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-1">
+              {/* Left Column — 20% (Headline + mobile toggle, aligned in a flex row) */}
+              <div className="md:col-span-1 flex items-start justify-between md:block">
                 <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Challenge
                 </h2>
+
+                {/* Mobile toggle — top-aligned with headline */}
+                <button
+                  onClick={() => toggleSection('challenge')}
+                  className="md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1 flex-shrink-0 mt-1"
+                  aria-label="Toggle challenge section"
+                >
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.challenge ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.challenge ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </button>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -315,7 +316,7 @@ export default function ProjectPage() {
                     <p className="text-[16px] font-medium tracking-tight text-foreground mb-8 uppercase">
                       {project.detailChallenge.thinking}
                     </p>
-                    
+
                     <div className="space-y-4">
                       {project.detailChallenge.body.split('\n').map((line, idx) => (
                         line.trim() && (
@@ -357,36 +358,37 @@ export default function ProjectPage() {
         {/* ─── Strategy Section ─── */}
         {project.detailStrategy && (
           <section className="relative px-2 lg:px-4 py-8 md:py-12">
-            {/* Absolute positioned button for mobile */}
-            <button
-              onClick={() => toggleSection('strategy')}
-              className="absolute right-2 top-16 md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1"
-              aria-label="Toggle strategy section"
-            >
-              <motion.span
-                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
-                animate={expandedSections.strategy ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              />
-              <motion.span
-                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
-                animate={expandedSections.strategy ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </button>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-start"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-1">
+              {/* Left Column — 20% (Headline + mobile toggle, aligned in a flex row) */}
+              <div className="md:col-span-1 flex items-start justify-between md:block">
                 <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Strategy
                 </h2>
+
+                {/* Mobile toggle — top-aligned with headline */}
+                <button
+                  onClick={() => toggleSection('strategy')}
+                  className="md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1 flex-shrink-0 mt-1"
+                  aria-label="Toggle strategy section"
+                >
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.strategy ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.strategy ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </button>
               </div>
 
               {/* Middle Column — 40% (Content) */}
@@ -468,36 +470,37 @@ export default function ProjectPage() {
         {/* ─── Process Section ─── */}
         {project.detailProcess && (
           <section className="relative px-2 lg:px-4 py-8 md:py-12">
-            {/* Absolute positioned button for mobile */}
-            <button
-              onClick={() => toggleSection('process')}
-              className="absolute right-2 top-16 md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1"
-              aria-label="Toggle process section"
-            >
-              <motion.span
-                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
-                animate={expandedSections.process ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              />
-              <motion.span
-                className="w-5 h-0.5 bg-foreground rounded-full origin-center"
-                animate={expandedSections.process ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </button>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+              className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4 items-start"
             >
-              {/* Left Column — 20% (Headline) */}
-              <div className="md:col-span-1">
+              {/* Left Column — 20% (Headline + mobile toggle, aligned in a flex row) */}
+              <div className="md:col-span-1 flex items-start justify-between md:block">
                 <h2 className="text-[24px] md:text-[32px] font-medium tracking-tight text-foreground leading-tight">
                   Process
                 </h2>
+
+                {/* Mobile toggle — top-aligned with headline */}
+                <button
+                  onClick={() => toggleSection('process')}
+                  className="md:hidden w-6 h-6 flex flex-col items-center justify-center gap-1 flex-shrink-0 mt-1"
+                  aria-label="Toggle process section"
+                >
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.process ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                  <motion.span
+                    className="w-5 h-0.5 bg-foreground rounded-full origin-center"
+                    animate={expandedSections.process ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </button>
               </div>
 
               {/* Middle Column — 40% (Content) */}
