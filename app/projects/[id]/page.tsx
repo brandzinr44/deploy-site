@@ -186,9 +186,9 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-lg px-4 py-3 cursor-pointer"
+              className="lg:self-end flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-full px-3 py-1.5 cursor-pointer"
             >
-              <h3 className="text-[16px] font-medium tracking-tight text-white">Behind the Brand</h3>
+              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
               <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
             </motion.button>
           </div>
