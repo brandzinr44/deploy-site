@@ -151,68 +151,97 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-end gap-12 lg:gap-24">
-            <div className="flex-1">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <h1
-                  className="font-medium tracking-tight text-white leading-none mb-6"
-                  style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
-                >
-                  {project.name}
-                </h1>
-                <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
-                  {project.description}
-                </p>
-                <div className="flex gap-3 flex-wrap">
-                  {project.ctas.map((cta, idx) => (
-                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
-                      {cta.label}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-
+          <div className="relative z-10 flex flex-col items-start gap-8">
             <motion.div
-              className="lg:w-48 lg:flex lg:flex-col lg:justify-end lg:self-end"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h1
+                className="font-medium tracking-tight text-white leading-none mb-6"
+                style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
+              >
+                {project.name}
+              </h1>
+              <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
+                {project.description}
+              </p>
+              <div className="flex gap-3 flex-wrap">
+                {project.ctas.map((cta, idx) => (
+                  <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
+                    {cta.label}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.button
+              onClick={() => setShowAbout(v => !v)}
+              aria-expanded={showAbout}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-lg px-4 py-3 cursor-pointer"
             >
-              <button
-                onClick={() => setShowAbout(v => !v)}
-                aria-expanded={showAbout}
-                className="flex items-center justify-between lg:justify-start lg:gap-4 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors rounded-lg px-4 py-3 w-full text-left cursor-pointer"
-              >
-                <h3 className="text-[16px] font-medium tracking-tight text-white">Behind the Brand</h3>
-                <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {showAbout && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="lg:hidden overflow-hidden"
-                  >
-                    <p className="text-[16px] text-white/80 leading-relaxed tracking-tight pt-4">
-                      {project.description}
-                    </p>
-                    <MetaGrid theme="dark" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              <h3 className="text-[16px] font-medium tracking-tight text-white">Behind the Brand</h3>
+              <span className={`text-[18px] text-white/70 transition-transform duration-300 ${showAbout ? 'rotate-45' : ''}`}>+</span>
+            </motion.button>
           </div>
         </section>
+
+        {/* ─── Behind the Brand Overlay ─── */}
+        <AnimatePresence>
+          {showAbout && (
+            <motion.div
+              initial={{ y: '-100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '-100%', opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-0 top-0 left-0 right-0 bg-black z-50 overflow-y-auto"
+              style={{ height: '100vh' }}
+            >
+              <div className="relative w-full h-full flex flex-col">
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowAbout(false)}
+                  className="absolute top-6 right-4 z-50 p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  aria-label="Close overlay"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-white"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+
+                {/* Overlay Content */}
+                <div className="flex-1 overflow-y-auto px-2 lg:px-4 pt-32 pb-16">
+                  <div className="max-w-4xl">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-white mb-8">
+                        Behind the Brand
+                      </h2>
+                      <MetaGrid theme="dark" />
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* ─── For The Challenge Section ─── */}
         {project.detailChallenge && (
