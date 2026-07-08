@@ -75,41 +75,27 @@ export default function ProjectPage() {
   const infoImage = validImages[0]
 
   const meta = {
-    overview: project.overview,
-    challengeDesc: project.challengeDesc,
     strategicDirection: project.strategicDirection,
     deliverables: project.deliverables || [],
     duration: project.duration,
   }
 
-  const MetaGrid = ({ theme = 'light' as 'light' | 'dark', skipOverviewChallenge = false }) => {
+  const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
     const labelClass = theme === 'dark' ? 'text-white/50' : 'text-foreground/40'
     const valueClass = theme === 'dark' ? 'text-white' : 'text-foreground'
     const borderClass = theme === 'dark' ? 'border-white/10' : 'border-foreground/10'
 
     return (
-      <div className="pt-8">
-        {!skipOverviewChallenge && meta.overview && (
-          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Overview</p>
-            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.overview}</p>
-          </div>
-        )}
-        {!skipOverviewChallenge && meta.challengeDesc && (
-          <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Challenge</p>
-            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.challengeDesc}</p>
-          </div>
-        )}
+      <div>
         {meta.strategicDirection && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Strategic Direction</p>
+            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Strategic Direction</p>
             <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.strategicDirection}</p>
           </div>
         )}
         {meta.deliverables.length > 0 && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Deliverables</p>
+            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Deliverables</p>
             <div className="flex flex-wrap gap-2">
               {meta.deliverables.map((item: string, i: number) => (
                 <span key={i} className={`text-[16px] tracking-tight ${valueClass}`}>
@@ -122,7 +108,7 @@ export default function ProjectPage() {
         )}
         {meta.duration && (
           <div>
-            <p className={`text-[16px] tracking-tight mb-4 ${labelClass}`}>Duration</p>
+            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Duration</p>
             <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.duration}</p>
           </div>
         )}
@@ -217,75 +203,70 @@ export default function ProjectPage() {
         </section>
 
         {/* ─── Behind the Brand Overlay ─── */}
-<AnimatePresence>
-  {showAbout && (
-    <motion.div
-      onClick={() => setShowAbout(false)}
-      initial={{ y: '-100%' }}
-      animate={{ y: 0 }}
-      exit={{ y: '-100%' }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 top-0 left-0 right-0 bg-background z-[100] flex overflow-hidden"
-      style={{ height: '100vh' }}
-    >
-      {/* Overlay content wrapper */}
-      <div className="w-full h-full overflow-y-auto px-2 lg:px-4 pt-20 lg:pt-32 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-7xl mx-auto"
-        >
-          {/* Heading — full width top */}
-          <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12 lg:mb-16">
-            Behind the Brand
-          </h2>
+        <AnimatePresence>
+          {showAbout && (
+            <motion.div
+              onClick={() => setShowAbout(false)}
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-0 top-0 left-0 right-0 bg-background z-[100] flex overflow-hidden"
+              style={{ height: '100vh' }}
+            >
+              {/* Overlay content wrapper */}
+              <div className="w-full h-full overflow-y-auto px-2 lg:px-4 pt-20 lg:pt-32 pb-16">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="max-w-7xl mx-auto"
+                >
+                  {/* Heading — full width top */}
+                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12 lg:mb-16">
+                    Behind the Brand
+                  </h2>
 
-          {/* Two-column grid below heading */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left — Overview + Challenge */}
-            <div>
-              {project.detailOverview && (
-                <div className="mb-12">
-                  <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">Overview</h3>
-                  <div className="space-y-4">
-                    {project.detailOverview.body.split('\n').map((line, idx) => (
-                      line.trim() && (
-                        <p key={idx} className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                          {line}
-                        </p>
-                      )
-                    ))}
+                  {/* Two-column grid below heading */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                    {/* Left — Overview + Challenge */}
+                    <div>
+                      {project.overview && (
+                        <div className="mb-12">
+                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                            Overview
+                          </h3>
+                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                            {project.overview}
+                          </p>
+                        </div>
+                      )}
+
+                      {project.detailChallenge && (
+                        <div>
+                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                            Challenge
+                          </h3>
+                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                            {project.detailChallenge.body
+                              .split('\n')
+                              .filter(line => line.trim())
+                              .join(' ')}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Right — Strategic Direction / Deliverables / Duration */}
+                    <div>
+                      <MetaGrid theme="light" />
+                    </div>
                   </div>
-                </div>
-              )}
-
-              {project.detailChallenge && (
-                <div>
-                  <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">Challenge</h3>
-                  <div className="space-y-4">
-                    {project.detailChallenge.body.split('\n').map((line, idx) => (
-                      line.trim() && (
-                        <p key={idx} className="text-[16px] tracking-tight leading-relaxed text-foreground">
-                          {line}
-                        </p>
-                      )
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Right — Strategic Direction / Deliverables / Duration */}
-            <div>
-              <MetaGrid theme="light" skipOverviewChallenge />
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* ─── For The Challenge Section ─── */}
         {project.detailChallenge && (
