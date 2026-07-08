@@ -131,9 +131,9 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
   }
 
   // Mobile logo and hamburger colors
-  const mobileLogoColor = isMenuOpen ? 'text-black' : 'text-white'
+  const mobileLogoColor = 'text-black'
   const desktopLogoColor = 'md:text-black'
-  const hamburgerColor = isMenuOpen ? 'bg-black' : 'bg-white'
+  const hamburgerColor = 'bg-black'
 
   const Logo = () => (
     <img
@@ -141,7 +141,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
       alt="Lozinr"
       className={`h-4 md:h-5 w-auto transition-colors duration-300 ${mobileLogoColor} ${desktopLogoColor}`}
       style={{
-        filter: isMenuOpen ? 'invert(1)' : 'invert(0)',
+        filter: 'invert(1)',
       }}
     />
   )

@@ -46,8 +46,8 @@ function WorkHero() {
       {/* Gradient — same as about page */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-transparent" />
 
-      {/* "Work" title — top-left, exact same as about page */}
-      <div className="absolute top-0 left-0 overflow-hidden px-2 lg:px-4 pt-20 lg:pt-36">
+      {/* "Work" title — bottom-left */}
+      <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-16">
         <motion.h1
           initial={{ y: '100%', opacity: 0 }}
           animate={isMounted ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}
