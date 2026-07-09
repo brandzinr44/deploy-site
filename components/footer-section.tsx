@@ -29,16 +29,17 @@ export default function FooterSection() {
     <footer className="relative w-full bg-foreground">
       <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-10 md:pb-14">
 
-        {/* Row 0 — Divider with tagline */}
+        {/* Row 0 — Divider with tagline: left 40% / right 60% */}
         <motion.div
-          className="py-8 md:py-10 border-t border-background"
+          className="flex flex-col md:flex-row gap-y-4 gap-x-6 md:gap-x-6 py-8 md:py-10 border-t border-background"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={0}
           variants={rowVariants}
         >
-          <p className="md:text-[36px] text-[24px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
+          <div className="w-full md:w-2/5" />
+          <p className="w-full md:w-3/5 md:text-[36px] text-[24px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
         </motion.div>
 
         {/* Row 1 — Nav */}
@@ -76,7 +77,7 @@ export default function FooterSection() {
           <span className="text-[16px] text-background font-medium">Social</span>
           <div className="flex flex-col gap-0">
             {socialLinks.map((link) => (
-              <a
+              
                 key={link.name}
                 href={link.link}
                 target="_blank"
@@ -100,7 +101,7 @@ export default function FooterSection() {
         >
           <span className="text-[16px] text-background font-medium">Address</span>
           <div>
-            <a
+            
               href="mailto:adnanakif.co@gmail.com"
               className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3"
             >
