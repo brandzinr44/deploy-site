@@ -77,7 +77,7 @@ export default function FooterSection() {
           <span className="text-[16px] text-background font-medium">Social</span>
           <div className="flex flex-col gap-0">
             {socialLinks.map((link) => (
-              
+              <a
                 key={link.name}
                 href={link.link}
                 target="_blank"
@@ -101,7 +101,7 @@ export default function FooterSection() {
         >
           <span className="text-[16px] text-background font-medium">Address</span>
           <div>
-            
+            <a
               href="mailto:adnanakif.co@gmail.com"
               className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3"
             >
