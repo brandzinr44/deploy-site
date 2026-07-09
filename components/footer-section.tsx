@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 
 const navLinks = [
-
+  
   { name: 'Work', href: '' },
   { name: 'Contact', href: '' },
 ]
@@ -29,103 +29,88 @@ export default function FooterSection() {
     <footer className="relative w-full bg-foreground">
       <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-10 md:pb-14">
 
-        {/* Row 0 — Divider with tagline */}
+        {/* Row 0 — Divider with tagline: left 40% / right 60% */}
         <motion.div
-          className="py-8 md:py-10 border-t border-background"
+          className="flex flex-col md:flex-row gap-y-4 gap-x-6 md:gap-x-6 py-8 md:py-10 border-t border-background"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={0}
           variants={rowVariants}
         >
-          <p className="md:text-[36px] text-[24px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
+          <div className="w-full md:w-2/5" />
+          <p className="w-full md:w-3/5 md:text-[36px] text-[24px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
         </motion.div>
 
-        {/* Rows 1-3 — Main content with 40/60 split */}
+        {/* Row 1 — Nav */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-5 border-t border-background py-8 md:py-10 gap-8 md:gap-0"
+          className="grid grid-cols-2 py-8 md:py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={1}
           variants={rowVariants}
         >
-          {/* Left Side — 40% (col-span-2) */}
-          <div className="md:col-span-2 flex flex-col gap-8 md:gap-10">
-            {/* Nav */}
-            <div>
-              <span className="text-[16px] text-background font-medium block mb-4">Nav</span>
-              <nav className="flex flex-col gap-0">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-[16px] text-background underline underline-offset-4 decoration-background"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </nav>
-            </div>
+          <span className="text-[16px] text-background font-medium">Nav</span>
+          <nav className="flex flex-col gap-0">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-[16px] text-background underline underline-offset-4 decoration-background"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+        </motion.div>
 
-            {/* Social */}
-            <div>
-              <span className="text-[16px] text-background font-medium block mb-4">Social</span>
-              <div className="flex flex-col gap-0">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[16px] text-background underline underline-offset-4 decoration-background"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Address */}
-            <div>
-              <span className="text-[16px] text-background font-medium block mb-4">Address</span>
-              <p className="text-[16px] text-background leading-snug">
-                Based in Bangladesh<br />
-                Working Worldwide.
-              </p>
-            </div>
+        {/* Row 2 — Social */}
+        <motion.div
+          className="grid grid-cols-2 border-t border-background py-8 md:py-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: '-40px' }}
+          custom={2}
+          variants={rowVariants}
+        >
+          <span className="text-[16px] text-background font-medium">Social</span>
+          <div className="flex flex-col gap-0">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[16px] text-background underline underline-offset-4 decoration-background"
+              >
+                {link.name}
+              </a>
+            ))}
           </div>
+        </motion.div>
 
-          {/* Right Side — 60% (col-span-3) - Grid layout */}
-          <div className="md:col-span-3 md:pl-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
-              {/* Work & Contact */}
-              <div>
-                <span className="text-[16px] text-background font-medium block mb-4">Work</span>
-                <div className="flex flex-col gap-3">
-                  <a
-                    href="/work"
-                    className="text-[16px] text-background underline underline-offset-4 decoration-background"
-                  >
-                    Portfolio
-                  </a>
-                </div>
-              </div>
-
-              {/* Contact */}
-              <div>
-                <span className="text-[16px] text-background font-medium block mb-4">Contact</span>
-                <a
-                  href="mailto:adnanakif.co@gmail.com"
-                  className="text-[16px] text-background underline underline-offset-4 decoration-background"
-                >
-                  Start a project
-                </a>
-              </div>
-
-              {/* Empty column for spacing or future content */}
-              <div></div>
-            </div>
+        {/* Row 3 — Address */}
+        <motion.div
+          className="grid grid-cols-2 border-t border-background py-8 md:py-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: '-40px' }}
+          custom={3}
+          variants={rowVariants}
+        >
+          <span className="text-[16px] text-background font-medium">Address</span>
+          <div>
+            <a
+              href="mailto:adnanakif.co@gmail.com"
+              className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3"
+            >
+              Start a project
+            </a>
+            <p className="text-[16px] text-background leading-snug">
+              Based in Bangladesh<br />
+              Working Worldwide.
+            </p>
           </div>
         </motion.div>
 
