@@ -198,12 +198,12 @@ export default function Process() {
 
   return (
     <div className="w-full bg-background text-foreground py-20 md:py-24 px-5 lg:px-6">
-      <div className="flex flex-col md:flex-row md:items-start gap-y-8 gap-x-6 md:gap-x-2">
-        {/* Left 20% — dot + label. Always full width on top for mobile,
+      <div className="flex flex-col md:flex-row md:items-start gap-y-8 gap-x-6 md:gap-x-6">
+        {/* Left 40% — dot + label. Always full width on top for mobile,
             becomes the first column on desktop. */}
-        <div className="w-full md:w-1/6 flex items-center gap-2 md:self-start">
+        <div className="w-full md:w-2/5 flex items-center gap-2 md:self-start">
           <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
-          <span className="text-[16px] font-medium text-foreground tracking-tight">
+          <span className="text-[22px] font-medium text-foreground tracking-tight">
             Process
           </span>
         </div>
@@ -225,8 +225,8 @@ export default function Process() {
             ))}
           </div>
 
-          {/* Right 40% on desktop — description, true line-by-line reveal */}
-          <div className="w-full md:w-2/5 md:self-start md:pl-4">
+          {/* Right 20% on desktop — description, true line-by-line reveal */}
+          <div className="w-full md:w-1/5 md:self-start md:pl-3">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id}

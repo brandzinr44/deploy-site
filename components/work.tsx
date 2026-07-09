@@ -160,7 +160,7 @@ export default function Work() {
         {/* Mobile: full width, sits on top. Desktop: 20% column on the left */}
         <div className="w-full md:w-1/6 flex items-center gap-2 mb-8 md:mb-0 md:self-start">
           <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
-          <span className="text-[16px] font-medium text-foreground tracking-tight">
+          <span className="text-[22px] font-medium text-foreground tracking-tight">
             Work
           </span>
         </div>
