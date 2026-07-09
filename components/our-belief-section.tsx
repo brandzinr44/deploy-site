@@ -22,7 +22,7 @@ export default function OurBeliefSection() {
         >
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 rounded-full bg-foreground flex-shrink-0" />
-            <h2 className="text-[16px] font-medium text-foreground tracking-tight">
+            <h2 className="text-[46px] font-medium text-foreground tracking-tight">
               {OUR_BELIEF_TEXT}
             </h2>
           </div>
@@ -36,7 +36,7 @@ export default function OurBeliefSection() {
           viewport={{ once: true, margin: '-100px' }}
           className="w-full md:w-2/5"
         >
-          <p className="text-[24px] md:text-[36px] leading-tight tracking-tight text-foreground font-regular">
+          <p className="text-[24px] leading-tight tracking-tight text-foreground font-regular">
             {BELIEF_DESCRIPTION}
           </p>
         </motion.div>
