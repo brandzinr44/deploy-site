@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'W-OA6Yo3JGzMsaE1PXQh3t3b13bAG1bZgb1RReWRq2w',
   },
-  category: 'design',
+  category: 'Brand Identity Studio',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -47,15 +47,14 @@ export const metadata: Metadata = {
         url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201%20copy%2001-WcAWbaFGMsa8gBIagDbeIVAx3k4w5n.jpg',
         width: 1200,
         height: 630,
-        alt: 'Lozinr Branding Agency',
+        alt: 'Lozinr Brand Identity Studio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lozinr — Brand Identity Studio for Funded Startups & D2C Brands',
-    description: '    description: 'Brand identity systems built for startups, SaaS companies, and ambitious founders who want to build brands worth remembering.',
-',
+    description: 'Brand identity systems built for startups, SaaS companies, and ambitious founders who want to build brands worth remembering.',
     images: [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Artboard%201%20copy%2001-WcAWbaFGMsa8gBIagDbeIVAx3k4w5n.jpg',
     ],
@@ -76,10 +75,9 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': ['ProfessionalService', 'Organization'],
     name: 'Lozinr',
-    description: 'Premium branding agency specializing in brand identity design, logo design, and brand strategy for startups and ambitious founders.',
+    description: 'Brand identity studio helping startups and ambitious founders build memorable brands through strategy, identity systems, and visual design.',
     url: 'https://lozinr.com',
     logo: 'https://lozinr.com/favicon.png',
-    priceRange: '$$$$',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
@@ -91,7 +89,13 @@ export default function RootLayout({
       name: 'Adnan Akif',
     },
     areaServed: 'Worldwide',
-    serviceType: ['Brand Identity Design', 'Logo Design', 'Brand Strategy', 'Visual Identity Systems'],
+    serviceType: [
+'Brand Strategy',
+'Brand Identity',
+'Visual Identity System',
+'Logo Identity',
+'Brand Guidelines'
+],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Branding Services',
