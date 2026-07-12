@@ -53,6 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    creator: '@adnan.o.akif',
     title: 'Lozinr — Brand Identity Studio for Funded Startups & D2C Brands',
     description: 'Brand identity systems built for startups, SaaS companies, and ambitious founders who want to build brands worth remembering.',
     images: [
@@ -60,9 +61,9 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 }
 
