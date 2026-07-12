@@ -2,17 +2,14 @@ import type { Metadata } from 'next'
 import HomeWithPreloader from '@/components/home-with-preloader'
 
 export const metadata: Metadata = {
-  title: 'Lozinr — Branding Agency for Startups & Ambitious Founders',
-  description: 'We are a branding agency that builds premium brand identities for startups and founders who want to feel expensive before you see the price. Brand identity design, logo design, brand strategy.',
+  title: 'Lozinr — Brand Identity Studio for Funded Startups & Ambitious Founders',
+  description: 'Lozinr is a brand identity studio helping funded startups and ambitious founders build distinctive brands through strategy, visual identity systems, and timeless design.',
   keywords: [
-    'branding agency',
-    'brand identity design',
-    'startup branding',
-    'logo design agency',
-    'brand strategy',
-    'premium branding studio',
-    'brand identity designer',
-    'visual identity',
+    'brand identity studio',
+    'brand identity for startups',
+    'SaaS branding',
+    'D2C branding',
+    'startup brand identity',
   ],
   alternates: {
     canonical: 'https://lozinr.com',
@@ -21,14 +18,13 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': ['Organization', 'LocalBusiness'],
+  '@type': ['ProfessionalService', 'Organization'],
   name: 'Lozinr',
   url: 'https://lozinr.com',
   logo: 'https://lozinr.com/favicon.svg',
-  description: 'Premium branding agency specializing in brand identity design, logo systems, and visual identity for tech startups and SaaS companies.',
+  description: 'Brand Identity Studio specializing in brand identity design, logo systems, and visual identity for tech startups and SaaS companies.',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-XXX-XXX-XXXX',
     contactType: 'Customer Service',
     url: 'https://lozinr.com/contact',
   },
@@ -41,8 +37,14 @@ const organizationSchema = {
     '@type': 'Person',
     name: 'Adnan Akif',
   },
-  areaServed: ['US', 'UK'],
-  serviceType: ['Brand Identity Design', 'Logo Design', 'Brand Strategy', 'Visual Identity Systems'],
+  areaServed: 'Worldwide',
+  serviceType: [
+  'Brand Strategy',
+  'Brand Identity Design',
+  'Visual Identity Systems',
+  'Logo Identity',
+  'Brand Guidelines'
+],
 }
 
 export default function Home() {
