@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@adnan.o.akif',
+    creator: '@adnaanakif',
     title: 'Lozinr — Brand Identity Studio for Funded Startups & D2C Brands',
     description: 'Brand identity systems built for startups, SaaS companies, and ambitious founders who want to build brands worth remembering.',
     images: [
@@ -83,7 +83,7 @@ export default function RootLayout({
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
       url: 'https://lozinr.com/contact',
-      email: 'adnanakif.co@gmail.com',
+      email: 'adnan.lozinr@gmail.com',
     },
     founder: {
       '@type': 'Person',

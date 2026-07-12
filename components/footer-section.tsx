@@ -101,7 +101,7 @@ export default function FooterSection() {
           <span className="text-[16px] text-background font-medium">Address</span>
           <div>
             <a
-              href="mailto:adnanakif.co@gmail.com"
+              href="mailto:adnan.lozinr@gmail.com"
               className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3"
             >
               Start a project
