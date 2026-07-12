@@ -1,20 +1,3 @@
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Work — Brand Identity Projects | Lozinr',
-  description: 'Explore our brand identity projects for startups and SaaS companies. See how we build distinctive brand systems through strategy, visual identity, and design.',
-  keywords: [
-    'brand identity projects',
-    'branding portfolio',
-    'brand design case studies',
-    'startup brand projects',
-    'visual identity portfolio',
-  ],
-  alternates: {
-    canonical: 'https://lozinr.com/work',
-  },
-}
-
 'use client'
 
 import { useEffect, useRef, useState } from 'react'

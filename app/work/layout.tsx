@@ -1,16 +1,16 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Brand Identity Work & Case Studies | Lozinr Branding Agency',
-  description: 'See how Lozinr designs brand identities for startups. Real case studies across tech, health, fashion, and finance — brand identity design done with strategy and craft.',
+  title: 'Work — Brand Identity Projects | Lozinr Brand Identity Studio',
+  description: 'Explore our brand identity projects for startups and SaaS companies. Real case studies across tech, health, and D2C — brand identity systems built with strategy and craft.',
   keywords: [
     'brand identity case studies',
     'branding portfolio',
     'logo design examples',
     'brand strategy portfolio',
-    'creative branding work',
     'brand identity projects',
     'startup branding examples',
+    'SaaS branding portfolio',
   ],
   alternates: {
     canonical: 'https://lozinr.com/work',
