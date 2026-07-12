@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import ContactClient from '@/components/contact-client'
 
 export const metadata: Metadata = {
-  title: 'Work With Us | Lozinr Branding Agency',
-  description: 'Ready to invest in your brand? Contact Lozinr — a branding agency specializing in brand identity design for startups and founders. Let\'s build something worth remembering.',
+  title: 'Start a Project | Lozinr Brand Identity Studio',
+  description: 'Ready to build a brand worth remembering? Contact Lozinr Brand Identity Studio to discuss your startup or SaaS branding project. Let\'s create something distinctive together.',
   keywords: [
-    'contact branding agency',
-    'work with designer',
+    'contact brand studio',
+    'work with brand designer',
     'brand project inquiry',
     'startup branding services',
-    'branding agency contact',
+    'brand identity consultation',
   ],
   alternates: {
     canonical: 'https://lozinr.com/contact',
