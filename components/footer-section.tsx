@@ -141,7 +141,11 @@ function AnimatedSVG() {
       <defs>
         <style>{`
           .footer-path {
-            fill: #ebebeb;
+            fill: none;
+            stroke: #ebebeb;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
           }
