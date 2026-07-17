@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const navLinks = [
   
@@ -20,6 +21,85 @@ const rowVariants = {
     y: 0,
     transition: { duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] },
   }),
+}
+
+function AnimatedText({ text }: { text: string }) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <motion.div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="overflow-hidden h-6 cursor-pointer"
+      transition={{ duration: 0.2 }}
+    >
+      {/* Primary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -24 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {text.split('').map((char, index) => (
+          <motion.span
+            key={`primary-${index}`}
+            initial={{ opacity: 1, y: 0 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 0,
+                    y: -20,
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : index * 0.02,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Secondary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -24 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {text.split('').map((char, index) => (
+          <motion.span
+            key={`secondary-${index}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : 0,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
+    </motion.div>
+  )
 }
 
 export default function FooterSection() {
@@ -56,9 +136,9 @@ export default function FooterSection() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[16px] text-background underline underline-offset-4 decoration-background"
+                className="text-[16px] text-background underline underline-offset-4 decoration-background w-fit"
               >
-                {link.name}
+                <AnimatedText text={link.name} />
               </a>
             ))}
           </nav>
@@ -81,9 +161,9 @@ export default function FooterSection() {
                 href={link.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[16px] text-background underline underline-offset-4 decoration-background"
+                className="text-[16px] text-background underline underline-offset-4 decoration-background w-fit"
               >
-                {link.name}
+                <AnimatedText text={link.name} />
               </a>
             ))}
           </div>
@@ -102,9 +182,9 @@ export default function FooterSection() {
           <div>
             <a
               href="mailto:adnan.lozinr@gmail.com"
-              className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3"
+              className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3 w-fit"
             >
-              Start a project
+              <AnimatedText text="Start a project" />
             </a>
             <p className="text-[16px] text-background leading-snug">
               Based in Bangladesh<br />
