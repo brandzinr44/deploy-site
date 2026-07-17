@@ -114,14 +114,34 @@ export default function TemplateProducts() {
                 </p>
 
                 {/* CTA Button */}
-                <motion.button
-                  className="w-full inline-flex items-center justify-center px-6 py-3 bg-foreground text-white font-medium rounded-full hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
-                >
-                  {product.cta}
-                  <span className="ml-2">→</span>
-                </motion.button>
+<motion.button
+  className="w-full inline-flex items-center justify-center gap-1 px-6 py-3 bg-foreground text-white font-medium rounded-full hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
+  whileHover={{ y: -2 }}
+  whileTap={{ y: 0 }}
+>
+  <span>{product.cta}</span>
+
+  <svg
+    className="w-7 h-7 transition-transform duration-300 group-hover:translate-x-1"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 12H18"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M13 7L18 12L13 17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</motion.button>
               </div>
             </motion.div>
           ))}
