@@ -137,7 +137,7 @@ function AnimatedLogo() {
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[clamp(78px,18vw,305px)] font-medium tracking-tighter text-background leading-none"
+      className="text-[clamp(70px,18vw,305px)] font-medium tracking-tighter text-background leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
