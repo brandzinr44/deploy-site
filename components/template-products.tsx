@@ -92,7 +92,7 @@ export default function TemplateProducts() {
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="group flex flex-col overflow-hidden rounded-lg bg-background "
+              className="group flex flex-col overflow-hidden rounded-[30px] bg-background "
             >
               {/* Product Image */}
               <div className="relative h-80 overflow-hidden bg-background">
@@ -105,7 +105,7 @@ export default function TemplateProducts() {
               </div>
 
               {/* Product Info */}
-              <div className="flex flex-col flex-1 p-4 md:p-5 bg-white">
+              <div className="flex flex-col flex-1 p-4 md:p-4 bg-white">
                 <h3 className="text-[22px] md:text-[26px] font-medium tracking-tight mb-1 text-foreground">
                   {product.title}
                 </h3>
