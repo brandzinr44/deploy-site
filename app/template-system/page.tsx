@@ -63,7 +63,7 @@ function TemplateSystemHero() {
 export default function TemplateSystemPage() {
   return (
     <>
-      <Header />
+      <Header preloaderDone={true} />
       <TemplateSystemHero />
       <FooterSection />
     </>
