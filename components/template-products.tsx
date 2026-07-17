@@ -105,17 +105,17 @@ export default function TemplateProducts() {
               </div>
 
               {/* Product Info */}
-              <div className="flex flex-col flex-1 p-6 md:p-8 bg-white">
-                <h3 className="text-[22px] md:text-[26px] font-medium tracking-tight mb-3 text-foreground">
+              <div className="flex flex-col flex-1 p-4 md:p-5 bg-white">
+                <h3 className="text-[22px] md:text-[26px] font-medium tracking-tight mb-1 text-foreground">
                   {product.title}
                 </h3>
-                <p className="text-[14px] md:text-[15px] text-foreground/60 mb-8 flex-grow leading-relaxed">
+                <p className="text-[14px] md:text-[15px] text-foreground/60 mb-5 flex-grow leading-relaxed">
                   {product.description}
                 </p>
 
                 {/* CTA Button */}
                 <motion.button
-                  className="w-full inline-flex items-center justify-center px-6 py-3 bg-foreground text-white font-medium rounded-lg hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
+                  className="w-full inline-flex items-center justify-center px-6 py-3 bg-foreground text-white font-medium rounded-full hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
                 >
