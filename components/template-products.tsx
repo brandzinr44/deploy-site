@@ -32,6 +32,7 @@ const products: Product[] = [
     description: 'Enterprise solution for large-scale projects',
     cta: 'Explore',
   },
+  
 ]
 
 const containerVariants = {
