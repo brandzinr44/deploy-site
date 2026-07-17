@@ -111,7 +111,7 @@ function TiltCard({
           className="cursor-pointer"
         >
           <div
-            className="relative w-full overflow-hidden bg-background"
+            className="relative w-full overflow-hidden bg-foreground/10"
             style={{ aspectRatio: '16/9' }}
           >
             <Image
@@ -165,7 +165,7 @@ export default function WorkPage() {
   return (
     <>
       <Header preloaderDone={true} />
-      <main className="min-h-screen bg-background text-white">
+      <main className="min-h-screen bg-foreground text-white">
 
         {/* Hero */}
         <WorkHero />
