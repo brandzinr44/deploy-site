@@ -84,7 +84,7 @@ export default function TemplateProducts() {
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="group flex flex-col overflow-hidden rounded-md bg-foreground "
+              className="group flex flex-col overflow-hidden rounded-md bg-background "
             >
               {/* Product Image */}
               <div className="relative h-120 overflow-hidden bg-background">
@@ -93,7 +93,7 @@ export default function TemplateProducts() {
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-300" />
+                <div className="absolute inset-" />
               </div>
 
               {/* Product Info */}
