@@ -87,7 +87,7 @@ export default function TemplateProducts() {
               className="group flex flex-col overflow-hidden rounded-md bg-foreground "
             >
               {/* Product Image */}
-              <div className="relative h-72 overflow-hidden bg-background">
+              <div className="relative h-120 overflow-hidden bg-background">
                 <img
                   src={product.image}
                   alt={product.title}
