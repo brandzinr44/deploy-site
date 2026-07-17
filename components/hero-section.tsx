@@ -29,15 +29,15 @@ export default function HeroSection({ triggerAnimation = false }: HeroSectionPro
   const heroOpacity = useTransform(scrollY, [0, 350], [1, 0])
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-foreground">
 
       {/* Hero Logo Section — space for preloader logo handoff */}
-      <section ref={sectionRef} className="bg-transparent overflow-hidden pt-0 py-85 md:py-48">
+      <section ref={sectionRef} className="bg-foreground overflow-hidden pt-0 py-85 md:py-48">
         <div className="w-full px-3 lg:px-5" />
       </section>
 
       {/* Hero Content */}
-      <section className="pt-0 md:pt-0 flex items-center justify-center min-h-[65vh] relative overflow-hidden bg-transparent">
+      <section className="pt-0 md:pt-0 flex items-center justify-center min-h-[65vh] relative overflow-hidden bg-foreground">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
           className="px-3 lg:px-6 pb-6 md:pb-8 relative z-20 w-full -translate-y-40 md:-translate-y-45"

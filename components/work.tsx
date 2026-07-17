@@ -113,14 +113,14 @@ function ProjectRow({
           {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
 
-        <h3 className="text-[16px] font-medium text-foreground tracking-tight leading-tight">
+        <h3 className="text-[16px] font-medium text-background tracking-tight leading-tight">
           {project.name}
         </h3>
 
         {/* Divider under the title */}
-        <div className="h-px w-full bg-foreground" />
+        <div className="h-px w-full bg-background" />
 
-        <p className="text-[16px] font-medium text-foreground/80 leading-tight tracking-tight">
+        <p className="text-[16px] font-medium text-background/80 leading-tight tracking-tight">
           {project.description}
         </p>
 
@@ -155,12 +155,12 @@ export default function Work() {
   const displayProjects = projectsData.filter((p) => p.images[0] !== '#')
 
   return (
-    <section id="work-section" className="bg-background py-12 md:py-24 px-3 lg:px-6">
+    <section id="work-section" className="bg-foreground py-12 md:py-24 px-3 lg:px-6">
       <div className="flex flex-col md:flex-row md:items-start gap-x-6 md:gap-x-4">
         {/* Mobile: full width, sits on top. Desktop: 20% column on the left */}
         <div className="w-full md:w-1/6 flex items-center gap-2 mb-8 md:mb-0 md:self-start">
-          <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
-          <span className="text-[22px] font-medium text-foreground tracking-tight">
+          <span className="w-[12px] h-[12px] rounded-full bg-background" />
+          <span className="text-[22px] font-medium text-background tracking-tight">
             Work
           </span>
         </div>
@@ -181,7 +181,7 @@ export default function Work() {
 
               {/* Horizontal divider after every 2 thumbnails on desktop */}
               {(i + 1) % 2 === 0 && i !== displayProjects.length - 1 && (
-                <div className="hidden md:block h-px bg-background mt-12 md:mt-20" />
+                <div className="hidden md:block h-px bg-background/30 mt-12 md:mt-20" />
               )}
             </div>
           ))}
