@@ -47,12 +47,13 @@ function WorkHero() {
       <div className="absolute inset-0" />
 
       {/* "Work" title — bottom-left */}
-      <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-16">
+     <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-16">
         <motion.h1
-          initial={{ y: '100%', opacity: 0 }}
-          animate={isMounted ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[59px] lg:text-[160px] font-regular text-white tracking-tighter text-left leading-tight"
+          className="text-[40px] md:text-[72px] font-medium tracking-tighter leading-[0.9] text-white"
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           Work
         </motion.h1>
