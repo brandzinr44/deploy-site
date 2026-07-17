@@ -50,7 +50,7 @@ export default function HeroSection({ triggerAnimation = false }: HeroSectionPro
                 initial={{ y: '100%', opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[32px] md:text-[52px] font-medium tracking-tighter leading-[1] text-black text-center flex items-center justify-center flex-wrap gap-x-[0.28em]"
+                className="text-[32px] md:text-[52px] font-medium tracking-tighter leading-[1] text-background text-center flex items-center justify-center flex-wrap gap-x-[0.28em]"
               >
                 <motion.span layout="position">Brand Systems for</motion.span>
 
