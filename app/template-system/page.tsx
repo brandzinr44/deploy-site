@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import Header from '@/components/header'
 import FooterSection from '@/components/footer-section'
+import TemplateProducts from '@/components/template-products'
 
 // ─── Hero ─────────────────────────────────────────────────────────
 function TemplateSystemHero() {
@@ -65,6 +66,7 @@ export default function TemplateSystemPage() {
     <>
       <Header preloaderDone={true} />
       <TemplateSystemHero />
+      <TemplateProducts />
       <FooterSection />
     </>
   )
