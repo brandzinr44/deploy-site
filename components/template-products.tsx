@@ -59,7 +59,7 @@ const itemVariants = {
 
 export default function TemplateProducts() {
   return (
-    <section className="w-full bg-white py-16 md:py-24 px-5 lg:px-6">
+    <section className="w-full bg-foreground py-16 md:py-24 px-5 lg:px-6">
       <div className="max-w-full mx-auto">
         {/* Section Title */}
         <motion.div
