@@ -31,14 +31,14 @@ export default function FooterSection() {
 
         {/* Row 0 — Divider with tagline */}
         <motion.div
-          className="py-8 md:py-10 border-t border-background"
+          className="py-8 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={0}
           variants={rowVariants}
         >
-          <p className="md:text-[36px] text-[24px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
+          <p className="md:text-[36px] text-[18px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
         </motion.div>
 
         {/* Row 1 — Nav */}

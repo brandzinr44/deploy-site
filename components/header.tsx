@@ -45,14 +45,52 @@ function DesktopNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black overflow-hidden"
+      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black overflow-hidden h-6"
       transition={{ duration: 0.2 }}
     >
-      <div className="flex">
+      {/* Primary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -24 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
         {label.split('').map((char, index) => (
           <motion.span
             key={index}
-            initial={{ opacity: 1, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 0,
+                    y: -20,
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : index * 0.02,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Secondary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -24 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {label.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
             animate={
               isHovered
                 ? {
@@ -60,21 +98,21 @@ function DesktopNavItem({
                     y: 0,
                   }
                 : {
-                    opacity: 1,
+                    opacity: 0,
                     y: 20,
                   }
             }
             transition={{
-              delay: isHovered ? index * 0.04 : (label.length - index - 1) * 0.04,
-              duration: 0.4,
-              ease: [0.16, 1, 0.3, 1],
+              delay: isHovered ? index * 0.03 : 0,
+              duration: 0.5,
+              ease: 'easeOut',
             }}
             className="inline-block"
           >
             {char === ' ' ? '\u00A0' : char}
           </motion.span>
         ))}
-      </div>
+      </motion.div>
     </motion.button>
   )
 }
@@ -180,7 +218,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
     <>
       {/* Fixed Navbar */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-[70] w-full"
+        className="fixed top-0 left-0 right-0 z-[100] w-full"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: isHeaderVisible ? 0 : -100, opacity: isHeaderVisible ? 1 : 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
