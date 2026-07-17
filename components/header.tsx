@@ -52,7 +52,7 @@ function DesktopNavItem({
         {label.split('').map((char, index) => (
           <motion.span
             key={index}
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={
               isHovered
                 ? {
@@ -61,12 +61,12 @@ function DesktopNavItem({
                   }
                 : {
                     opacity: 1,
-                    y: 0,
+                    y: 20,
                   }
             }
             transition={{
               delay: isHovered ? index * 0.04 : (label.length - index - 1) * 0.04,
-              duration: 0.3,
+              duration: 0.4,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="inline-block"

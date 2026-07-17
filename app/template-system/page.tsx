@@ -64,23 +64,7 @@ export default function TemplateSystemPage() {
   return (
     <>
       <Header />
-      <main className="w-full bg-background">
-        <TemplateSystemHero />
-        <section className="py-20 md:py-28 px-3 lg:px-6">
-          <div className="max-w-5xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: '-80px' }}
-            >
-              <p className="text-[16px] md:text-[18px] leading-relaxed text-foreground/80">
-                Our design system provides comprehensive templates and guidelines for maintaining brand consistency across all digital and physical touchpoints. From web components to brand applications, every template is designed to work seamlessly within the Lozinr ecosystem.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-      </main>
+      <TemplateSystemHero />
       <FooterSection />
     </>
   )
