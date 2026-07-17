@@ -133,29 +133,29 @@ function AnimatedLogo() {
   
   return (
     <div ref={containerRef} className="w-full flex justify-center py-8">
-      <div className="flex gap-0 w-fit">
-        {text.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            className="text-4xl md:text-[295px] font-medium tracking-tighter text-background leading-none"
-            initial={{ y: 60, opacity: 0 }}
-            animate={
-              isInView
-                ? { y: 0, opacity: 1 }
-                : isOutOfView
-                ? { y: -60, opacity: 0 }
-                : { y: 60, opacity: 0 }
-            }
-            transition={{
-              duration: 0.6,
-              delay: index * 0.05,
-              ease: 'easeOut',
-            }}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </div>
+      <div className="flex gap-0 w-fit -translate-x-3">
+  {text.split("").map((char, index) => (
+    <motion.span
+      key={index}
+      className="text-4xl md:text-[305px] font-medium tracking-tighter text-background leading-none"
+      initial={{ y: 60, opacity: 0 }}
+      animate={
+        isInView
+          ? { y: 0, opacity: 1 }
+          : isOutOfView
+          ? { y: -60, opacity: 0 }
+          : { y: 60, opacity: 0 }
+      }
+      transition={{
+        duration: 0.6,
+        delay: index * 0.05,
+        ease: "easeOut",
+      }}
+    >
+      {char === " " ? "\u00A0" : char}
+    </motion.span>
+  ))}
+</div>
     </div>
   )
 }
