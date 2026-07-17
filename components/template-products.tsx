@@ -13,31 +13,31 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    title: 'Product One',
+    title: 'Brand Guidelines',
     image: '/work-hero.svg',
     description: 'Premium design template for modern startups',
-    cta: 'Explore',
+    cta: 'Get it',
   },
   {
     id: 2,
     title: 'Product Two',
     image: '/work-hero.svg',
     description: 'Complete system for digital agencies',
-    cta: 'Explore',
+    cta: 'Get it',
   },
   {
     id: 3,
     title: 'Product Three',
     image: '/work-hero.svg',
     description: 'Enterprise solution for large-scale projects',
-    cta: 'Explore',
+    cta: 'Get it',
   },
   {
     id: 4,
     title: 'Product Three',
     image: '/work-hero.svg',
     description: 'Enterprise solution for large-scale projects',
-    cta: 'Explore',
+    cta: 'Get it',
   },
   
 ]
@@ -106,7 +106,7 @@ export default function TemplateProducts() {
 
               {/* Product Info */}
               <div className="flex flex-col flex-1 p-4 md:p-4 bg-white">
-                <h3 className="text-[22px] md:text-[26px] font-medium tracking-tight mb-1 text-foreground">
+                <h3 className="text-[22px] md:text-[26px] font-medium tracking-tight mb-0 text-foreground">
                   {product.title}
                 </h3>
                 <p className="text-[14px] md:text-[15px] text-foreground/60 mb-5 flex-grow leading-relaxed">
