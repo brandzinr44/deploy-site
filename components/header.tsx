@@ -186,7 +186,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Background layer — fades in only between threshold from top and threshold from bottom */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-lg" />
+      <div className="absolute inset-0 bg-background" />
 
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
