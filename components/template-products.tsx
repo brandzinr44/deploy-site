@@ -74,7 +74,7 @@ export default function TemplateProducts() {
 
         {/* Products Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -84,7 +84,7 @@ export default function TemplateProducts() {
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="group flex flex-col overflow-hidden rounded-md bg-background "
+              className="group flex flex-col overflow-hidden rounded-lg bg-background "
             >
               {/* Product Image */}
               <div className="relative h-120 overflow-hidden bg-background">
