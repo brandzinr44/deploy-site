@@ -39,16 +39,22 @@ function DesktopNavItem({
   onClick: () => void
 }) {
   const [isHovered, setIsHovered] = useState(false)
+  const secondaryLabel = 'Hover'
 
   return (
     <motion.button
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black overflow-hidden"
+      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black overflow-hidden h-6"
       transition={{ duration: 0.2 }}
     >
-      <div className="flex">
+      {/* Primary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -24 : 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         {label.split('').map((char, index) => (
           <motion.span
             key={index}
@@ -56,8 +62,8 @@ function DesktopNavItem({
             animate={
               isHovered
                 ? {
-                    opacity: 1,
-                    y: 0,
+                    opacity: 0,
+                    y: -20,
                   }
                 : {
                     opacity: 1,
@@ -65,7 +71,7 @@ function DesktopNavItem({
                   }
             }
             transition={{
-              delay: isHovered ? index * 0.04 : 0,
+              delay: isHovered ? index * 0.02 : 0,
               duration: 0.4,
               ease: [0.16, 1, 0.3, 1],
             }}
@@ -74,7 +80,40 @@ function DesktopNavItem({
             {char === ' ' ? '\u00A0' : char}
           </motion.span>
         ))}
-      </div>
+      </motion.div>
+
+      {/* Secondary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -24 : 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {secondaryLabel.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.02 : 0,
+              duration: 0.4,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
     </motion.button>
   )
 }
