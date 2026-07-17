@@ -32,6 +32,13 @@ const products: Product[] = [
     description: 'Enterprise solution for large-scale projects',
     cta: 'Explore',
   },
+  {
+    id: 4,
+    title: 'Product Three',
+    image: '/work-hero.svg',
+    description: 'Enterprise solution for large-scale projects',
+    cta: 'Explore',
+  },
   
 ]
 
