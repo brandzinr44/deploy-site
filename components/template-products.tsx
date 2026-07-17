@@ -60,7 +60,7 @@ const itemVariants = {
 export default function TemplateProducts() {
   return (
     <section className="w-full bg-white py-16 md:py-24 px-5 lg:px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         {/* Section Title */}
         <motion.div
           className="mb-12 md:mb-16"
@@ -69,17 +69,12 @@ export default function TemplateProducts() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: '-100px' }}
         >
-          <h2 className="text-[36px] md:text-[52px] font-medium tracking-tight leading-tight text-foreground">
-            Our Products
-          </h2>
-          <p className="text-[16px] md:text-[18px] text-foreground/70 mt-4">
-            Explore our collection of premium templates and solutions
-          </p>
+         
         </motion.div>
 
         {/* Products Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -89,10 +84,10 @@ export default function TemplateProducts() {
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="group flex flex-col overflow-hidden rounded-lg bg-foreground/5 hover:bg-foreground/8 transition-all duration-300 border border-foreground/10"
+              className="group flex flex-col overflow-hidden rounded-md bg-foreground "
             >
               {/* Product Image */}
-              <div className="relative h-72 overflow-hidden bg-foreground/10">
+              <div className="relative h-72 overflow-hidden bg-background">
                 <img
                   src={product.image}
                   alt={product.title}
