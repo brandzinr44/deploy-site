@@ -106,10 +106,10 @@ export default function TemplateProducts() {
 
               {/* Product Info */}
               <div className="flex flex-col flex-1 p-4 md:p-4 bg-white">
-                <h3 className="text-[22px] md:text-[26px] font-medium tracking-tight mb-0 text-foreground">
+                <h3 className="text-[18px] font-medium tracking-tight mb-0 text-foreground">
                   {product.title}
                 </h3>
-                <p className="text-[14px] md:text-[15px] text-foreground/60 mb-5 flex-grow leading-relaxed">
+                <p className="text-[14px] text-foreground mb-5 flex-grow leading-tight">
                   {product.description}
                 </p>
 
