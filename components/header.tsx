@@ -39,7 +39,6 @@ function DesktopNavItem({
   onClick: () => void
 }) {
   const [isHovered, setIsHovered] = useState(false)
-  const secondaryLabel = 'Hover'
 
   return (
     <motion.button
@@ -53,7 +52,7 @@ function DesktopNavItem({
       <motion.div
         className="flex"
         animate={{ y: isHovered ? -24 : 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         {label.split('').map((char, index) => (
           <motion.span
@@ -71,9 +70,9 @@ function DesktopNavItem({
                   }
             }
             transition={{
-              delay: isHovered ? index * 0.02 : 0,
-              duration: 0.4,
-              ease: [0.16, 1, 0.3, 1],
+              delay: isHovered ? index * 0.03 : index * 0.02,
+              duration: 0.5,
+              ease: 'easeOut',
             }}
             className="inline-block"
           >
@@ -86,9 +85,9 @@ function DesktopNavItem({
       <motion.div
         className="flex"
         animate={{ y: isHovered ? -24 : 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
-        {secondaryLabel.split('').map((char, index) => (
+        {label.split('').map((char, index) => (
           <motion.span
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -104,9 +103,9 @@ function DesktopNavItem({
                   }
             }
             transition={{
-              delay: isHovered ? index * 0.02 : 0,
-              duration: 0.4,
-              ease: [0.16, 1, 0.3, 1],
+              delay: isHovered ? index * 0.03 : 0,
+              duration: 0.5,
+              ease: 'easeOut',
             }}
             className="inline-block"
           >
