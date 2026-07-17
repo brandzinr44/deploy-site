@@ -79,7 +79,7 @@ const processSteps = [
 ]
 
 const DESC_TEXT_CLASS =
-  'text-[14px] md:text-[18px] leading-snug font-normal tracking-tight text-foreground/90'
+  'text-[14px] md:text-[18px] leading-snug font-normal tracking-tight text-background'
 
 // ─── True line-by-line reveal ─────────────────────────────────────
 // Measures the ACTUAL rendered line breaks (not sentences) by laying the
@@ -171,19 +171,19 @@ function ProcessListItem({
       onMouseEnter={onSelect}
       onFocus={onSelect}
       onClick={onSelect}
-      className="relative w-full text-left py-3 md:py-4 border-b border-foreground last:border-none focus:outline-none"
+      className="relative w-full text-left py-3 md:py-4 border-b border-background last:border-none focus:outline-none"
     >
       {isActive && (
         <motion.span
           layoutId="process-active-indicator"
-          className="absolute -left-3 top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-foreground"
+          className="absolute -left-3 top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-background"
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         />
       )}
       <motion.span
         animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 6 : 0 }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        className="block text-[16px] md:text-[42px] font-medium tracking-tight leading-[1.05] text-foreground"
+        className="block text-[16px] md:text-[42px] font-medium tracking-tight leading-[1.05] text-background"
       >
         {step.title}
       </motion.span>
@@ -197,13 +197,13 @@ export default function Process() {
   const active = processSteps[activeIndex]
 
   return (
-    <div className="w-full bg-background text-foreground py-20 md:py-24 px-5 lg:px-6">
+    <div className="w-full bg-foreground text-background py-20 md:py-24 px-5 lg:px-6">
       <div className="flex flex-col md:flex-row md:items-start gap-y-8 gap-x-6 md:gap-x-6">
         {/* Left 40% — dot + label. Always full width on top for mobile,
             becomes the first column on desktop. */}
         <div className="w-full md:w-2/5 flex items-center gap-2 md:self-start">
-          <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
-          <span className="text-[22px] font-medium text-foreground tracking-tight">
+          <span className="w-[12px] h-[12px] rounded-full bg-background" />
+          <span className="text-[22px] font-medium text-background tracking-tight">
             Process
           </span>
         </div>

@@ -44,7 +44,7 @@ function WorkHero() {
       )}
 
       {/* Gradient — same as about page */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-transparent" />
+      <div className="absolute inset-0" />
 
       {/* "Work" title — bottom-left */}
       <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-16">
@@ -165,7 +165,7 @@ export default function WorkPage() {
   return (
     <>
       <Header preloaderDone={true} />
-      <main className="min-h-screen bg-background text-white">
+      <main className="min-h-screen bg-foreground text-white">
 
         {/* Hero */}
         <WorkHero />

@@ -10,7 +10,7 @@ That's the standard we hold ourselves to on every project.`
 
 export default function OurBeliefSection() {
   return (
-    <div className="w-full bg-background text-foreground py-20 md:py-28 px-5 lg:px-6">
+    <div className="w-full bg-foreground text-background py-20 md:py-28 px-5 lg:px-6">
       <div className="flex flex-col md:flex-row gap-8 md:gap-6 items-start">
         {/* Left Column: 40% on desktop, full width on mobile */}
         <motion.div
@@ -21,8 +21,8 @@ export default function OurBeliefSection() {
           className="w-full md:w-2/5 flex flex-col gap-6"
         >
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-foreground flex-shrink-0" />
-            <h2 className="text-[22px] font-medium text-foreground tracking-tight">
+            <span className="w-3 h-3 rounded-full bg-background flex-shrink-0" />
+            <h2 className="text-[22px] font-medium text-background tracking-tight">
               {OUR_BELIEF_TEXT}
             </h2>
           </div>
@@ -36,7 +36,7 @@ export default function OurBeliefSection() {
           viewport={{ once: true, margin: '-100px' }}
           className="w-full md:w-3/5"
         >
-          <p className="text-[24px] leading-tight tracking-tight text-foreground font-regular">
+          <p className="text-[24px] leading-tight tracking-tight text-background font-regular">
             {BELIEF_DESCRIPTION}
           </p>
         </motion.div>
