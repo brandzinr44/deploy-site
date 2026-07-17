@@ -111,7 +111,7 @@ function TiltCard({
           className="cursor-pointer"
         >
           <div
-            className="relative w-full overflow-hidden bg-foreground/10"
+            className="relative w-full overflow-hidden bg-background"
             style={{ aspectRatio: '16/9' }}
           >
             <Image
