@@ -38,14 +38,43 @@ function DesktopNavItem({
   isActive: boolean
   onClick: () => void
 }) {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
     <motion.button
       onClick={onClick}
-      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black"
-      whileHover={{ x: 4 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black overflow-hidden"
       transition={{ duration: 0.2 }}
     >
-      {label}
+      <div className="flex">
+        {label.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 1, y: 0 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.04 : (label.length - index - 1) * 0.04,
+              duration: 0.3,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </div>
     </motion.button>
   )
 }
@@ -116,8 +145,8 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
-  const navLinks = ['Work', 'Contact']
-  const desktopNavLinks = ['Work', 'Contact']
+  const navLinks = ['Work', 'Template System', 'Contact']
+  const desktopNavLinks = ['Work', 'Template System', 'Contact']
 
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
@@ -127,6 +156,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
   const handleNavClick = (link: string) => {
     if (link === 'Home') router.push('/')
     else if (link === 'Work') router.push('/work')
+    else if (link === 'Template System') router.push('/template-system')
     else if (link === 'Contact') window.open(CONTACT_LINK, '_blank', 'noopener,noreferrer')
   }
 
@@ -181,7 +211,8 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
             {desktopNavLinks.map((link) => {
               const isActive =
                 (link === 'Home'     && pathname === '/')         ||
-                (link === 'Work'     && pathname === '/work')
+                (link === 'Work'     && pathname === '/work')     ||
+                (link === 'Template System' && pathname === '/template-system')
               return (
                 <DesktopNavItem
                   key={link}
