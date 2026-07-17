@@ -171,12 +171,12 @@ function ProcessListItem({
       onMouseEnter={onSelect}
       onFocus={onSelect}
       onClick={onSelect}
-      className="relative w-full text-left py-3 md:py-4 border-b border-foreground last:border-none focus:outline-none"
+      className="relative w-full text-left py-3 md:py-4 border-b border-background last:border-none focus:outline-none"
     >
       {isActive && (
         <motion.span
           layoutId="process-active-indicator"
-          className="absolute -left-3 top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-foreground"
+          className="absolute -left-3 top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-background"
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         />
       )}
