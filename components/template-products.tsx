@@ -17,9 +17,9 @@ const products: Product[] = [
     id: 1,
     title: 'Brand Guidelines',
     image: '/work-hero.svg',
-    description: 'Premium design template for modern startups',
+    description: 'Brand Guidelines System - Professional Figma Template',
     cta: 'Get it',
-    link: '/brand-guidelines',
+    link: 'https://adnaanakif.gumroad.com/l/brandguidelinessystem',
   },
   {
     id: 2,
