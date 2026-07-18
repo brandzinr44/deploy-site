@@ -132,7 +132,7 @@ function AnimatedLogo() {
   const text = 'Lozinr Studio'
   
   return (
-    <div ref={containerRef} className="w-full flex justify-center py-8">
+    <div ref={containerRef} className="w-full flex justify-center py-0">
       <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-1">
   {text.split("").map((char, index) => (
     <motion.span
@@ -165,11 +165,11 @@ export default function FooterSection() {
 
   return (
     <footer className="relative w-full bg-foreground">
-      <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-10 md:pb-14">
+      <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-1 md:pb-4">
 
         {/* Row 0 — Divider with tagline */}
         <motion.div
-          className="py-8 md:py-10"
+          className="py-3 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
@@ -181,7 +181,7 @@ export default function FooterSection() {
 
         {/* Row 1 — Nav */}
         <motion.div
-          className="grid grid-cols-2 py-8 md:py-4"
+          className="grid grid-cols-2 py-3 md:py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
@@ -204,7 +204,7 @@ export default function FooterSection() {
 
         {/* Row 2 — Social */}
         <motion.div
-          className="grid grid-cols-2 border-t border-background py-8 md:py-10"
+          className="grid grid-cols-2 border-t border-background py-3 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
@@ -229,7 +229,7 @@ export default function FooterSection() {
 
         {/* Row 3 — Address */}
         <motion.div
-          className="grid grid-cols-2 border-t border-background py-8 md:py-10"
+          className="grid grid-cols-2 border-t border-background py-3 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
@@ -254,7 +254,7 @@ export default function FooterSection() {
       </div>
 
       {/* Logo - Full width container */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-5 md:py-5 bg-foreground">
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-0 bg-foreground">
         <AnimatedLogo />
       </div>
     </footer>

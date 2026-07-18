@@ -21,7 +21,7 @@ function TemplateSystemHero() {
 
   useEffect(() => { setIsMounted(true) }, [])
 
-  const heroImage = '/work-hero.svg'
+  const heroImage = '/template-hero.jpg'
 
   return (
     <div
@@ -43,7 +43,7 @@ function TemplateSystemHero() {
       )}
 
       {/* Gradient */}
-      <div className="absolute inset-0" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* "Template System" title — bottom-left */}
       <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-8">
