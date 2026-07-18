@@ -132,7 +132,7 @@ function AnimatedLogo() {
   const text = 'Lozinr Studio'
   
   return (
-    <div ref={containerRef} className="w-full flex justify-center py-2">
+    <div ref={containerRef} className="w-full flex justify-center py-0">
       <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-1">
   {text.split("").map((char, index) => (
     <motion.span
@@ -254,7 +254,7 @@ export default function FooterSection() {
       </div>
 
       {/* Logo - Full width container */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-5 md:py-5 bg-foreground">
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-0 bg-foreground">
         <AnimatedLogo />
       </div>
     </footer>
