@@ -165,7 +165,7 @@ export default function FooterSection() {
 
   return (
     <footer className="relative w-full bg-foreground">
-      <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-10 md:pb-6">
+      <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-10 md:pb-4">
 
         {/* Row 0 — Divider with tagline */}
         <motion.div
