@@ -21,7 +21,7 @@ function TemplateSystemHero() {
 
   useEffect(() => { setIsMounted(true) }, [])
 
-  const heroImage = '/work-hero.svg'
+  const heroImage = '/template-hero.jpg'
 
   return (
     <div
