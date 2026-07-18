@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 interface Product {
   id: number
@@ -8,6 +9,7 @@ interface Product {
   image: string
   description: string
   cta: string
+  link: string
 }
 
 const products: Product[] = [
@@ -17,6 +19,7 @@ const products: Product[] = [
     image: '/work-hero.svg',
     description: 'Premium design template for modern startups',
     cta: 'Get it',
+    link: '/brand-guidelines',
   },
   {
     id: 2,
@@ -24,6 +27,7 @@ const products: Product[] = [
     image: '/work-hero.svg',
     description: 'Complete system for digital agencies',
     cta: 'Get it',
+    link: '/product-two',
   },
   {
     id: 3,
@@ -31,13 +35,15 @@ const products: Product[] = [
     image: '/work-hero.svg',
     description: 'Enterprise solution for large-scale projects',
     cta: 'Get it',
+    link: '/product-three',
   },
   {
     id: 4,
-    title: 'Product Three',
+    title: 'Product Four',
     image: '/work-hero.svg',
     description: 'Enterprise solution for large-scale projects',
     cta: 'Get it',
+    link: '/product-four',
   },
   
 ]
@@ -89,61 +95,63 @@ export default function TemplateProducts() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {products.map((product) => (
-            <motion.div
-              key={product.id}
-              variants={itemVariants}
-              className="group flex flex-col overflow-hidden rounded-[30px] bg-background "
-            >
-              {/* Product Image */}
-              <div className="relative h-80 overflow-hidden bg-background">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-" />
-              </div>
+            <Link key={product.id} href={product.link} className="h-full">
+              <motion.div
+                variants={itemVariants}
+                className="group flex flex-col overflow-hidden rounded-[30px] bg-background h-full"
+              >
+                {/* Product Image */}
+                <div className="relative h-80 overflow-hidden bg-background">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-" />
+                </div>
 
-              {/* Product Info */}
-              <div className="flex flex-col flex-1 p-4 md:p-4 bg-white">
-                <h3 className="text-[18px] font-medium tracking-tight mb-0 text-foreground">
-                  {product.title}
-                </h3>
-                <p className="text-[14px] text-foreground mb-5 flex-grow leading-tight">
-                  {product.description}
-                </p>
+                {/* Product Info */}
+                <div className="flex flex-col flex-1 p-4 md:p-4 bg-white">
+                  <h3 className="text-[18px] font-medium tracking-tight mb-0 text-foreground">
+                    {product.title}
+                  </h3>
+                  <p className="text-[14px] text-foreground mb-5 flex-grow leading-tight">
+                    {product.description}
+                  </p>
 
-                {/* CTA Button */}
-<motion.button
-  className="w-full inline-flex items-center justify-center gap-1 px-6 py-3 bg-foreground text-white font-medium rounded-full hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
-  whileHover={{ y: -2 }}
-  whileTap={{ y: 0 }}
->
-  <span>{product.cta}</span>
+                  {/* CTA Button */}
+                  <motion.button
+                    className="w-full inline-flex items-center justify-center gap-1 px-6 py-3 bg-foreground text-white font-medium rounded-full hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ y: 0 }}
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <span>{product.cta}</span>
 
-  <svg
-    className="w-7 h-7 transition-transform duration-300 group-hover:translate-x-1"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M5 12H18"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-    <path
-      d="M13 7L18 12L13 17"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-</motion.button>
-              </div>
-            </motion.div>
+                    <svg
+                      className="w-7 h-7 transition-transform duration-300 group-hover:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 12H18"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M13 7L18 12L13 17"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </motion.button>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
       </div>
