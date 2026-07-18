@@ -132,7 +132,7 @@ function AnimatedLogo() {
   const text = 'Lozinr Studio'
   
   return (
-    <div ref={containerRef} className="w-full flex justify-center py-8">
+    <div ref={containerRef} className="w-full flex justify-center py-2">
       <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-1">
   {text.split("").map((char, index) => (
     <motion.span
