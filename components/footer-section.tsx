@@ -254,7 +254,7 @@ export default function FooterSection() {
       </div>
 
       {/* Logo - Full width container */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-8 lg:px-16 py-0 bg-foreground">
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-0 bg-foreground">
         <AnimatedLogo />
       </div>
     </footer>
