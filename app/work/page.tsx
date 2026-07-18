@@ -44,7 +44,7 @@ function WorkHero() {
       )}
 
       {/* Gradient — same as about page */}
-      <div className="absolute inset-0" />
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* "Work" title — bottom-left */}
      <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-8">
