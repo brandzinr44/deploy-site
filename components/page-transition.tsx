@@ -12,6 +12,7 @@ interface PageTransitionProps {
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
   const [showPreloader, setShowPreloader] = useState(true)
+  const [showWebReveal, setShowWebReveal] = useState(true)
 
   useEffect(() => {
     // Only show preloader on first page load (not on subsequent navigations)
@@ -20,6 +21,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
       const hasShownPreloader = sessionStorage.getItem('preloaderShown')
       if (hasShownPreloader) {
         setShowPreloader(false)
+        setShowWebReveal(false)
       } else {
         sessionStorage.setItem('preloaderShown', 'true')
       }
@@ -30,6 +32,29 @@ export default function PageTransition({ children }: PageTransitionProps) {
     <>
       {/* Preloader on first load */}
       {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+
+      {/* Web reveal animation - background shutter slides up on initial load */}
+      <AnimatePresence>
+        {showWebReveal && (
+          <motion.div
+            aria-hidden
+            className="fixed inset-0 z-[9999] bg-background pointer-events-none"
+            initial={{ y: 0 }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ 
+              duration: 0.9, 
+              delay: 0.3,
+              ease: [0.76, 0, 0.24, 1] 
+            }}
+            onAnimationComplete={() => {
+              if (showWebReveal) {
+                setShowWebReveal(false)
+              }
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Page transition overlay */}
       <AnimatePresence initial={false}>

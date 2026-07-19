@@ -166,7 +166,7 @@ export default function WorkPage() {
   return (
     <>
       <Header preloaderDone={true} />
-      <main className="min-h-screen bg-foreground text-white">
+      <main className="min-h-screen bg-background text-white">
 
         {/* Hero */}
         <WorkHero />
