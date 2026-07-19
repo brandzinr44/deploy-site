@@ -32,7 +32,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     <AnimatePresence>
       {isActive && (
         <motion.div
-          className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-bg-background flex flex-col items-center justify-center overflow-hidden"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -76,7 +76,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
           {/* Background slide up to reveal content */}
           <motion.div
-            className="absolute inset-0 bg-white"
+            className="absolute inset-0 bg-bg-background"
             initial={{ y: 0 }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
