@@ -66,10 +66,10 @@ export default function PageTransition({ children }: PageTransitionProps) {
               <motion.img
                 src="/lozinr-wordmark.png"
                 alt="Lozinr Studio"
-                className="h-16 md:h-20 w-auto object-contain"
-                initial={{ y: 100, opacity: 0 }}
+                className="h-32 md:h-48 w-auto object-contain"
+                initial={{ y: 150, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -100, opacity: 0 }}
+                exit={{ y: -150, opacity: 0 }}
                 transition={{
                   y: {
                     duration: 0.8,
