@@ -36,23 +36,55 @@ export default function PageTransition({ children }: PageTransitionProps) {
       {/* Web reveal animation - background shutter slides up on initial load */}
       <AnimatePresence>
         {showWebReveal && (
-          <motion.div
-            aria-hidden
-            className="fixed inset-0 z-[9999] bg-background pointer-events-none"
-            initial={{ y: 0 }}
-            animate={{ y: 0 }}
-            exit={{ y: '-100%' }}
-            transition={{ 
-              duration: 0.9, 
-              delay: 0.3,
-              ease: [0.76, 0, 0.24, 1] 
-            }}
-            onAnimationComplete={() => {
-              if (showWebReveal) {
-                setShowWebReveal(false)
-              }
-            }}
-          />
+          <>
+            {/* White background overlay */}
+            <motion.div
+              aria-hidden
+              className="fixed inset-0 z-[9999] bg-white pointer-events-none"
+              initial={{ y: 0 }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              transition={{ 
+                duration: 1.1, 
+                delay: 0.5,
+                ease: [0.76, 0, 0.24, 1] 
+              }}
+              onAnimationComplete={() => {
+                if (showWebReveal) {
+                  setShowWebReveal(false)
+                }
+              }}
+            />
+            
+            {/* Logo animation - slides up then exits with background */}
+            <motion.div
+              aria-hidden
+              className="fixed inset-0 z-[10000] flex items-center justify-center pointer-events-none"
+              initial={{ pointerEvents: 'none' }}
+              exit={{ pointerEvents: 'none' }}
+            >
+              <motion.img
+                src="/lozinr-wordmark.png"
+                alt="Lozinr Studio"
+                className="h-16 md:h-20 w-auto object-contain"
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -100, opacity: 0 }}
+                transition={{
+                  y: {
+                    duration: 0.8,
+                    delay: 0.4,
+                    ease: [0.76, 0, 0.24, 1]
+                  },
+                  opacity: {
+                    duration: 0.6,
+                    delay: 0.4,
+                    ease: 'easeOut'
+                  }
+                }}
+              />
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
