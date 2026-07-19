@@ -38,7 +38,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
         {showWebReveal && (
           <motion.div
             aria-hidden
-            className="fixed inset-0 z-[9999] bg-foreground pointer-events-none"
+            className="fixed inset-0 z-[9999] bg-white pointer-events-none"
             initial={{ y: 0 }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
