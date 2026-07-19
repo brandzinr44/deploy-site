@@ -56,12 +56,19 @@ export default function PageTransition({ children }: PageTransitionProps) {
               }}
             />
             
-            {/* Logo animation - slides up then exits with background */}
+            {/* Logo animation - slides up from bottom to center */}
             <motion.div
               aria-hidden
               className="fixed inset-0 z-[10000] flex items-center justify-center pointer-events-none"
-              initial={{ pointerEvents: 'none' }}
-              exit={{ pointerEvents: 'none' }}
+              initial={{ opacity: 1 }}
+              exit={{ y: '-100%', opacity: 1 }}
+              transition={{
+                exit: {
+                  duration: 1.1,
+                  delay: 0.5,
+                  ease: [0.76, 0, 0.24, 1]
+                }
+              }}
             >
               <motion.img
                 src="/lozinr-wordmark.png"
@@ -69,7 +76,6 @@ export default function PageTransition({ children }: PageTransitionProps) {
                 className="h-32 md:h-48 w-auto object-contain"
                 initial={{ y: 150, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -150, opacity: 0 }}
                 transition={{
                   y: {
                     duration: 0.8,
