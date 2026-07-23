@@ -309,7 +309,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
             </div>
 
             {/* Desktop Left Nav */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-3">
               <DesktopNavItem label="Features" isActive={false} />
               <DesktopNavItem label="Store" isActive={false} />
             </div>
