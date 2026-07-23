@@ -40,7 +40,7 @@ function DesktopNavItem({
     <motion.button
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`text-[22px] font-normal tracking-tight overflow-hidden h-[40px] transition-colors duration-200 ${
+      className={`text-[22px] font-normal tracking-tight overflow-hidden h-[30px] transition-colors duration-200 ${
         isActive ? 'text-[#C4714F]' : 'text-foreground'
       }`}
     >
