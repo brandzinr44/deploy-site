@@ -207,9 +207,24 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
 
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
-          {/* Logo */}
+          {/* Left: Features + Store Nav */}
           <motion.div
-            className="flex-shrink-0 cursor-pointer z-[80]"
+            className="flex items-center gap-6 flex-shrink-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: preloaderDone ? 1 : 0 }}
+            transition={{ duration: 0.18, delay: preloaderDone ? 0.05 : 0 }}
+          >
+            <button className="text-[24px] font-medium tracking-tight text-foreground hover:text-[#C4714F] transition-colors duration-300">
+              Features
+            </button>
+            <button className="text-[24px] font-medium tracking-tight text-foreground hover:text-[#C4714F] transition-colors duration-300">
+              Store
+            </button>
+          </motion.div>
+
+          {/* Center: Logo */}
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 flex-shrink-0 cursor-pointer z-[80]"
             onClick={() => router.push('/')}
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
@@ -218,25 +233,39 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
             <Logo />
           </motion.div>
 
-          {/* Hamburger Menu — also acts as the close button while menu is open */}
-          <motion.button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="flex flex-col gap-1 cursor-pointer w-7 h-7 justify-center items-center flex-shrink-0 ml-auto z-[80]"
+          {/* Right: Store Icon + Hamburger */}
+          <motion.div
+            className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80]"
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
             transition={{ duration: 0.4, delay: preloaderDone ? 0.1 : 0 }}
           >
-            <motion.span
-              className={`w-7 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
-              animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className={`w-7 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
-              animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.button>
+            {/* Store Icon */}
+            <button className="flex items-center justify-center w-7 h-7 flex-shrink-0">
+              <svg className="w-6 h-6 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+            </button>
+
+            {/* Hamburger Menu — also acts as the close button while menu is open */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="flex flex-col gap-1.5 cursor-pointer w-7 h-7 justify-center items-center flex-shrink-0 z-[80]"
+            >
+              <motion.span
+                className={`w-6 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
+                animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span
+                className={`w-6 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
+                animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </button>
+          </motion.div>
         </div>
       </motion.header>
 
