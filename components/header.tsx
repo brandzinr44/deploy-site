@@ -397,7 +397,7 @@ export default function Header() {
               transition={{ duration: 0.2, delay: 0.25 }}
             >
               {/* Left Column — SVG Logo */}
-              <div className="flex-1 border-r border-foreground/20 flex items-start justify-left pt-8 px-6">
+              <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6">
                 <img
                   src="/menu-logo.svg"
                   alt="Menu Logo"
@@ -406,7 +406,7 @@ export default function Header() {
               </div>
 
               {/* Middle Column — Navigation */}
-              <div className="flex-1 border-r border-foreground/20 flex flex-col justify-between py-8 px-6">
+              <div className="flex-1 border-r border-foreground flex flex-col justify-between py-8 px-6">
                 {/* Navigation Items — Top, Left-Aligned */}
                 <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
                   {navLinks.map((link, index) => {
