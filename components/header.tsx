@@ -323,7 +323,7 @@ export default function Header() {
 
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
-  { name: 'X', link: 'https://x.com/adnaanakif' },
+  { name: 'Twitter', link: 'https://x.com/adnaanakif' },
   ]
 
   const handleNavClick = (link: string) => {
