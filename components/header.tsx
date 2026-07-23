@@ -351,7 +351,7 @@ export default function Header() {
       {/* Fixed Hamburger Button (always visible) */}
       {isMenuOpen && (
         <motion.div
-          className="fixed top-3 right-3 lg:top-4 lg:right-6 z-[101]"
+          className="fixed top-3 right-3 lg:top-5 lg:right-6 z-[101]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -401,7 +401,7 @@ export default function Header() {
                 <img
                   src="/menu-logo.svg"
                   alt="Menu Logo"
-                  className="h-90 w-auto"
+                  className="h-70 w-auto"
                 />
               </div>
 
