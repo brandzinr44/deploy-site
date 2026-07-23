@@ -135,7 +135,7 @@ function MobileNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`text-[60px] font-medium tracking-tighter leading-[0.9em] overflow-hidden h-[60px] transition-colors duration-200 ${
+      className={`text-[79px] font-medium tracking-tighter leading-[0.5em] overflow-hidden h-[90px] transition-colors duration-200 ${
         isActive ? 'text-[#C4714F]' : 'text-foreground'
       }`}
       initial={{ opacity: 0, y: -20 }}
