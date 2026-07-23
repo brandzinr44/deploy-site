@@ -158,31 +158,29 @@ function SocialLinkWithAnimation({
 
   return (
     <motion.a
-      href={social.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="overflow-hidden flex-shrink-0"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      onClick={onClose}
-    >
-      <motion.div
-        animate={{ y: isHovered ? -32 : 0 }}
-        transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-      >
-        {/* Primary Button */}
-        <div className="h-8 flex items-center">
-          <ButtonContent variant="primary" />
-        </div>
-        {/* Secondary Button — revealed on hover */}
-        <div className="h-8 flex items-center">
-          <ButtonContent variant="secondary" />
-        </div>
-      </motion.div>
-    </motion.a>
+  href={social.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="overflow-hidden flex-shrink-0 h-8"
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+  initial={{ opacity: 0, y: 16 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+  onClick={onClose}
+>
+  <motion.div
+    animate={{ y: isHovered ? -32 : 0 }}
+    transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+  >
+    <div className="h-8 flex items-center">
+      <ButtonContent variant="primary" />
+    </div>
+    <div className="h-8 flex items-center">
+      <ButtonContent variant="secondary" />
+    </div>
+  </motion.div>
+</motion.a>
   )
 }
 
