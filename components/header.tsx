@@ -247,7 +247,7 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
-  const navLinks = ['Work', 'Contact', 'Template System']
+  const navLinks = ['Work', 'Contact', 'Store']
 
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
