@@ -270,9 +270,12 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
 
   const Logo = () => (
     <img
-      src="/artboard-logo.svg"
+      src="/wordmark.svg"
       alt="Lozinr"
-      className={`h-8 md:h-10 w-auto transition-colors duration-300 ${mobileLogoColor} ${desktopLogoColor}`}
+      className={`h-4 md:h-6 w-auto transition-colors duration-300 ${mobileLogoColor} ${desktopLogoColor}`}
+      style={{
+        filter: 'invert(1)',
+      }}
     />
   )
 
@@ -285,50 +288,62 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
         animate={{ y: isHeaderVisible ? 0 : -100, opacity: isHeaderVisible ? 1 : 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Background layer */}
-        <div className="absolute inset-0 bg-background" />
+        {/* Background layer — fades in only between threshold from top and threshold from bottom */}
+      <div className="absolute inset-0 bg-background" />
 
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
-          {/* LEFT: Logo Section */}
+          {/* Mobile: Left Logo | Desktop: Left Features + Store Nav */}
           <motion.div
-            className="flex items-center flex-shrink-0"
+            className="flex items-center gap-6 flex-shrink-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
             transition={{ duration: 0.18, delay: preloaderDone ? 0.05 : 0 }}
           >
+            {/* Mobile Logo */}
             <div
-              className="flex-shrink-0 cursor-pointer"
+              className="md:hidden flex-shrink-0 cursor-pointer"
               onClick={() => router.push('/')}
             >
               <Logo />
             </div>
+
+            {/* Desktop Left Nav */}
+            <div className="hidden md:flex items-center gap-1">
+              <DesktopNavItem label="Features," isActive={false} />
+              <DesktopNavItem label="Store," isActive={false} />
+              <DesktopNavItem label="Jobs" isActive={false} />
+            </div>
           </motion.div>
 
-          {/* MIDDLE: Navigation */}
+          {/* Center: Logo (Desktop Only) */}
           <motion.div
-            className="hidden md:flex items-center gap-8 flex-1 justify-center"
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 flex-shrink-0 cursor-pointer z-[80]"
+            onClick={() => router.push('/')}
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
             transition={{ duration: 0.18, delay: preloaderDone ? 0.05 : 0 }}
           >
-            <DesktopNavItem label="Home" isActive={false} />
-            <DesktopNavItem label="Features" isActive={false} />
-            <DesktopNavItem label="Store" isActive={false} />
-            <DesktopNavItem label="Jobs" isActive={false} />
-            <DesktopNavItem label="Directory" isActive={false} />
-            <DesktopNavItem label="About" isActive={false} />
-            <DesktopNavItem label="Submit" isActive={false} />
+            <Logo />
           </motion.div>
 
-          {/* RIGHT: Empty for now (kept for balance) */}
+          {/* Right: Store Icon + Hamburger */}
           <motion.div
-            className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80] md:hidden"
+            className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80]"
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
             transition={{ duration: 0.4, delay: preloaderDone ? 0.1 : 0 }}
           >
-            {/* Hamburger Menu — mobile only */}
+            {/* Store Icon */}
+            <button className="flex items-center justify-center w-7 h-7 flex-shrink-0">
+              <svg className="w-6 h-6 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+            </button>
+
+            {/* Hamburger Menu — also acts as the close button while menu is open */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="flex flex-col gap-1 cursor-pointer w-10 h-10 justify-center items-center flex-shrink-0 z-[80]"
