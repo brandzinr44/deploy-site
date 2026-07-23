@@ -272,7 +272,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
     <img
       src="/wordmark.svg"
       alt="Lozinr"
-      className={`h-4 md:h-5 w-auto transition-colors duration-300 ${mobileLogoColor} ${desktopLogoColor}`}
+      className={`h-4 md:h-6 w-auto transition-colors duration-300 ${mobileLogoColor} ${desktopLogoColor}`}
       style={{
         filter: 'invert(1)',
       }}
