@@ -283,7 +283,7 @@ export default function Header() {
       <motion.header
         className="fixed top-0 left-0 right-0 z-[100] w-full"
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: isHeaderVisible ? 0 : -100, opacity: isHeaderVisible ? 1 : 0 }}
+        animate={{ y: isHeaderVisible && !isMenuOpen ? 0 : -100, opacity: isHeaderVisible && !isMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Background layer — fades in only between threshold from top and threshold from bottom */}
@@ -331,7 +331,7 @@ export default function Header() {
             {/* Hamburger Menu — also acts as the close button while menu is open */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex flex-col gap-1 cursor-pointer w-10 h-10 justify-center items-center flex-shrink-0 z-[80]"
+              className="flex flex-col gap-1 cursor-pointer w-10 h-10 justify-center items-center flex-shrink-0 z-[100]"
             >
               <motion.span
                 className={`w-9 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
@@ -347,6 +347,33 @@ export default function Header() {
           </div>
         </div>
       </motion.header>
+
+      {/* Fixed Hamburger Button (always visible) */}
+      {isMenuOpen && (
+        <motion.div
+          className="fixed top-3 right-3 lg:top-4 lg:right-6 z-[101]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2, delay: 0.25 }}
+        >
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex flex-col gap-1 cursor-pointer w-10 h-10 justify-center items-center flex-shrink-0"
+          >
+            <motion.span
+              className={`w-9 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
+              animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className={`w-9 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
+              animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </button>
+        </motion.div>
+      )}
 
       {/* Mobile Full Screen Menu — Slide Down */}
       <AnimatePresence>
