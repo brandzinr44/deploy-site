@@ -361,63 +361,71 @@ export default function Header() {
               transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
             />
 
-            {/* Content layer */}
+            {/* Content layer — 3 Column Grid Layout */}
             <motion.div
-              className="fixed inset-0 z-[61] flex flex-col items-center justify-center"
+              className="fixed inset-0 z-[61] flex items-stretch"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, delay: 0.25 }}
             >
-              {/* Nav Links */}
-              <div className="flex flex-col items-center justify-center gap-0" style={{ lineHeight: '0.85' }}>
-                {navLinks.map((link, index) => {
-                  const isActive =
-                    (link === 'Home'     && pathname === '/')         ||
-                    (link === 'Work'     && pathname === '/work')     ||
-                    (link === 'Services' && pathname === '/services') ||
-                    (link === 'About'    && pathname === '/about')
-                  return (
-                    <MobileNavItem
-                      key={link}
-                      label={link}
-                      isActive={isActive}
-                      delay={0.28 + index * 0.07}
-                      isMenuOpen={isMenuOpen}
-                      onClick={() => {
-                        setIsMenuOpen(false)
-                        handleNavClick(link)
-                      }}
-                    />
-                  )
-                })}
+              {/* Left Column — Empty */}
+              <div className="flex-1 border-r border-foreground/20" />
+
+              {/* Middle Column — Navigation */}
+              <div className="flex-1 border-r border-foreground/20 flex flex-col items-center justify-start pt-32">
+                <div className="flex flex-col items-center justify-start gap-0" style={{ lineHeight: '0.85' }}>
+                  {navLinks.map((link, index) => {
+                    const isActive =
+                      (link === 'Home'     && pathname === '/')         ||
+                      (link === 'Work'     && pathname === '/work')     ||
+                      (link === 'Services' && pathname === '/services') ||
+                      (link === 'About'    && pathname === '/about')
+                    return (
+                      <MobileNavItem
+                        key={link}
+                        label={link}
+                        isActive={isActive}
+                        delay={0.28 + index * 0.07}
+                        isMenuOpen={isMenuOpen}
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          handleNavClick(link)
+                        }}
+                      />
+                    )
+                  })}
+                </div>
+
+                {/* Social Links — Bottom of Middle Column */}
+                <div className="absolute bottom-8 left-1/3 transform -translate-x-1/2 flex flex-col items-center gap-3">
+                  {socialLinks.map((social, index) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 group"
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1">
+                        {social.name}
+                      </span>
+                      <span className="w-7 h-7 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-foreground" viewBox="0 0 10 10" fill="none">
+                          <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </motion.a>
+                  ))}
+                </div>
               </div>
 
-              {/* Social Links */}
-              <div className="absolute bottom-8 left-0 right-0 flex items-center justify-center gap-3">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 group"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1">
-                      {social.name}
-                    </span>
-                    <span className="w-7 h-7 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3 h-3 text-foreground" viewBox="0 0 10 10" fill="none">
-                        <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                  </motion.a>
-                ))}
-              </div>
+              {/* Right Column — Empty */}
+              <div className="flex-1" />
             </motion.div>
           </>
         )}
