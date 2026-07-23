@@ -396,13 +396,19 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, delay: 0.25 }}
             >
-              {/* Left Column — Empty */}
-              <div className="flex-1 border-r border-foreground/20" />
+              {/* Left Column — SVG Logo */}
+              <div className="flex-1 border-r border-foreground/20 flex items-start justify-center pt-32">
+                <img
+                  src="/menu-logo.svg"
+                  alt="Menu Logo"
+                  className="h-32 w-auto"
+                />
+              </div>
 
               {/* Middle Column — Navigation */}
               <div className="flex-1 border-r border-foreground/20 flex flex-col justify-between py-32 px-6">
                 {/* Navigation Items — Top, Left-Aligned */}
-                <div className="flex flex-col items-start justify-start gap-0" style={{ lineHeight: '0.85' }}>
+                <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
                   {navLinks.map((link, index) => {
                     const isActive =
                       (link === 'Home'     && pathname === '/')         ||
