@@ -115,7 +115,7 @@ export default function TemplateProducts() {
                   {/* Add to Bag overlay — slides down from top on hover */}
                   <div className="absolute top-0 left-0 right-0 overflow-hidden">
                     <button
-                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground/80 text-white text-[13px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground/80 text-white text-[16px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       onClick={(e) => e.preventDefault()}
                     >
                       <span>Add to Bag</span>
@@ -126,13 +126,13 @@ export default function TemplateProducts() {
 
                 {/* Product Info — below thumbnail, uniform text sizes */}
                 <div className="flex flex-col pt-3 gap-1">
-                  <h3 className="text-[15px] font-medium tracking-tight text-black leading-tight">
+                  <h3 className="text-[16px] font-regular tracking-tight text-black leading-tight">
                     {product.title}
                   </h3>
-                  <p className="text-[15px] font-normal text-black leading-tight">
+                  <p className="text-[16px] font-regular text-black leading-tight">
                     {product.description}
                   </p>
-                  <p className="text-[15px] font-normal text-black leading-snug">
+                  <p className="text-[16px] font-regular text-black leading-snug">
                     {product.price}
                   </p>
                 </div>
