@@ -29,6 +29,92 @@ const SCROLL_THRESHOLD_MOBILE = 1200
 
 
 
+function DesktopNavItem({
+  label,
+  isActive,
+}: {
+  label: string
+  isActive: boolean
+}) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <motion.button
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`text-[24px] font-medium tracking-tight overflow-hidden h-[28px] transition-colors duration-200 ${
+        isActive ? 'text-[#C4714F]' : 'text-foreground'
+      }`}
+    >
+      {/* Primary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -28 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {label.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 1, y: 0 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 0,
+                    y: -20,
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : index * 0.02,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Secondary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -28 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {label.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : 0,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
+    </motion.button>
+  )
+}
+
 function MobileNavItem({
   label,
   isActive,
@@ -207,24 +293,31 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
 
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
-          {/* Left: Features + Store Nav */}
+          {/* Mobile: Left Logo | Desktop: Left Features + Store Nav */}
           <motion.div
             className="flex items-center gap-6 flex-shrink-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
             transition={{ duration: 0.18, delay: preloaderDone ? 0.05 : 0 }}
           >
-            <button className="text-[24px] font-medium tracking-tight text-foreground hover:text-[#C4714F] transition-colors duration-300">
-              Features
-            </button>
-            <button className="text-[24px] font-medium tracking-tight text-foreground hover:text-[#C4714F] transition-colors duration-300">
-              Store
-            </button>
+            {/* Mobile Logo */}
+            <div
+              className="md:hidden flex-shrink-0 cursor-pointer"
+              onClick={() => router.push('/')}
+            >
+              <Logo />
+            </div>
+
+            {/* Desktop Left Nav */}
+            <div className="hidden md:flex items-center gap-8">
+              <DesktopNavItem label="Features" isActive={false} />
+              <DesktopNavItem label="Store" isActive={false} />
+            </div>
           </motion.div>
 
-          {/* Center: Logo */}
+          {/* Center: Logo (Desktop Only) */}
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 flex-shrink-0 cursor-pointer z-[80]"
+            className="hidden md:block absolute left-1/2 -translate-x-1/2 flex-shrink-0 cursor-pointer z-[80]"
             onClick={() => router.push('/')}
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
