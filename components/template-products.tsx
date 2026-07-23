@@ -77,7 +77,7 @@ const itemVariants = {
 
 export default function TemplateProducts() {
   return (
-    <section className="w-full bg-foreground py-16 md:py-24 px-5 lg:px-6">
+    <section className="w-full bg-background py-16 md:py-24 px-5 lg:px-6">
       <div className="max-w-full mx-auto">
         {/* Section Title */}
         <motion.div
@@ -92,7 +92,7 @@ export default function TemplateProducts() {
 
         {/* Products Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
