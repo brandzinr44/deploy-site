@@ -4,9 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter, usePathname } from 'next/navigation'
 
-interface HeaderProps {
-  preloaderDone?: boolean
-}
+
 
 // ─── Typography Scale (Inter — entire website) ───────────────────────────────
 // H1  : text-[40px] md:text-[72px] font-semibold tracking-tighter
@@ -211,7 +209,7 @@ function MobileNavItem({
   )
 }
 
-export default function Header({ preloaderDone = false }: HeaderProps) {
+export default function Header() {
   const router = useRouter()
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -294,12 +292,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
           {/* Mobile: Left Logo | Desktop: Left Features + Store Nav */}
-          <motion.div
-            className="flex items-center gap-6 flex-shrink-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: preloaderDone ? 1 : 0 }}
-            transition={{ duration: 0.18, delay: preloaderDone ? 0.05 : 0 }}
-          >
+          <div className="flex items-center gap-6 flex-shrink-0">
             {/* Mobile Logo */}
             <div
               className="md:hidden flex-shrink-0 cursor-pointer"
@@ -314,26 +307,18 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
               <DesktopNavItem label="Store," isActive={false} />
               <DesktopNavItem label="Jobs" isActive={false} />
             </div>
-          </motion.div>
+          </div>
 
           {/* Center: Logo (Desktop Only) */}
-          <motion.div
+          <div
             className="hidden md:block absolute left-1/2 -translate-x-1/2 flex-shrink-0 cursor-pointer z-[80]"
             onClick={() => router.push('/')}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: preloaderDone ? 1 : 0 }}
-            transition={{ duration: 0.18, delay: preloaderDone ? 0.05 : 0 }}
           >
             <Logo />
-          </motion.div>
+          </div>
 
           {/* Right: Store Icon + Hamburger */}
-          <motion.div
-            className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: preloaderDone ? 1 : 0 }}
-            transition={{ duration: 0.4, delay: preloaderDone ? 0.1 : 0 }}
-          >
+          <div className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80]">
             {/* Store Icon */}
             <button className="flex items-center justify-center w-7 h-7 flex-shrink-0">
               <svg className="w-6 h-6 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -359,7 +344,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
                 transition={{ duration: 0.3 }}
               />
             </button>
-          </motion.div>
+          </div>
         </div>
       </motion.header>
 
