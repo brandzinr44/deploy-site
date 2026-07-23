@@ -18,8 +18,8 @@ const products: Product[] = [
     id: 1,
     title: 'Brand Guidelines',
     image: 'https://pipu74e1kouytary.private.blob.vercel-storage.com/brnd.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfUGlQdTc0ZTFLb3V5dGFyeSIsIm93bmVySWQiOiJ0ZWFtX2RubXEwWnNRNkdHZ0tjNmczcVNGcnU3ZiIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzg0Mzg2MjU5MTg3LCJpYXQiOjE3ODQzNDMwNTkzNTN9.KFNp7hKShdSGKwuPiTowTy3H2xNSzYkyeDZm7lrUPGA&vercel-blob-signature=vVAb_pANFws4XpJz4_Bc67N8bGW7Qi6vU8uMAMJ0ykE',
-    description: 'Brand Guidelines System - Professional Figma Template',
-    price: '$800',
+    description: 'Showcase Mockups',
+    price: 'From $800',
     cta: 'Get it',
     link: 'https://adnaanakif.gumroad.com/l/brandguidelinessystem',
   },
@@ -27,8 +27,8 @@ const products: Product[] = [
     id: 2,
     title: 'Product Two',
     image: '/work-hero.svg',
-    description: 'Complete system for digital agencies',
-    price: '$49',
+    description: 'Showcase Mockups',
+    price: 'From $49',
     cta: 'Get it',
     link: '/product-two',
   },
@@ -36,8 +36,8 @@ const products: Product[] = [
     id: 3,
     title: 'Product Three',
     image: '/work-hero.svg',
-    description: 'Enterprise solution for large-scale projects',
-    price: '$99',
+    description: 'Showcase Mockups',
+    price: 'From $99',
     cta: 'Get it',
     link: '/product-three',
   },
@@ -45,8 +45,8 @@ const products: Product[] = [
     id: 4,
     title: 'Product Four',
     image: '/work-hero.svg',
-    description: 'Enterprise solution for large-scale projects',
-    price: '$149',
+    description: 'Showcase Mockups',
+    price: 'From $149',
     cta: 'Get it',
     link: '/product-four',
   },
@@ -104,8 +104,8 @@ export default function TemplateProducts() {
                 variants={itemVariants}
                 className="group flex flex-col h-full"
               >
-                {/* Product Thumbnail — 16:9, no border */}
-                <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-background">
+                {/* Product Thumbnail — 16:9, no border, no rounding */}
+                <div className="relative w-full aspect-video overflow-hidden bg-background">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -113,13 +113,8 @@ export default function TemplateProducts() {
                   />
 
                   {/* Add to Bag overlay — slides down from top on hover */}
-                  <motion.div
-                    className="absolute top-0 left-0 right-0 overflow-hidden"
-                    initial={{ y: '-100%' }}
-                    whileHover={{}}
-                    variants={{}}
-                  >
-                    <motion.button
+                  <div className="absolute top-0 left-0 right-0 overflow-hidden">
+                    <button
                       className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground text-white text-[13px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       onClick={(e) => e.preventDefault()}
                     >
@@ -144,19 +139,19 @@ export default function TemplateProducts() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </motion.button>
-                  </motion.div>
+                    </button>
+                  </div>
                 </div>
 
-                {/* Product Info — below thumbnail, no card bg */}
-                <div className="flex flex-col pt-3">
-                  <h3 className="text-[15px] font-medium tracking-tight text-white">
+                {/* Product Info — below thumbnail, uniform text sizes */}
+                <div className="flex flex-col pt-3 gap-1">
+                  <h3 className="text-[15px] font-medium tracking-tight text-white leading-snug">
                     {product.title}
                   </h3>
-                  <p className="text-[13px] text-white/60 mt-0.5 leading-snug">
+                  <p className="text-[15px] font-normal text-white/70 leading-snug">
                     {product.description}
                   </p>
-                  <p className="text-[14px] font-medium text-white mt-1.5">
+                  <p className="text-[15px] font-normal text-white/70 leading-snug">
                     {product.price}
                   </p>
                 </div>
