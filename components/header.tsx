@@ -124,12 +124,44 @@ function SocialLinkWithAnimation({
 }) {
   const [isHovered, setIsHovered] = useState(false)
 
+  const ButtonContent = ({ variant }: { variant: 'primary' | 'secondary' }) => {
+    const isPrimary = variant === 'primary'
+    return (
+      <div className="flex items-center gap-1 flex-shrink-0">
+        <span
+          className={`text-[11px] md:text-[12px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] flex items-center border ${
+            isPrimary
+              ? 'text-foreground border-foreground/40 bg-transparent'
+              : 'text-background border-foreground bg-foreground'
+          }`}
+        >
+          {social.name}
+        </span>
+        <span
+          className={`w-7 h-7 rounded-full border flex items-center justify-center flex-shrink-0 ${
+            isPrimary
+              ? 'border-foreground/40 bg-transparent'
+              : 'border-foreground bg-foreground'
+          }`}
+        >
+          <svg
+            className={`w-3 h-3 ${isPrimary ? 'text-foreground' : 'text-background'}`}
+            viewBox="0 0 10 10"
+            fill="none"
+          >
+            <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </div>
+    )
+  }
+
   return (
     <motion.a
       href={social.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-1 group flex-shrink-0"
+      className="overflow-hidden flex-shrink-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 16 }}
@@ -137,51 +169,19 @@ function SocialLinkWithAnimation({
       transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       onClick={onClose}
     >
-      {/* Social Name with Letter Animation */}
-      <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1 whitespace-nowrap overflow-hidden h-[24px] flex items-center">
-        <motion.div className="flex" animate={{ y: isHovered ? -24 : 0 }} transition={{ duration: 0.4 }}>
-          <div className="flex">
-            {social.name.split('').map((char, idx) => (
-              <motion.span
-                key={idx}
-                initial={{ opacity: 1, y: 0 }}
-                animate={isHovered ? { opacity: 0, y: -16 } : { opacity: 1, y: 0 }}
-                transition={{
-                  delay: isHovered ? idx * 0.03 : 0,
-                  duration: 0.4,
-                  ease: 'easeOut',
-                }}
-                className="inline-block"
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
-            ))}
-          </div>
-          <div className="flex">
-            {social.name.split('').map((char, idx) => (
-              <motion.span
-                key={idx}
-                initial={{ opacity: 0, y: 16 }}
-                animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                transition={{
-                  delay: isHovered ? idx * 0.03 : 0,
-                  duration: 0.4,
-                  ease: 'easeOut',
-                }}
-                className="inline-block"
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-      </span>
-
-      <span className="w-7 h-7 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0">
-        <svg className="w-3 h-3 text-foreground" viewBox="0 0 10 10" fill="none">
-          <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
+      <motion.div
+        animate={{ y: isHovered ? -32 : 0 }}
+        transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+      >
+        {/* Primary Button */}
+        <div className="h-8 flex items-center">
+          <ButtonContent variant="primary" />
+        </div>
+        {/* Secondary Button — revealed on hover */}
+        <div className="h-8 flex items-center">
+          <ButtonContent variant="secondary" />
+        </div>
+      </motion.div>
     </motion.a>
   )
 }
