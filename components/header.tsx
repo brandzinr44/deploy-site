@@ -343,11 +343,11 @@ export default function Header() {
     <>
       {/* Fixed Navbar */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-[100] w-full"
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: isHeaderVisible && !isMenuOpen ? 0 : -100, opacity: isHeaderVisible && !isMenuOpen ? 1 : 0 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      >
+  className="fixed top-0 left-0 right-0 z-[100] w-full"
+  initial={{ y: 0, opacity: 1 }}
+  animate={{ y: isMenuOpen ? -100 : 0, opacity: isMenuOpen ? 0 : 1 }}
+  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+>
         {/* Background layer — fades in only between threshold from top and threshold from bottom */}
       <div className="absolute inset-0 bg-background" />
 
