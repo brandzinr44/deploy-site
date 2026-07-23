@@ -133,7 +133,7 @@ function MobileNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`text-[79px] font-medium tracking-tighter leading-[0.5em] overflow-hidden h-[90px] transition-colors duration-200 ${
+      className={`text-[79px] font-medium tracking-tighter leading-[0.5em] overflow-hidden h-[70px] transition-colors duration-200 ${
         isActive ? 'text-[#C4714F]' : 'text-foreground'
       }`}
       initial={{ opacity: 0, y: -20 }}
@@ -176,7 +176,7 @@ function MobileNavItem({
       {/* Secondary Text */}
       <motion.div
         className="flex"
-        animate={{ y: isHovered ? -60 : 0 }}
+        animate={{ y: isHovered ? -28 : 0 }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         {label.split('').map((char, index) => (
