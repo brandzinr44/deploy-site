@@ -109,7 +109,7 @@ export default function TemplateProducts() {
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover"
                   />
 
                   {/* Add to Bag overlay — slides down from top on hover */}
