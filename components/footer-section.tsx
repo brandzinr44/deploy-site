@@ -137,7 +137,7 @@ function AnimatedLogo() {
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[clamp(65px,18vw,305px)] font-medium tracking-tighter text-background leading-none"
+      className="text-[clamp(65px,18vw,305px)] font-medium tracking-tighter text-foreground leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
@@ -164,7 +164,7 @@ export default function FooterSection() {
 
 
   return (
-    <footer className="relative w-full bg-foreground">
+    <footer className="relative w-full bg-background">
       <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-1 md:pb-4">
 
         {/* Row 0 — Divider with tagline */}
@@ -176,7 +176,7 @@ export default function FooterSection() {
           custom={0}
           variants={rowVariants}
         >
-          <p className="md:text-[36px] text-[18px] text-background font-medium tracking-tight">Built for founders who think long term.</p>
+          <p className="md:text-[36px] text-[18px] text-foreground font-medium tracking-tight">Built for founders who think long term.</p>
         </motion.div>
 
         {/* Row 1 — Nav */}
@@ -188,13 +188,13 @@ export default function FooterSection() {
           custom={1}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-background font-medium">Nav</span>
+          <span className="text-[16px] text-foreground font-medium">Nav</span>
           <nav className="flex flex-col gap-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[16px] text-background underline underline-offset-4 decoration-background w-fit"
+                className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
               >
                 <AnimatedText text={link.name} />
               </a>
@@ -204,14 +204,14 @@ export default function FooterSection() {
 
         {/* Row 2 — Social */}
         <motion.div
-          className="grid grid-cols-2 border-t border-background py-3 md:py-10"
+          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={2}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-background font-medium">Social</span>
+          <span className="text-[16px] text-foreground font-medium">Social</span>
           <div className="flex flex-col gap-0">
             {socialLinks.map((link) => (
               <a
@@ -219,7 +219,7 @@ export default function FooterSection() {
                 href={link.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[16px] text-background underline underline-offset-4 decoration-background w-fit"
+                className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
               >
                 <AnimatedText text={link.name} />
               </a>
@@ -229,22 +229,22 @@ export default function FooterSection() {
 
         {/* Row 3 — Address */}
         <motion.div
-          className="grid grid-cols-2 border-t border-background py-3 md:py-10"
+          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={3}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-background font-medium">Address</span>
+          <span className="text-[16px] text-foreground font-medium">Address</span>
           <div>
             <a
               href="mailto:adnan.lozinr@gmail.com"
-              className="text-[16px] text-background underline underline-offset-4 decoration-background block mb-3 w-fit"
+              className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
             >
               <AnimatedText text="Start a project" />
             </a>
-            <p className="text-[16px] text-background leading-snug">
+            <p className="text-[16px] text-foreground leading-snug">
               Based in Bangladesh<br />
               Working Worldwide.
             </p>
@@ -254,7 +254,7 @@ export default function FooterSection() {
       </div>
 
       {/* Logo - Full width container */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-0 bg-foreground">
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-5 lg:px-6 py-0 bg-background">
         <AnimatedLogo />
       </div>
     </footer>
