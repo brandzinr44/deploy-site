@@ -310,8 +310,9 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
 
             {/* Desktop Left Nav */}
             <div className="hidden md:flex items-center gap-3">
-              <DesktopNavItem label="Features" isActive={false} />
-              <DesktopNavItem label="Store" isActive={false} />
+              <DesktopNavItem label="Features," isActive={false} />
+              <DesktopNavItem label="Store," isActive={false} />
+              <DesktopNavItem label="Jobs" isActive={false} />
             </div>
           </motion.div>
 
