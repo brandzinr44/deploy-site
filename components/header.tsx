@@ -461,7 +461,7 @@ export default function Header() {
               {/* Mobile Single Column — Stacked with Dividers */}
 <div className="md:hidden flex flex-col w-full h-full">
   {/* Top — SVG Logo */}
-  <div className="flex-1 border-b border-foreground flex items-start justify-start pt-8 px-6 overflow-hidden">
+  <div className="flex-1 border-b border-foreground flex items-start justify-start pt-14 px-4 lg:pt-8 lg:px-6 overflow-hidden">
     <motion.img
       src="/menu-logo.svg"
       alt="Menu Logo"
@@ -474,7 +474,7 @@ export default function Header() {
   </div>
 
   {/* Middle — Nav + Social Links */}
-  <div className="flex-1 border-b border-foreground flex flex-col justify-between py-8 px-6">
+  <div className="flex-1 border-b border-foreground flex flex-col justify-between py-8 px-4 lg:px-6">
     {/* Navigation Items — Top, Left-Aligned */}
     <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
       {navLinks.map((link, index) => {
