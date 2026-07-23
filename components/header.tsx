@@ -80,7 +80,7 @@ function DesktopNavItem({
       {/* Secondary Text */}
       <motion.div
         className="flex"
-        animate={{ y: isHovered ? -28 : 0 }}
+        animate={{ y: isHovered ? -33 : 0 }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         {label.split('').map((char, index) => (
