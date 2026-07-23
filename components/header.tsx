@@ -458,44 +458,63 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, delay: 0.25 }}
             >
-              {/* Mobile Single Column — Full Width */}
-              <div className="md:hidden flex flex-col items-start justify-start w-full py-20 px-6 gap-12">
-                {/* Navigation Items — Top, Left-Aligned */}
-                <div className="flex flex-col items-start justify-start w-full" style={{ lineHeight: '0.7' }}>
-                  {navLinks.map((link, index) => {
-                    const isActive =
-                      (link === 'Home'     && pathname === '/')         ||
-                      (link === 'Work'     && pathname === '/work')     ||
-                      (link === 'Services' && pathname === '/services') ||
-                      (link === 'About'    && pathname === '/about')
-                    return (
-                      <MobileNavItem
-                        key={link}
-                        label={link}
-                        isActive={isActive}
-                        delay={0.28 + index * 0.07}
-                        isMenuOpen={isMenuOpen}
-                        onClick={() => {
-                          setIsMenuOpen(false)
-                          handleNavClick(link)
-                        }}
-                      />
-                    )
-                  })}
-                </div>
+              {/* Mobile Single Column — Stacked with Dividers */}
+<div className="md:hidden flex flex-col w-full h-full">
+  {/* Top — SVG Logo */}
+  <div className="flex-1 border-b border-foreground flex items-start justify-start pt-8 px-6 overflow-hidden">
+    <motion.img
+      src="/menu-logo.svg"
+      alt="Menu Logo"
+      className="h-32 w-auto"
+      initial={{ clipPath: 'inset(0 0 100% 0)' }}
+      animate={{ clipPath: 'inset(0 0 0% 0)' }}
+      exit={{ clipPath: 'inset(0 0 100% 0)' }}
+      transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
+    />
+  </div>
 
-                {/* Social Links — Bottom, Single Row */}
-                <div className="flex flex-row items-center gap-3 flex-wrap">
-                  {socialLinks.map((social, index) => (
-                    <SocialLinkWithAnimation
-                      key={social.name}
-                      social={social}
-                      index={index}
-                      onClose={() => setIsMenuOpen(false)}
-                    />
-                  ))}
-                </div>
-              </div>
+  {/* Middle — Nav + Social Links */}
+  <div className="flex-1 border-b border-foreground flex flex-col justify-between py-8 px-6">
+    {/* Navigation Items — Top, Left-Aligned */}
+    <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
+      {navLinks.map((link, index) => {
+        const isActive =
+          (link === 'Home'     && pathname === '/')         ||
+          (link === 'Work'     && pathname === '/work')     ||
+          (link === 'Services' && pathname === '/services') ||
+          (link === 'About'    && pathname === '/about')
+        return (
+          <MobileNavItem
+            key={link}
+            label={link}
+            isActive={isActive}
+            delay={0.28 + index * 0.07}
+            isMenuOpen={isMenuOpen}
+            onClick={() => {
+              setIsMenuOpen(false)
+              handleNavClick(link)
+            }}
+          />
+        )
+      })}
+    </div>
+
+    {/* Social Links — Bottom, Single Row */}
+    <div className="flex flex-row items-center gap-3 flex-wrap">
+      {socialLinks.map((social, index) => (
+        <SocialLinkWithAnimation
+          key={social.name}
+          social={social}
+          index={index}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      ))}
+    </div>
+  </div>
+
+  {/* Bottom — Empty */}
+  <div className="flex-1" />
+</div>
 
               {/* Desktop 3-Column Layout */}
               <div className="hidden md:flex inset-0 w-full items-stretch">
