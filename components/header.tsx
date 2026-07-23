@@ -510,7 +510,7 @@ export default function Header() {
               {/* Desktop 3-Column Layout */}
               <div className="hidden md:flex inset-0 w-full items-stretch">
                 {/* Left Column — SVG Logo */}
-                <div className="flex-1 border-r border-foreground flex items-start justify-center pt-8 px-6">
+                <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6">
                   <img
                     src="/menu-logo.svg"
                     alt="Menu Logo"
