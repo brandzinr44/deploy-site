@@ -309,7 +309,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
             </div>
 
             {/* Desktop Left Nav */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-1">
               <DesktopNavItem label="Features," isActive={false} />
               <DesktopNavItem label="Store," isActive={false} />
               <DesktopNavItem label="Jobs" isActive={false} />
@@ -346,15 +346,15 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
             {/* Hamburger Menu — also acts as the close button while menu is open */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex flex-col gap-1.5 cursor-pointer w-7 h-7 justify-center items-center flex-shrink-0 z-[80]"
+              className="flex flex-col gap-1 cursor-pointer w-10 h-10 justify-center items-center flex-shrink-0 z-[80]"
             >
               <motion.span
-                className={`w-6 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
+                className={`w-9 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
                 animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3 }}
               />
               <motion.span
-                className={`w-6 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
+                className={`w-9 h-0.5 ${hamburgerColor} rounded-full origin-center transition-colors duration-300`}
                 animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3 }}
               />
