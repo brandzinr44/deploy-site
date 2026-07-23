@@ -113,6 +113,79 @@ function DesktopNavItem({
   )
 }
 
+function SocialLinkWithAnimation({
+  social,
+  index,
+  onClose,
+}: {
+  social: { name: string; link: string }
+  index: number
+  onClose: () => void
+}) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <motion.a
+      href={social.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-1 group flex-shrink-0"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      onClick={onClose}
+    >
+      {/* Social Name with Letter Animation */}
+      <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1 whitespace-nowrap overflow-hidden h-[24px] flex items-center">
+        <motion.div className="flex" animate={{ y: isHovered ? -24 : 0 }} transition={{ duration: 0.4 }}>
+          <div className="flex">
+            {social.name.split('').map((char, idx) => (
+              <motion.span
+                key={idx}
+                initial={{ opacity: 1, y: 0 }}
+                animate={isHovered ? { opacity: 0, y: -16 } : { opacity: 1, y: 0 }}
+                transition={{
+                  delay: isHovered ? idx * 0.03 : 0,
+                  duration: 0.4,
+                  ease: 'easeOut',
+                }}
+                className="inline-block"
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </div>
+          <div className="flex">
+            {social.name.split('').map((char, idx) => (
+              <motion.span
+                key={idx}
+                initial={{ opacity: 0, y: 16 }}
+                animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                transition={{
+                  delay: isHovered ? idx * 0.03 : 0,
+                  duration: 0.4,
+                  ease: 'easeOut',
+                }}
+                className="inline-block"
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+      </span>
+
+      <span className="w-7 h-7 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0">
+        <svg className="w-3 h-3 text-foreground" viewBox="0 0 10 10" fill="none">
+          <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    </motion.a>
+  )
+}
+
 function MobileNavItem({
   label,
   isActive,
@@ -133,9 +206,8 @@ function MobileNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`text-[79px] font-regular tracking-tighter leading-[0.5em] overflow-hidden h-[70px] transition-colors duration-200 ${
-        isActive ? 'text-[#C4714F]' : 'text-foreground'
-      }`}
+      className={`text-[79px] font-bold tracking-tighter leading-[0.5em] overflow-hidden h-[70px] transition-colors duration-200 text-foreground`}
+      style={{ fontFamily: 'var(--font-display)' }}
       initial={{ opacity: 0, y: -20 }}
       animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
       transition={{ delay, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -396,19 +468,10 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, delay: 0.25 }}
             >
-              {/* Left Column — SVG Logo */}
-              <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6">
-                <img
-                  src="/menu-logo.svg"
-                  alt="Menu Logo"
-                  className="h-70 w-auto"
-                />
-              </div>
-
-              {/* Middle Column — Navigation */}
-              <div className="flex-1 border-r border-foreground flex flex-col justify-between py-8 px-6">
+              {/* Mobile Single Column — Full Width */}
+              <div className="md:hidden flex flex-col items-start justify-start w-full py-20 px-6 gap-12">
                 {/* Navigation Items — Top, Left-Aligned */}
-                <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
+                <div className="flex flex-col items-start justify-start w-full" style={{ lineHeight: '0.7' }}>
                   {navLinks.map((link, index) => {
                     const isActive =
                       (link === 'Home'     && pathname === '/')         ||
@@ -432,34 +495,71 @@ export default function Header() {
                 </div>
 
                 {/* Social Links — Bottom, Single Row */}
-                <div className="flex flex-row items-center gap-3 flex-nowrap">
+                <div className="flex flex-row items-center gap-3 flex-wrap">
                   {socialLinks.map((social, index) => (
-                    <motion.a
+                    <SocialLinkWithAnimation
                       key={social.name}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 group flex-shrink-0"
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1 whitespace-nowrap">
-                        {social.name}
-                      </span>
-                      <span className="w-7 h-7 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-3 h-3 text-foreground" viewBox="0 0 10 10" fill="none">
-                          <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                    </motion.a>
+                      social={social}
+                      index={index}
+                      onClose={() => setIsMenuOpen(false)}
+                    />
                   ))}
                 </div>
               </div>
 
-              {/* Right Column — Empty */}
-              <div className="flex-1" />
+              {/* Desktop 3-Column Layout */}
+              <div className="hidden md:flex inset-0 w-full items-stretch">
+                {/* Left Column — SVG Logo */}
+                <div className="flex-1 border-r border-foreground flex items-start justify-center pt-8 px-6">
+                  <img
+                    src="/menu-logo.svg"
+                    alt="Menu Logo"
+                    className="h-70 w-auto"
+                  />
+                </div>
+
+                {/* Middle Column — Navigation */}
+                <div className="flex-1 border-r border-foreground flex flex-col justify-between py-8 px-6">
+                  {/* Navigation Items — Top, Left-Aligned */}
+                  <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
+                    {navLinks.map((link, index) => {
+                      const isActive =
+                        (link === 'Home'     && pathname === '/')         ||
+                        (link === 'Work'     && pathname === '/work')     ||
+                        (link === 'Services' && pathname === '/services') ||
+                        (link === 'About'    && pathname === '/about')
+                      return (
+                        <MobileNavItem
+                          key={link}
+                          label={link}
+                          isActive={isActive}
+                          delay={0.28 + index * 0.07}
+                          isMenuOpen={isMenuOpen}
+                          onClick={() => {
+                            setIsMenuOpen(false)
+                            handleNavClick(link)
+                          }}
+                        />
+                      )
+                    })}
+                  </div>
+
+                  {/* Social Links — Bottom, Single Row */}
+                  <div className="flex flex-row items-center gap-3 flex-nowrap">
+                    {socialLinks.map((social, index) => (
+                      <SocialLinkWithAnimation
+                        key={social.name}
+                        social={social}
+                        index={index}
+                        onClose={() => setIsMenuOpen(false)}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Column — Empty */}
+                <div className="flex-1" />
+              </div>
             </motion.div>
           </>
         )}
