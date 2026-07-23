@@ -202,50 +202,50 @@ function MobileNavItem({
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <motion.button
+    <button
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`text-[79px] font-regular tracking-tighter leading-[0.5em] overflow-hidden h-[70px] transition-colors duration-200 text-foreground`}
       style={{ fontFamily: 'var(--font-display)' }}
-      initial={{ opacity: 0, y: -20 }}
-      animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-      transition={{ delay, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Primary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -60 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 1, y: 0 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 0,
-                    y: -20,
-                  }
-                : {
-                    opacity: 1,
-                    y: 0,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : index * 0.02,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
+      {/* Primary Text — wrapped for reveal animation */}
+      <div className="overflow-hidden">
+        <motion.div
+          className="flex"
+          initial={{ clipPath: 'inset(0 0 100% 0)' }}
+          animate={{
+            clipPath: isMenuOpen ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)',
+            y: isHovered ? -60 : 0,
+          }}
+          transition={{
+            clipPath: { duration: 0.6, delay, ease: [0.76, 0, 0.24, 1] },
+            y: { duration: 0.6, ease: 'easeInOut' },
+          }}
+        >
+          {label.split('').map((char, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 1, y: 0 }}
+              animate={
+                isHovered
+                  ? { opacity: 0, y: -20 }
+                  : { opacity: 1, y: 0 }
+              }
+              transition={{
+                delay: isHovered ? index * 0.03 : index * 0.02,
+                duration: 0.5,
+                ease: 'easeOut',
+              }}
+              className="inline-block"
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </motion.span>
+          ))}
+        </motion.div>
+      </div>
 
-      {/* Secondary Text */}
+      {/* Secondary Text — unchanged, hover only */}
       <motion.div
         className="flex"
         animate={{ y: isHovered ? -28 : 0 }}
@@ -257,14 +257,8 @@ function MobileNavItem({
             initial={{ opacity: 0, y: 20 }}
             animate={
               isHovered
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: 20,
-                  }
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 20 }
             }
             transition={{
               delay: isHovered ? index * 0.03 : 0,
@@ -277,7 +271,7 @@ function MobileNavItem({
           </motion.span>
         ))}
       </motion.div>
-    </motion.button>
+    </button>
   )
 }
 
