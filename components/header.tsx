@@ -171,7 +171,7 @@ function SocialLinkWithAnimation({
 >
   <motion.div
     animate={{ y: isHovered ? -32 : 0 }}
-    transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+    transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
   >
     <div className="h-8 flex items-center">
       <ButtonContent variant="primary" />
