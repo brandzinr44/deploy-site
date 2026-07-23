@@ -29,94 +29,6 @@ const SCROLL_THRESHOLD_MOBILE = 1200
 
 
 
-function DesktopNavItem({
-  label,
-  isActive,
-  onClick,
-}: {
-  label: string
-  isActive: boolean
-  onClick: () => void
-}) {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <motion.button
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="text-[14px] md:text-[16px] font-medium tracking-tight transition-colors duration-300 text-foreground md:text-black overflow-hidden h-6"
-      transition={{ duration: 0.2 }}
-    >
-      {/* Primary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -24 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 1, y: 0 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 0,
-                    y: -20,
-                  }
-                : {
-                    opacity: 1,
-                    y: 0,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : index * 0.02,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
-
-      {/* Secondary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -24 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: 20,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : 0,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
-    </motion.button>
-  )
-}
-
 function MobileNavItem({
   label,
   isActive,
@@ -251,8 +163,7 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
-  const navLinks = ['Work',  'Contact', 'Template System']
-  const desktopNavLinks = ['Work',  'Contact', 'Template System']
+  const navLinks = ['Work', 'Contact', 'Template System']
 
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
@@ -307,33 +218,10 @@ export default function Header({ preloaderDone = false }: HeaderProps) {
             <Logo />
           </motion.div>
 
-          {/* Desktop Nav */}
-          <motion.div
-            className="hidden md:flex items-center gap-8 ml-auto"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: preloaderDone ? 1 : 0, y: preloaderDone ? 0 : -8 }}
-            transition={{ duration: 0.5, delay: preloaderDone ? 0.12 : 0, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {desktopNavLinks.map((link) => {
-              const isActive =
-                (link === 'Home'     && pathname === '/')         ||
-                (link === 'Work'     && pathname === '/work')     ||
-                (link === 'Template System' && pathname === '/template-system')
-              return (
-                <DesktopNavItem
-                  key={link}
-                  label={link}
-                  isActive={isActive}
-                  onClick={() => handleNavClick(link)}
-                />
-              )
-            })}
-          </motion.div>
-
-          {/* Mobile Hamburger — also acts as the close button while menu is open */}
+          {/* Hamburger Menu — also acts as the close button while menu is open */}
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden flex flex-col gap-1 cursor-pointer w-7 h-7 justify-center items-center flex-shrink-0 ml-auto z-[80]"
+            className="flex flex-col gap-1 cursor-pointer w-7 h-7 justify-center items-center flex-shrink-0 ml-auto z-[80]"
             initial={{ opacity: 0 }}
             animate={{ opacity: preloaderDone ? 1 : 0 }}
             transition={{ duration: 0.4, delay: preloaderDone ? 0.1 : 0 }}
