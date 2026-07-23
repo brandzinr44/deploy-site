@@ -206,7 +206,7 @@ function MobileNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`text-[79px] font-bold tracking-tighter leading-[0.5em] overflow-hidden h-[70px] transition-colors duration-200 text-foreground`}
+      className={`text-[79px] font-regular tracking-tighter leading-[0.5em] overflow-hidden h-[70px] transition-colors duration-200 text-foreground`}
       style={{ fontFamily: 'var(--font-display)' }}
       initial={{ opacity: 0, y: -20 }}
       animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
