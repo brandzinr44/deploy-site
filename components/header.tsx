@@ -510,13 +510,17 @@ export default function Header() {
               {/* Desktop 3-Column Layout */}
               <div className="hidden md:flex inset-0 w-full items-stretch">
                 {/* Left Column — SVG Logo */}
-                <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6">
-                  <img
-                    src="/menu-logo.svg"
-                    alt="Menu Logo"
-                    className="h-70 w-auto"
-                  />
-                </div>
+                <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6 overflow-hidden">
+  <motion.img
+    src="/menu-logo.svg"
+    alt="Menu Logo"
+    className="h-70 w-auto"
+    initial={{ clipPath: 'inset(0 0 100% 0)' }}
+    animate={{ clipPath: 'inset(0 0 0% 0)' }}
+    exit={{ clipPath: 'inset(0 0 100% 0)' }}
+    transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
+  />
+</div>
 
                 {/* Middle Column — Navigation */}
                 <div className="flex-1 border-r border-foreground flex flex-col justify-between py-8 px-6">
