@@ -130,17 +130,85 @@ function MobileNavItem({
   isMenuOpen: boolean
   onClick: () => void
 }) {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
     <motion.button
       onClick={onClick}
-      className={`text-[60px] font-medium tracking-tighter leading-[0.9em] transition-colors duration-200 ${
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`text-[60px] font-medium tracking-tighter leading-[0.9em] overflow-hidden h-[60px] transition-colors duration-200 ${
         isActive ? 'text-[#C4714F]' : 'text-foreground'
       }`}
       initial={{ opacity: 0, y: -20 }}
       animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
       transition={{ delay, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
-      {label}
+      {/* Primary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -60 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {label.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 1, y: 0 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 0,
+                    y: -20,
+                  }
+                : {
+                    opacity: 1,
+                    y: 0,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : index * 0.02,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Secondary Text */}
+      <motion.div
+        className="flex"
+        animate={{ y: isHovered ? -60 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {label.split('').map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isHovered
+                ? {
+                    opacity: 1,
+                    y: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                  }
+            }
+            transition={{
+              delay: isHovered ? index * 0.03 : 0,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            className="inline-block"
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </motion.span>
+        ))}
+      </motion.div>
     </motion.button>
   )
 }
