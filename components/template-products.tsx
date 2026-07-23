@@ -119,36 +119,17 @@ export default function TemplateProducts() {
                       onClick={(e) => e.preventDefault()}
                     >
                       <span>Add to Bag</span>
-                      <svg
-                        className="w-4 h-4"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5 12H18"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M13 7L18 12L13 17"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      
                     </button>
                   </div>
                 </div>
 
                 {/* Product Info — below thumbnail, uniform text sizes */}
                 <div className="flex flex-col pt-3 gap-1">
-                  <h3 className="text-[15px] font-medium tracking-tight text-black leading-snug">
+                  <h3 className="text-[15px] font-medium tracking-tight text-black leading-tight">
                     {product.title}
                   </h3>
-                  <p className="text-[15px] font-normal text-black leading-snug">
+                  <p className="text-[15px] font-normal text-black leading-tight">
                     {product.description}
                   </p>
                   <p className="text-[15px] font-normal text-black leading-snug">
