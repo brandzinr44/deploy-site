@@ -147,7 +147,7 @@ function AnimatedLogo() {
           : { y: 60, opacity: 0 }
       }
       transition={{
-        duration: 0.6,
+        duration: 0.3,
         delay: index * 0.05,
         ease: "easeOut",
       }}

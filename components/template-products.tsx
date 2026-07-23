@@ -8,6 +8,7 @@ interface Product {
   title: string
   image: string
   description: string
+  price: string
   cta: string
   link: string
 }
@@ -16,8 +17,9 @@ const products: Product[] = [
   {
     id: 1,
     title: 'Brand Guidelines',
-    image: 'https://pipu74e1kouytary.private.blob.vercel-storage.com/brnd.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfUGlQdTc0ZTFLb3V5dGFyeSIsIm93bmVySWQiOiJ0ZWFtX2RubXEwWnNRNkdHZ0tjNmczcVNGcnU3ZiIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzg0Mzg2MjU5MTg3LCJpYXQiOjE3ODQzNDMwNTkzNTN9.KFNp7hKShdSGKwuPiTowTy3H2xNSzYkyeDZm7lrUPGA&vercel-blob-signature=vVAb_pANFws4XpJz4_Bc67N8bGW7Qi6vU8uMAMJ0ykE',
-    description: 'Brand Guidelines System - Professional Figma Template',
+    image: '/work-hero.svg',
+    description: 'Showcase Mockups',
+    price: 'From $19',
     cta: 'Get it',
     link: 'https://adnaanakif.gumroad.com/l/brandguidelinessystem',
   },
@@ -25,7 +27,8 @@ const products: Product[] = [
     id: 2,
     title: 'Product Two',
     image: '/work-hero.svg',
-    description: 'Complete system for digital agencies',
+    description: 'Showcase Mockups',
+    price: 'From $49',
     cta: 'Get it',
     link: '/product-two',
   },
@@ -33,7 +36,8 @@ const products: Product[] = [
     id: 3,
     title: 'Product Three',
     image: '/work-hero.svg',
-    description: 'Enterprise solution for large-scale projects',
+    description: 'Showcase Mockups',
+    price: 'From $99',
     cta: 'Get it',
     link: '/product-three',
   },
@@ -41,11 +45,11 @@ const products: Product[] = [
     id: 4,
     title: 'Product Four',
     image: '/work-hero.svg',
-    description: 'Enterprise solution for large-scale projects',
+    description: 'Showcase Mockups',
+    price: 'From $149',
     cta: 'Get it',
     link: '/product-four',
   },
-  
 ]
 
 const containerVariants = {
@@ -73,7 +77,7 @@ const itemVariants = {
 
 export default function TemplateProducts() {
   return (
-    <section className="w-full bg-foreground py-16 md:py-24 px-5 lg:px-6">
+    <section className="w-full bg-background py-16 md:py-24 px-5 lg:px-6">
       <div className="max-w-full mx-auto">
         {/* Section Title */}
         <motion.div
@@ -83,12 +87,12 @@ export default function TemplateProducts() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: '-100px' }}
         >
-         
+
         </motion.div>
 
         {/* Products Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -98,57 +102,39 @@ export default function TemplateProducts() {
             <Link key={product.id} href={product.link} className="h-full">
               <motion.div
                 variants={itemVariants}
-                className="group flex flex-col overflow-hidden rounded-[30px] bg-background h-full"
+                className="group flex flex-col h-full"
               >
-                {/* Product Image */}
-                <div className="relative h-80 overflow-hidden bg-background">
+                {/* Product Thumbnail — 16:9, no border, no rounding */}
+                <div className="relative w-full aspect-video overflow-hidden bg-background">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-" />
+
+                  {/* Add to Bag overlay — slides down from top on hover */}
+                  <div className="absolute top-0 left-0 right-0 overflow-hidden">
+                    <button
+                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground text-white text-[16px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <span>Add to Bag</span>
+                      
+                    </button>
+                  </div>
                 </div>
 
-                {/* Product Info */}
-                <div className="flex flex-col flex-1 p-4 md:p-4 bg-white">
-                  <h3 className="text-[18px] font-medium tracking-tight mb-0 text-foreground">
+                {/* Product Info — below thumbnail, uniform text sizes */}
+                <div className="flex flex-col pt-3 gap-1">
+                  <h3 className="text-[16px] font-regular tracking-tight text-black leading-tight">
                     {product.title}
                   </h3>
-                  <p className="text-[14px] text-foreground mb-5 flex-grow leading-tight">
+                  <p className="text-[16px] font-regular text-black leading-tight">
                     {product.description}
                   </p>
-
-                  {/* CTA Button */}
-                  <motion.button
-                    className="w-full inline-flex items-center justify-center gap-1 px-6 py-3 bg-foreground text-white font-medium rounded-full hover:bg-foreground/90 active:bg-foreground/80 transition-colors duration-200"
-                    whileHover={{ y: -2 }}
-                    whileTap={{ y: 0 }}
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <span>{product.cta}</span>
-
-                    <svg
-                      className="w-7 h-7 transition-transform duration-300 group-hover:translate-x-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5 12H18"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M13 7L18 12L13 17"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </motion.button>
+                  <p className="text-[16px] font-regular text-black leading-tight">
+                    {product.price}
+                  </p>
                 </div>
               </motion.div>
             </Link>
