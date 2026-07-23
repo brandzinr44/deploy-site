@@ -460,12 +460,12 @@ export default function Header() {
             >
               {/* Mobile Single Column — Stacked with Dividers */}
 <div className="md:hidden flex flex-col w-full h-full">
-  {/* Top — SVG Logo */}
-  <div className="flex-1 border-b border-foreground flex items-start justify-start pt-14 px-4 lg:pt-8 lg:px-6 overflow-hidden">
+  {/* Top — SVG Logo (reduced height) */}
+  <div className="flex-none h-[170px] border-b border-foreground flex items-start justify-start pt-13 px-4 overflow-hidden">
     <motion.img
       src="/menu-logo.svg"
       alt="Menu Logo"
-      className="h-32 w-auto"
+      className="h-20 w-auto"
       initial={{ clipPath: 'inset(0 0 100% 0)' }}
       animate={{ clipPath: 'inset(0 0 0% 0)' }}
       exit={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -474,7 +474,7 @@ export default function Header() {
   </div>
 
   {/* Middle — Nav + Social Links */}
-  <div className="flex-1 border-b border-foreground flex flex-col justify-between py-8 px-4 lg:px-6">
+  <div className="flex-1 border-b border-foreground flex flex-col py-8 px-4">
     {/* Navigation Items — Top, Left-Aligned */}
     <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
       {navLinks.map((link, index) => {
@@ -499,8 +499,8 @@ export default function Header() {
       })}
     </div>
 
-    {/* Social Links — Bottom, Single Row */}
-    <div className="flex flex-row items-center gap-3 flex-wrap">
+    {/* Social Links — extra gap from nav above */}
+    <div className="flex flex-row items-center gap-3 flex-wrap mt-16">
       {socialLinks.map((social, index) => (
         <SocialLinkWithAnimation
           key={social.name}
