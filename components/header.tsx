@@ -373,8 +373,9 @@ export default function Header() {
               <div className="flex-1 border-r border-foreground/20" />
 
               {/* Middle Column — Navigation */}
-              <div className="flex-1 border-r border-foreground/20 flex flex-col items-center justify-start pt-32">
-                <div className="flex flex-col items-center justify-start gap-0" style={{ lineHeight: '0.85' }}>
+              <div className="flex-1 border-r border-foreground/20 flex flex-col justify-between py-32 px-6">
+                {/* Navigation Items — Top, Left-Aligned */}
+                <div className="flex flex-col items-start justify-start gap-0" style={{ lineHeight: '0.85' }}>
                   {navLinks.map((link, index) => {
                     const isActive =
                       (link === 'Home'     && pathname === '/')         ||
@@ -397,21 +398,21 @@ export default function Header() {
                   })}
                 </div>
 
-                {/* Social Links — Bottom of Middle Column */}
-                <div className="absolute bottom-8 left-1/3 transform -translate-x-1/2 flex flex-col items-center gap-3">
+                {/* Social Links — Bottom, Single Row */}
+                <div className="flex flex-row items-center gap-3 flex-nowrap">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.name}
                       href={social.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 group"
+                      className="flex items-center gap-1 group flex-shrink-0"
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1">
+                      <span className="text-[11px] md:text-[12px] font-normal tracking-wide uppercase text-foreground border border-foreground/40 rounded-full px-2 py-1 whitespace-nowrap">
                         {social.name}
                       </span>
                       <span className="w-7 h-7 rounded-full border border-foreground/40 flex items-center justify-center flex-shrink-0">
