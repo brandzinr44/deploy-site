@@ -146,7 +146,7 @@ function StoreCard({
             src={product.image}
             alt={product.title}
             className="w-full h-full object-cover"
-            animate={{ scale: isHovered ? 1.05 : 1 }}
+            animate={{ scale: isHovered ? 1 : 1 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           />
 
