@@ -132,7 +132,7 @@ function StoreCard({
           {/* "View" button overlay — slides up from bottom on hover */}
           <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
             <motion.button
-              className="w-full flex items-center justify-center gap-2 py-4 bg-foreground text-background text-[22px] font-regular tracking-tight"
+              className="w-full flex items-center justify-center gap-2 py-2 bg-foreground text-background text-[22px] font-regular tracking-tight"
               animate={{
                 y: isHovered ? 0 : '100%',
               }}
