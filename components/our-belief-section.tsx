@@ -11,7 +11,7 @@ That's the standard we hold ourselves to on every project.`
 export default function OurBeliefSection() {
   return (
     <div className="w-full bg-background text-foreground py-20 md:py-28 px-5 lg:px-6">
-      <div className="grid grid-cols-2 gap-8 md:gap-6 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 items-start">
         {/* Left Column: 50% */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

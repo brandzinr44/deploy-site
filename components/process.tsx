@@ -174,8 +174,8 @@ export default function Process() {
 
   return (
     <div className="w-full bg-background text-foreground py-20 md:py-24 px-5 lg:px-6">
-      <div className="w-full grid grid-cols-2 gap-x-8 md:gap-x-0">
-        {/* Left 50% — dot + label, same as before */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 md:gap-x-0">
+        {/* Left — dot + label, same as before */}
         <div className="w-full flex items-center gap-2 self-start">
           <span className="w-[16px] h-[16px] bg-foreground" />
           <span className="text-[22px] font-regular text-foreground tracking-tight uppercase">
@@ -183,7 +183,7 @@ export default function Process() {
           </span>
         </div>
 
-        {/* Right 50% — list, description reveals below hovered item */}
+        {/* Right — list, description reveals below hovered item */}
         <div className="w-full flex flex-col">
           {processSteps.map((step, i) => (
             <ProcessListItem
