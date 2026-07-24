@@ -70,7 +70,7 @@ function DesktopNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="text-[20px] md:text-[20px] font-normal tracking-tight h-full px-2 flex items-center overflow-hidden"
+      className="text-[20px] font-regular tracking-tight h-full px-2 flex items-center overflow-hidden"
     >
       <div className="overflow-hidden h-6 relative">
         <motion.div
