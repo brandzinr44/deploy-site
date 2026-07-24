@@ -48,16 +48,16 @@ export default function CartPage() {
                     Qty: {item.quantity}
                   </p>
 
-                  <div className="flex items-center gap-4 mt-3">
+                  <div className="flex items-center gap-2 mt-3">
                     <button
                       onClick={() => updateQuantity(item.id, 1)}
-                      className="w-7 h-7 flex items-center justify-center text-[16px] text-foreground"
+                      className="w-9 h-9 flex items-center justify-center text-[16px] text-foreground"
                     >
                       +
                     </button>
                     <button
                       onClick={() => updateQuantity(item.id, -1)}
-                      className="w-7 h-7 flex items-center justify-center text-[16px] text-foreground"
+                      className="w-9 h-9 flex items-center justify-center text-[16px] text-foreground"
                     >
                       −
                     </button>
