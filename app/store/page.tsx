@@ -165,11 +165,11 @@ function StoreCard({
         </div>
 
         {/* Product Info */}
-        <div className="flex flex-col pt-4 gap-2">
+        <div className="flex flex-col pt-4 gap-0">
           <h3 className="text-[22px] font-regular tracking-tight text-foreground leading-snug">
             {product.title}
           </h3>
-          <p className="text-[15px] font-regular text-foreground leading-snug">
+          <p className="text-[18px] font-regular text-foreground leading-snug">
             {product.description}
           </p>
 
