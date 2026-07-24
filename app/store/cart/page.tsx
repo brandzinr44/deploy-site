@@ -71,15 +71,15 @@ export default function CartPage() {
             ))}
 
             <div className="flex items-center justify-between py-8">
-              <span className="text-[20px] md:text-[24px] font-regular tracking-tight text-foreground">
+              <span className="text-[22px] md:text-[24px] font-regular tracking-tight text-foreground">
                 Total
               </span>
-              <span className="text-[20px] md:text-[24px] font-regular tracking-tight text-foreground">
+              <span className="text-[22px] font-regular tracking-tight text-foreground">
                 ${cartTotal.toFixed(2)}
               </span>
             </div>
 
-            <button className="w-full py-4 bg-foreground text-background text-[18px] font-regular tracking-tight uppercase">
+            <button className="w-full py-4 bg-foreground text-background text-[22px] font-regular tracking-tight uppercase">
               Checkout
             </button>
           </div>
