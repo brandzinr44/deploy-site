@@ -140,7 +140,7 @@ function AnimatedLogo() {
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[60px] md:text-[307px] font-medium tracking-tighter text-foreground leading-none"
+      className="text-[65px] md:text-[307px] font-medium tracking-tighter text-foreground leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
