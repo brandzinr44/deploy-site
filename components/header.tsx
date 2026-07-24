@@ -167,12 +167,12 @@ function SocialLinkWithAnimation({
       {/* Text pill — border only, filled layer rises up from the bottom on hover (and once on menu open) */}
       <div className="relative rounded-full border border-foreground/40 overflow-hidden">
         {/* Invisible sizer — gives the pill its width/height from content */}
-        <span className="invisible flex items-center px-3 py-1.5 md:px-4 md:py-2 text-[14px] md:text-[16px] font-normal tracking-wide uppercase whitespace-nowrap">
+        <span className="invisible flex items-center px-3 py-1.5 md:px-4 md:py-2 text-[11px] md:text-[16px] font-normal tracking-wide uppercase whitespace-nowrap">
           {social.name}
         </span>
 
         <motion.div
-          className="absolute inset-0 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-[14px] md:text-[16px] font-normal tracking-wide uppercase whitespace-nowrap text-foreground"
+          className="absolute inset-0 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-[11px] md:text-[16px] font-normal tracking-wide uppercase whitespace-nowrap text-foreground"
           animate={{ y: active ? '-100%' : '0%' }}
           transition={slideTransition}
         >
@@ -180,7 +180,7 @@ function SocialLinkWithAnimation({
         </motion.div>
 
         <motion.div
-          className="absolute inset-0 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-[14px] md:text-[16px] font-normal tracking-wide uppercase whitespace-nowrap bg-foreground text-background"
+          className="absolute inset-0 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-[11px] md:text-[16px] font-normal tracking-wide uppercase whitespace-nowrap bg-foreground text-background"
           initial={{ y: '100%' }}
           animate={{ y: active ? '0%' : '100%' }}
           transition={slideTransition}
