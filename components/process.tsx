@@ -143,7 +143,7 @@ function ProcessListItem({
         <motion.span
           animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 6 : 0 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="block text-[32px] lg:text-[48px] font-regular tracking-tight leading-[1.05] text-foreground"
+          className="block text-[22px] lg:text-[48px] font-regular tracking-tight leading-[1.05] text-foreground"
         >
           {step.title}
         </motion.span>
