@@ -179,7 +179,7 @@ export default function ProjectPage() {
                 </p>
                 <div className="flex gap-3 flex-wrap items-center">
                   {project.ctas.map((cta, idx) => (
-                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[16px] font-medium tracking-tight">
+                    <span key={idx} className="px-3 py-1.5 rounded-full bg-background  text-foreground text-[16px] font-regular tracking-tight">
                       {cta.label}
                     </span>
                   ))}
@@ -193,9 +193,9 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
+              className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white"
             >
-              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
+              <h3 className="text-[16px] font-regular tracking-tight text-foreground">Behind the Brand</h3>
               <span className="text-[18px] text-white/70">+</span>
             </motion.button>
           </div>
