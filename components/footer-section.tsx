@@ -136,7 +136,7 @@ function AnimatedLogo() {
   
   return (
     <div ref={containerRef} className="w-full flex justify-center py-0">
-      <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-1">
+      <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-2">
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
