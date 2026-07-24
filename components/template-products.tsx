@@ -145,13 +145,13 @@ export default function TemplateProducts() {
 
                 {/* Product Info — below thumbnail, uniform text sizes */}
                 <div className="flex flex-col pt-3 gap-1">
-                  <h3 className="text-[15px] font-medium tracking-tight text-white leading-snug">
+                  <h3 className="text-[22px] font-regular tracking-tight text-white leading-snug">
                     {product.title}
                   </h3>
-                  <p className="text-[15px] font-normal text-white/70 leading-snug">
+                  <p className="text-[15px] font-regular text-white leading-snug">
                     {product.description}
                   </p>
-                  <p className="text-[15px] font-normal text-white/70 leading-snug">
+                  <p className="text-[22px] ffont-regular text-white leading-snug">
                     {product.price}
                   </p>
                 </div>
