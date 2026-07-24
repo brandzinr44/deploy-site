@@ -379,8 +379,8 @@ export default function Header() {
                 {/* Top — SVG Logo (reduced height) */}
                 <div className="flex-none h-[140px] border-b border-foreground flex items-start justify-start pt-8 px-4 overflow-hidden">
                   <motion.img
-                    src="/menu-logo.svg"
-                    alt="Menu Logo"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wordmark-gWRKyZ4BOkFw33ZwV4Vk6N0fZMNDAc.png"
+                    alt="Lozinr Studio"
                     className="h-20 w-auto"
                     initial={{ clipPath: 'inset(0 0 100% 0)' }}
                     animate={{ clipPath: 'inset(0 0 0% 0)' }}
@@ -437,8 +437,8 @@ export default function Header() {
                 {/* Left Column — SVG Logo */}
                 <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6 overflow-hidden">
                   <motion.img
-                    src="/menu-logo.svg"
-                    alt="Menu Logo"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wordmark-gWRKyZ4BOkFw33ZwV4Vk6N0fZMNDAc.png"
+                    alt="Lozinr Studio"
                     className="h-70 w-auto"
                     initial={{ clipPath: 'inset(0 0 100% 0)' }}
                     animate={{ clipPath: 'inset(0 0 0% 0)' }}
