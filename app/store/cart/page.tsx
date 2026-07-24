@@ -11,16 +11,11 @@ export default function CartPage() {
   return (
     <>
       <Header preloaderDone={true} />
-      <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 px-3 lg:px-7 pb-20">
+      <main className="min-h-screen bg-background text-foreground pt-58 md:pt-80 px-3 lg:px-7 pb-20">
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-32 gap-4">
-            <p className="text-[22px] text-foreground">Your bag is empty.</p>
-            <Link
-              href="/store"
-              className="text-[16px] underline underline-offset-4 text-foreground"
-            >
-              Browse the store
-            </Link>
+            <p className="text-[48px] tracking-tight text-foreground">Your Bag is Empty</p>
+            
           </div>
         ) : (
           <div className="max-w-full mx-auto flex flex-col">
