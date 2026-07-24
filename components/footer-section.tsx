@@ -30,28 +30,30 @@ function AnimatedText({ text }: { text: string }) {
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="overflow-hidden h-6 cursor-pointer"
+      className="overflow-hidden cursor-pointer leading-none"
+      style={{ height: '1.2em' }}
       transition={{ duration: 0.2 }}
     >
       {/* Primary Text */}
       <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -24 : 0 }}
+        className="flex leading-none"
+        style={{ height: '1.2em' }}
+        animate={{ y: isHovered ? '-1.2em' : '0em' }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         {text.split('').map((char, index) => (
           <motion.span
             key={`primary-${index}`}
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 1, y: '0em' }}
             animate={
               isHovered
                 ? {
                     opacity: 0,
-                    y: -20,
+                    y: '-1em',
                   }
                 : {
                     opacity: 1,
-                    y: 0,
+                    y: '0em',
                   }
             }
             transition={{
@@ -68,23 +70,24 @@ function AnimatedText({ text }: { text: string }) {
 
       {/* Secondary Text */}
       <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -24 : 0 }}
+        className="flex leading-none"
+        style={{ height: '1.2em' }}
+        animate={{ y: isHovered ? '-1.2em' : '0em' }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         {text.split('').map((char, index) => (
           <motion.span
             key={`secondary-${index}`}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: '1em' }}
             animate={
               isHovered
                 ? {
                     opacity: 1,
-                    y: 0,
+                    y: '0em',
                   }
                 : {
                     opacity: 0,
-                    y: 20,
+                    y: '1em',
                   }
             }
             transition={{
