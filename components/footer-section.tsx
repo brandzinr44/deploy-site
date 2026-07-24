@@ -197,35 +197,35 @@ function NewsletterRow() {
 
   return (
     <motion.div
-      className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+      className="flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-0 border-t border-foreground py-4 md:py-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: '-40px' }}
       custom={3}
       variants={rowVariants}
     >
-      <span className="text-[20px] text-foreground font-regular uppercase">Newsletter</span>
+      <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Newsletter</span>
       <div className="flex items-center justify-end">
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="border border-foreground px-4 py-3 flex items-center justify-between gap-4">
+          <div className="border border-foreground px-3 py-2.5 md:px-4 md:py-3 flex items-center justify-between gap-3 md:gap-4">
             <input
               type="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-transparent text-[20px] text-foreground placeholder-foreground outline-none flex-1"
+              className="bg-transparent text-[16px] md:text-[20px] text-foreground placeholder-foreground outline-none flex-1 min-w-0"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !email}
-              className="text-[20px] text-foreground font-regular whitespace-nowrap  disabled:opacity-50"
+              className="text-[16px] md:text-[20px] text-foreground font-regular whitespace-nowrap shrink-0 disabled:opacity-50"
             >
               {isLoading ? 'Sending...' : 'Enter'}
             </button>
           </div>
           {message && (
-            <p className="text-[20px] text-foreground mt-2">{message}</p>
+            <p className="text-[14px] md:text-[20px] text-foreground mt-2">{message}</p>
           )}
         </form>
       </div>
