@@ -42,7 +42,7 @@ const processSteps = [
 ]
 
 const DESC_TEXT_CLASS =
-  'text-[22px] leading-snug font-regular tracking-tight text-foreground'
+  'text-[18px] lg:text-[22px] leading-tight lg:leading-snug font-regular tracking-tight text-foreground'
 
 // ─── True line-by-line reveal ─────────────────────────────────────
 function LineReveal({ text }: { text: string }) {
@@ -143,7 +143,7 @@ function ProcessListItem({
         <motion.span
           animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 6 : 0 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="block text-[48px] font-regular tracking-tight leading-[1.05] text-foreground"
+          className="block text-[22px] lg:text-[48px] font-regular tracking-tight leading-[1.05] text-foreground"
         >
           {step.title}
         </motion.span>
@@ -174,16 +174,16 @@ export default function Process() {
 
   return (
     <div className="w-full bg-background text-foreground py-20 md:py-24 px-5 lg:px-6">
-      <div className="w-full grid grid-cols-2 gap-x-8 md:gap-x-0">
-        {/* Left 50% — dot + label, same as before */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 md:gap-x-0">
+        {/* Left — dot + label, same as before */}
         <div className="w-full flex items-center gap-2 self-start">
           <span className="w-[16px] h-[16px] bg-foreground" />
-          <span className="text-[22px] font-regular text-foreground tracking-tight uppercase">
+          <span className="text-[20px] lg:text-[22px] font-regular text-foreground tracking-tight uppercase">
             Process
           </span>
         </div>
 
-        {/* Right 50% — list, description reveals below hovered item */}
+        {/* Right — list, description reveals below hovered item */}
         <div className="w-full flex flex-col">
           {processSteps.map((step, i) => (
             <ProcessListItem

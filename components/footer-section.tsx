@@ -140,7 +140,7 @@ function AnimatedLogo() {
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[clamp(65px,18vw,310px)] font-medium tracking-tighter text-foreground leading-none"
+      className="text-[clamp(65px,13vw,310px)] font-medium tracking-tighter text-foreground leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
@@ -197,7 +197,7 @@ function NewsletterRow() {
 
   return (
     <motion.div
-      className="flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-0 border-t border-foreground py-4 md:py-10"
+      className="flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-0 border-t border-foreground py-4 md:py-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: '-40px' }}
@@ -207,7 +207,7 @@ function NewsletterRow() {
       <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Newsletter</span>
       <div className="flex items-center justify-end">
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="border border-foreground px-3 py-2.5 md:px-4 md:py-3 flex items-center justify-between gap-3 md:gap-4">
+          <div className="border border-foreground px-3 py-2.5 md:px-4 md:py-3 flex items-center justify-between gap-1 md:gap-4">
             <input
               type="email"
               placeholder="Email address"
@@ -242,20 +242,20 @@ export default function FooterSection() {
 
         {/* Row 0 — Nav */}
         <motion.div
-          className="grid grid-cols-2 py-3 md:py-4"
+          className="grid grid-cols-2 py-6 md:py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={0}
           variants={rowVariants}
         >
-          <span className="text-[20px] text-foreground font-regular uppercase">Nav</span>
-          <nav className="flex flex-col gap-0">
+          <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Nav</span>
+          <nav className="flex flex-col gap-1 md:gap-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[20px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
+                className="text-[16px] md:text-[20px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
               >
                 <AnimatedText text={link.name} />
               </a>
@@ -265,22 +265,22 @@ export default function FooterSection() {
 
         {/* Row 1 — Social */}
         <motion.div
-          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+          className="grid grid-cols-2 border-t border-foreground py-6 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={1}
           variants={rowVariants}
         >
-          <span className="text-[20px] text-foreground font-regular uppercase">Social</span>
-          <div className="flex flex-col gap-0">
+          <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Social</span>
+          <div className="flex flex-col gap-1 md:gap-0">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[20px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
+                className="text-[16px] md:text-[20px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
               >
                 <AnimatedText text={link.name} />
               </a>
@@ -290,22 +290,22 @@ export default function FooterSection() {
 
         {/* Row 2 — Address */}
         <motion.div
-          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+          className="grid grid-cols-2 border-t border-foreground py-6 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={2}
           variants={rowVariants}
         >
-          <span className="text-[20px] text-foreground font-regular uppercase">Address</span>
+          <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Address</span>
           <div>
             <a
               href="mailto:adnan.lozinr@gmail.com"
-              className="text-[20px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
+              className="text-[16px] md:text-[20px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
             >
               <AnimatedText text="Start a project" />
             </a>
-            <p className="text-[20px] text-foreground leading-snug">
+            <p className="text-[16px] md:text-[20px] text-foreground leading-snug">
               Based in Bangladesh<br />
               Working Worldwide.
             </p>
