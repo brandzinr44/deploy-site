@@ -80,24 +80,24 @@ export default function ProjectPage() {
   }
 
   const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
-    const labelClass = theme === 'dark' ? 'text-white/50' : 'text-foreground/40'
+    const labelClass = theme === 'dark' ? 'text-white' : 'text-foreground'
     const valueClass = theme === 'dark' ? 'text-white' : 'text-foreground'
-    const borderClass = theme === 'dark' ? 'border-white/10' : 'border-foreground/10'
+    const borderClass = theme === 'dark' ? 'border-white' : 'border-foreground'
 
     return (
       <div>
         {meta.strategicDirection && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Strategic Direction</p>
-            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.strategicDirection}</p>
+            <p className={`text-[22px] uppercase tracking-wide mb-4 ${labelClass}`}>Strategic Direction</p>
+            <p className={`text-[18px] tracking-tight leading-tight ${valueClass}`}>{meta.strategicDirection}</p>
           </div>
         )}
         {meta.deliverables.length > 0 && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Deliverables</p>
+            <p className={`text-[22px] uppercase tracking-wide mb-4 ${labelClass}`}>Deliverables</p>
             <div className="flex flex-wrap gap-2">
               {meta.deliverables.map((item: string, i: number) => (
-                <span key={i} className={`text-[16px] tracking-tight ${valueClass}`}>
+                <span key={i} className={`text-[18px] tracking-tight ${valueClass}`}>
                   {item}
                   {i < meta.deliverables.length - 1 && <span className="mx-2">/</span>}
                 </span>
@@ -107,8 +107,8 @@ export default function ProjectPage() {
         )}
         {meta.duration && (
           <div>
-            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Duration</p>
-            <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.duration}</p>
+            <p className={`text-[22px] uppercase tracking-wide mb-4 ${labelClass}`}>Duration</p>
+            <p className={`text-[18px] tracking-tight ${valueClass}`}>{meta.duration}</p>
           </div>
         )}
       </div>
