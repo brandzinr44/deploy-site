@@ -17,9 +17,9 @@ const products: Product[] = [
   {
     id: 1,
     title: 'Brand Guidelines',
-    image: '/work-hero.svg',
+    image: 'https://pipu74e1kouytary.private.blob.vercel-storage.com/brnd.png?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfUGlQdTc0ZTFLb3V5dGFyeSIsIm93bmVySWQiOiJ0ZWFtX2RubXEwWnNRNkdHZ0tjNmczcVNGcnU3ZiIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzg0Mzg2MjU5MTg3LCJpYXQiOjE3ODQzNDMwNTkzNTN9.KFNp7hKShdSGKwuPiTowTy3H2xNSzYkyeDZm7lrUPGA&vercel-blob-signature=vVAb_pANFws4XpJz4_Bc67N8bGW7Qi6vU8uMAMJ0ykE',
     description: 'Showcase Mockups',
-    price: 'From $19',
+    price: 'From $800',
     cta: 'Get it',
     link: 'https://adnaanakif.gumroad.com/l/brandguidelinessystem',
   },
@@ -77,7 +77,7 @@ const itemVariants = {
 
 export default function TemplateProducts() {
   return (
-    <section className="w-full bg-background py-16 md:py-24 px-5 lg:px-6">
+    <section className="w-full bg-foreground py-16 md:py-24 px-5 lg:px-6">
       <div className="max-w-full mx-auto">
         {/* Section Title */}
         <motion.div
@@ -92,7 +92,7 @@ export default function TemplateProducts() {
 
         {/* Products Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -109,30 +109,49 @@ export default function TemplateProducts() {
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
 
                   {/* Add to Bag overlay — slides down from top on hover */}
                   <div className="absolute top-0 left-0 right-0 overflow-hidden">
                     <button
-                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground text-white text-[16px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground text-white text-[13px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       onClick={(e) => e.preventDefault()}
                     >
                       <span>Add to Bag</span>
-                      
+                      <svg
+                        className="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 12H18"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M13 7L18 12L13 17"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
                     </button>
                   </div>
                 </div>
 
                 {/* Product Info — below thumbnail, uniform text sizes */}
                 <div className="flex flex-col pt-3 gap-1">
-                  <h3 className="text-[16px] font-regular tracking-tight text-black leading-tight">
+                  <h3 className="text-[15px] font-medium tracking-tight text-white leading-snug">
                     {product.title}
                   </h3>
-                  <p className="text-[16px] font-regular text-black leading-tight">
+                  <p className="text-[15px] font-normal text-white/70 leading-snug">
                     {product.description}
                   </p>
-                  <p className="text-[16px] font-regular text-black leading-tight">
+                  <p className="text-[15px] font-normal text-white/70 leading-snug">
                     {product.price}
                   </p>
                 </div>
