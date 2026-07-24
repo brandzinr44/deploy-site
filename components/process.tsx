@@ -198,12 +198,12 @@ export default function Process() {
 
   return (
     <div className="w-full bg-background text-foreground py-20 md:py-24 px-5 lg:px-6">
-      <div className="flex flex-col md:flex-row md:items-start gap-y-8 gap-x-6 md:gap-x-6">
+      <div className="flex flex-col md:flex-row md:items-start gap-y-8 gap-x-0 md:gap-x-0">
         {/* Left 40% — dot + label. Always full width on top for mobile,
             becomes the first column on desktop. */}
         <div className="w-full md:w-2/5 flex items-center gap-2 md:self-start">
-          <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
-          <span className="text-[22px] font-medium text-foreground tracking-tight">
+          <span className="w-[12px] h-[12px] bg-foreground" />
+          <span className="text-[22px] font-medium text-foreground tracking-tight uppercase">
             Process
           </span>
         </div>
@@ -212,7 +212,7 @@ export default function Process() {
             Desktop: md:contents removes this wrapper's own box, so its two
             children fall back into the outer flex row as columns 2 and 3,
             top-aligned with the label via md:items-start above. */}
-        <div className="w-full grid grid-cols-2 gap-x-4 md:contents">
+        <div className="w-full grid grid-cols-2 gap-x-0 md:contents">
           {/* Middle 40% on desktop — list */}
           <div className="w-full md:w-2/5 flex flex-col md:self-start">
             {processSteps.map((step, i) => (
@@ -225,15 +225,15 @@ export default function Process() {
             ))}
           </div>
 
-          {/* Right 20% on desktop — description, true line-by-line reveal */}
-          <div className="w-full md:w-1/5 md:self-start md:pl-3">
+          {/* Right 20% on desktop — description, true line-by-line reveal on hover */}
+          <div className="w-full md:w-1/5 md:self-start md:pl-0 mt-4 md:mt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
               >
                 <LineReveal text={active.description} />
               </motion.div>
