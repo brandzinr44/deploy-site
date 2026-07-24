@@ -132,14 +132,14 @@ function StoreCard({
           {/* "View" button overlay — slides up from bottom on hover */}
           <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
             <motion.button
-              className="w-full flex items-center justify-center gap-2 py-4 bg-foreground text-background text-[13px] font-medium tracking-tight"
+              className="w-full flex items-center justify-center gap-2 py-4 bg-foreground text-background text-[22px] font-regular tracking-tight"
               animate={{
                 y: isHovered ? 0 : '100%',
               }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.preventDefault()}
             >
-              <span>View Product</span>
+              <span>Add to Bag</span>
               <svg
                 className="w-4 h-4"
                 viewBox="0 0 24 24"
