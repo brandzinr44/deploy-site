@@ -41,10 +41,10 @@ export default function CartPage() {
   <h3 className="text-[22px] font-regular tracking-tight text-foreground text-left">
     {item.title}
   </h3>
-  <p className="text-[14px] md:text-[16px] text-foreground text-left">
+  <p className="text-[18px] md:text-[16px] text-foreground text-left">
     {item.license}
   </p>
-  <p className="text-[14px] md:text-[16px] text-foreground/60 text-left">
+  <p className="text-[18px] md:text-[16px] text-foreground text-left">
     Qty: {item.quantity}
   </p>
 
@@ -64,7 +64,7 @@ export default function CartPage() {
   </div>
 </div>
 
-                <p className="text-[16px] md:text-[20px] font-regular tracking-tight text-foreground flex-shrink-0">
+                <p className="text-[18px] font-regular tracking-tight text-foreground flex-shrink-0">
                   ${(item.price * item.quantity).toFixed(2)}
                 </p>
               </div>
