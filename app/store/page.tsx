@@ -44,10 +44,10 @@ function StoreHero() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-background" />
 
-      {/* "Store" title — bottom-left */}
-      <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-8">
+      {/* "Store" title — centered */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden px-2 lg:px-4">
         <motion.h1
-          className="text-[40px] md:text-[108px] font-medium tracking-tighter leading-[0.9] text-foreground"
+          className="text-[40px] md:text-[208px] font-medium tracking-tighter leading-[0.9] text-foreground text-center"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
