@@ -29,7 +29,7 @@ export default function CartPage() {
                 key={item.id}
                 className="flex items-start gap-4 md:gap-6 py-8 border-b border-foreground/20"
               >
-                <div className="w-24 h-24 md:w-40 md:h-40 flex-shrink-0 overflow-hidden bg-foreground/10">
+                <div className="w-34 h-10 md:w-50 md:h-40 flex-shrink-0 overflow-hidden bg-foreground/10">
                   <img
                     src={item.image}
                     alt={item.title}
