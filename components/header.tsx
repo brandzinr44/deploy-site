@@ -246,7 +246,7 @@ function MobileNavItem({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="text-[79px] font-regular tracking-tighter leading-none overflow-hidden h-[96px] relative block text-foreground"
+      className="lg:text-[79px] text-[48px] font-regular tracking-tighter leading-none overflow-hidden h-[96px] relative block text-foreground"
       style={{ fontFamily: 'var(--font-display)' }}
     >
       <div className="overflow-hidden h-[96px]">
