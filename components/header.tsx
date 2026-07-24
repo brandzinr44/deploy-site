@@ -58,7 +58,7 @@ function SocialLinkWithAnimation({
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    
+    <a
       href={social.link}
       target="_blank"
       rel="noopener noreferrer"
