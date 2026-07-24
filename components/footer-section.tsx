@@ -201,7 +201,7 @@ function NewsletterRow() {
       custom={3}
       variants={rowVariants}
     >
-      <span className="text-[16px] text-foreground font-regular uppercase">Newsletter</span>
+      <span className="text-[20px] text-foreground font-regular uppercase">Newsletter</span>
       <div className="flex items-center justify-end">
         <form onSubmit={handleSubmit} className="w-full">
           <div className="border border-foreground px-4 py-3 flex items-center justify-between gap-4">
@@ -210,19 +210,19 @@ function NewsletterRow() {
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-transparent text-[22px] text-foreground placeholder-foreground/50 outline-none flex-1"
+              className="bg-transparent text-[20px] text-foreground placeholder-foreground outline-none flex-1"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !email}
-              className="text-[22px] text-foreground font-font-regular whitespace-nowrap hover:opacity-70 transition-opacity disabled:opacity-50"
+              className="text-[20px] text-foreground font-regular whitespace-nowrap  disabled:opacity-50"
             >
               {isLoading ? 'Sending...' : 'Enter'}
             </button>
           </div>
           {message && (
-            <p className="text-[22px] text-foreground mt-2">{message}</p>
+            <p className="text-[20px] text-foreground mt-2">{message}</p>
           )}
         </form>
       </div>
@@ -294,15 +294,15 @@ export default function FooterSection() {
           custom={2}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-foreground font-medium uppercase">Address</span>
+          <span className="text-[22px] text-foreground font-regular uppercase">Address</span>
           <div>
             <a
               href="mailto:adnan.lozinr@gmail.com"
-              className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
+              className="text-[22px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
             >
               <AnimatedText text="Start a project" />
             </a>
-            <p className="text-[16px] text-foreground leading-snug">
+            <p className="text-[22px] text-foreground leading-snug">
               Based in Bangladesh<br />
               Working Worldwide.
             </p>
