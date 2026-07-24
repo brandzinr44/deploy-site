@@ -189,8 +189,8 @@ function SocialLinkWithAnimation({
         </motion.div>
       </div>
 
-      {/* Arrow circle — separate element, own border-only + bottom-up fill reveal */}
-      <div className="hidden md:block relative w-7 h-7 rounded-full border border-foreground/40 overflow-hidden flex-shrink-0">
+      {/* Arrow circle — separate element, own border-only + bottom-up fill reveal. Visible on mobile too, slightly smaller there. */}
+      <div className="flex relative w-6 h-6 md:w-7 md:h-7 rounded-full border border-foreground/40 overflow-hidden flex-shrink-0">
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           animate={{ y: active ? '-100%' : '0%' }}
@@ -512,8 +512,8 @@ export default function Header({ preloaderDone }: { preloaderDone?: boolean } = 
 
                 {/* Middle — Nav + Social Links */}
                 <div className="flex-1 border-b border-foreground flex flex-col justify-center pt-12 pb-8 px-4">
-                  {/* Navigation Items — Top, Left-Aligned */}
-                  <div className="flex flex-col items-start justify-start -space-y-6">
+                  {/* Navigation Items — Top, Left-Aligned. Tighter negative space on mobile. */}
+                  <div className="flex flex-col items-start justify-start -space-y-13">
                     {navLinks.map((link, index) => {
                       const isActive =
                         (link === 'Home'     && pathname === '/')         ||
@@ -537,8 +537,8 @@ export default function Header({ preloaderDone }: { preloaderDone?: boolean } = 
                     })}
                   </div>
 
-                  {/* Social Links — extra gap from nav above */}
-                  <div className="flex flex-row items-center gap-3 flex-wrap mt-16">
+                  {/* Social Links — minimum gap from nav above on mobile */}
+                  <div className="flex flex-row items-center gap-3 flex-wrap mt-6">
                     {socialLinks.map((social, index) => (
                       <SocialLinkWithAnimation
                         key={social.name}
