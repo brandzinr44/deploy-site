@@ -93,7 +93,7 @@ function ProjectRow({
         {/* Divider under the title */}
         <div className="h-px w-full bg-foreground" />
 
-        <p className="text-[20px] font-regualar text-foreground/80 leading-tight tracking-tight">
+        <p className="text-[18px] font-regualar text-foreground/80 leading-tight tracking-tight">
           {project.description}
         </p>
 
@@ -103,7 +103,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
-            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[16px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
               {project.category}
             </span>
           </motion.div>
@@ -113,7 +113,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[16px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
               {project.year}
             </span>
           </motion.div>
