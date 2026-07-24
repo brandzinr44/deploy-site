@@ -80,24 +80,24 @@ export default function ProjectPage() {
   }
 
   const MetaGrid = ({ theme = 'light' as 'light' | 'dark' }) => {
-    const labelClass = theme === 'dark' ? 'text-white/50' : 'text-foreground/40'
+    const labelClass = theme === 'dark' ? 'text-white' : 'text-foreground'
     const valueClass = theme === 'dark' ? 'text-white' : 'text-foreground'
-    const borderClass = theme === 'dark' ? 'border-white/10' : 'border-foreground/10'
+    const borderClass = theme === 'dark' ? 'border-white' : 'border-foreground'
 
     return (
       <div>
         {meta.strategicDirection && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Strategic Direction</p>
-            <p className={`text-[16px] tracking-tight leading-relaxed ${valueClass}`}>{meta.strategicDirection}</p>
+            <p className={`text-[22px] uppercase tracking-wide mb-4 ${labelClass}`}>Strategic Direction</p>
+            <p className={`text-[18px] tracking-tight leading-tight ${valueClass}`}>{meta.strategicDirection}</p>
           </div>
         )}
         {meta.deliverables.length > 0 && (
           <div className={`pb-8 mb-8 border-b ${borderClass}`}>
-            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Deliverables</p>
+            <p className={`text-[22px] uppercase tracking-wide mb-4 ${labelClass}`}>Deliverables</p>
             <div className="flex flex-wrap gap-2">
               {meta.deliverables.map((item: string, i: number) => (
-                <span key={i} className={`text-[16px] tracking-tight ${valueClass}`}>
+                <span key={i} className={`text-[18px] tracking-tight ${valueClass}`}>
                   {item}
                   {i < meta.deliverables.length - 1 && <span className="mx-2">/</span>}
                 </span>
@@ -107,8 +107,8 @@ export default function ProjectPage() {
         )}
         {meta.duration && (
           <div>
-            <p className={`text-[14px] uppercase tracking-wide mb-4 ${labelClass}`}>Duration</p>
-            <p className={`text-[16px] tracking-tight ${valueClass}`}>{meta.duration}</p>
+            <p className={`text-[22px] uppercase tracking-wide mb-4 ${labelClass}`}>Duration</p>
+            <p className={`text-[18px] tracking-tight ${valueClass}`}>{meta.duration}</p>
           </div>
         )}
       </div>
@@ -137,7 +137,7 @@ export default function ProjectPage() {
         {/* ─── Project Info ─── */}
         <section
   ref={heroSectionRef}
-  className="relative overflow-hidden flex flex-col justify-end px-2 lg:px-4 pt-32 md:pt-40 pb-16 md:pb-24"
+  className="relative overflow-hidden flex flex-col justify-end px-2 lg:px-4 pt-32 md:pt-40 pb-10"
   style={{ minHeight: 'min(100vh, calc(100vw * 16 / 9))' }}
 >
           {infoImage && (
@@ -159,27 +159,27 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-4"
             >
               <div>
                 <h1
-                  className="font-medium tracking-tight text-white leading-none mb-6"
-                  style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
+                  className="font-regular tracking-tight text-white leading-none mb-4"
+                  style={{ fontSize: 'clamp(32px, 5vw, 108px)' }}
                 >
                   {project.name}
                 </h1>
-                <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
+                <p className="text-[22px] text-white leading-tight tracking-tight font-regular mb-8 max-w-[900px]">
                   {project.description}
                 </p>
                 <div className="flex gap-3 flex-wrap items-center">
                   {project.ctas.map((cta, idx) => (
-                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
+                    <span key={idx} className="px-3 py-1.5 rounded-full bg-background  text-foreground text-[16px] font-regular tracking-tight">
                       {cta.label}
                     </span>
                   ))}
@@ -193,9 +193,9 @@ export default function ProjectPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
+              className="hidden md:flex items-center gap-2 rounded-full px-3 py-1.5 cursor-pointer transition-all duration-300 lg:self-end relative bg-white"
             >
-              <h3 className="text-[13px] font-medium tracking-tight text-white">Behind the Brand</h3>
+              <h3 className="text-[16px] font-regular tracking-tight text-foreground">Behind the Brand</h3>
               <span className="text-[18px] text-white/70">+</span>
             </motion.button>
           </div>
@@ -222,7 +222,7 @@ export default function ProjectPage() {
                   className="max-w-7xl mx-auto"
                 >
                   {/* Heading — full width top */}
-                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12 lg:mb-16">
+                  <h2 className="text-[48px] font-regular tracking-tight text-foreground mb-12 lg:mb-16">
                     Behind the Brand
                   </h2>
 
@@ -232,10 +232,10 @@ export default function ProjectPage() {
                     <div>
                       {project.overview && (
                         <div className="mb-12">
-                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                          <h3 className="text-[22px] text-foreground uppercase tracking-wide mb-4">
                             Overview
                           </h3>
-                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                          <p className="text-[18px] tracking-tight leading-tight text-foreground">
                             {project.overview}
                           </p>
                         </div>
@@ -243,10 +243,10 @@ export default function ProjectPage() {
 
                       {project.detailChallenge && (
                         <div>
-                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                          <h3 className="text-[22px] text-foreground uppercase tracking-wide mb-4">
                             Challenge
                           </h3>
-                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                          <p className="text-[18px] tracking-tight leading-tight text-foreground">
                             {project.detailChallenge.body
                               .split('\n')
                               .filter(line => line.trim())
