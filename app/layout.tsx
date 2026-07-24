@@ -104,7 +104,7 @@ export default function RootLayout({
     },
     sameAs: [
       'https://www.instagram.com/adnaanakif/',
-      'https://web.facebook.com/adnaanakif',
+      'https://www.facebook.com/adnaanakif',
       'https://www.youtube.com/adnaanakif',
     ],
   }
