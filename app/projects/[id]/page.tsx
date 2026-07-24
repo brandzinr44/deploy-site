@@ -169,7 +169,7 @@ export default function ProjectPage() {
             >
               <div>
                 <h1
-                  className="font-regular tracking-tight text-white leading-none mb-6"
+                  className="font-regular tracking-tight text-white leading-none mb-4"
                   style={{ fontSize: 'clamp(32px, 5vw, 108px)' }}
                 >
                   {project.name}
