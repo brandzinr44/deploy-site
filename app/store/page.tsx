@@ -46,31 +46,29 @@ function StoreHero() {
 
       {/* "Premium Store" title — centered, looping slide animation */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden px-2 lg:px-4">
-        <motion.div
-          className="overflow-hidden h-[36px] md:h-[187px]"
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: '-100px' }}
-        >
+        <div className="overflow-hidden h-[36px] md:h-[187px]">
           <motion.div
             className="flex flex-col"
             animate={{ y: ['0%', '0%', '-50%', '-50%'] }}
             transition={{
-              duration: 4,
-              times: [0, 0.45, 0.55, 1],
+              duration: 5.5,
+              times: [0, 0.42, 0.58, 1],
               repeat: Infinity,
-              ease: [0.87, 0, 0.13, 1],
+              ease: [0.76, 0, 0.24, 1],
             }}
           >
-            <h1 className="text-[40px] md:text-[208px] font-medium tracking-tighter leading-[0.9] text-foreground text-center">
+            <motion.h1
+              animate={{ scale: [1, 1, 0.985, 1, 1] }}
+              transition={{ duration: 5.5, times: [0, 0.4, 0.5, 0.6, 1], repeat: Infinity, ease: 'easeInOut' }}
+              className="text-[40px] md:text-[208px] font-medium tracking-tighter leading-[0.9] text-foreground text-center"
+            >
               Premium Store
-            </h1>
+            </motion.h1>
             <h1 className="text-[40px] md:text-[208px] font-medium tracking-tighter leading-[0.9] text-foreground text-center">
               Premium Store
             </h1>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )
