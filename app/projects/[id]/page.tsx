@@ -222,7 +222,7 @@ export default function ProjectPage() {
                   className="max-w-7xl mx-auto"
                 >
                   {/* Heading — full width top */}
-                  <h2 className="text-[40px] lg:text-[56px] font-medium tracking-tight text-foreground mb-12 lg:mb-16">
+                  <h2 className="text-[48px] font-regular tracking-tight text-foreground mb-12 lg:mb-16">
                     Behind the Brand
                   </h2>
 
@@ -232,7 +232,7 @@ export default function ProjectPage() {
                     <div>
                       {project.overview && (
                         <div className="mb-12">
-                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                          <h3 className="text-[22px] text-foreground uppercase tracking-wide mb-4">
                             Overview
                           </h3>
                           <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
