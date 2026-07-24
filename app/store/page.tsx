@@ -166,17 +166,17 @@ function StoreCard({
 
         {/* Product Info */}
         <div className="flex flex-col pt-4 gap-2">
-          <h3 className="text-[18px] font-medium tracking-tight text-foreground leading-snug">
+          <h3 className="text-[22px] font-regular tracking-tight text-foreground leading-snug">
             {product.title}
           </h3>
-          <p className="text-[15px] font-normal text-foreground/70 leading-snug">
+          <p className="text-[15px] font-regular text-foreground leading-snug">
             {product.description}
           </p>
 
           {/* Divider */}
-          <div className="h-px w-full bg-foreground/20 my-2" />
+          <div className="h-px w-full bg-foreground my-2" />
 
-          <p className="text-[16px] font-medium tracking-tight text-foreground">
+          <p className="text-[22px] font-regular tracking-tight text-foreground">
             {product.price}
           </p>
         </div>
