@@ -60,7 +60,7 @@ function ProjectRow({
       <div
         ref={imgRef}
         onMouseMove={handleMouseMove}
-        className="relative w-full overflow-hidden bg-background"
+        className="relative w-full overflow-hidden bg-back/10"
         style={{ aspectRatio: '16/9' }}
       >
         <motion.div
