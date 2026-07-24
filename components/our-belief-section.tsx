@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const OUR_BELIEF_TEXT = "Our Belief"
+const OUR_BELIEF_TEXT = "OUR BELIEF"
 const BELIEF_DESCRIPTION = `Great brands aren't built by decoration.
 They're built through clear thinking, intentional systems, and decisions that serve the business—not trends.
 That's the standard we hold ourselves to on every project.`
@@ -22,7 +22,7 @@ export default function OurBeliefSection() {
         >
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-foreground flex-shrink-0" />
-            <h2 className="text-[22px] font-medium text-foreground tracking-tight">
+            <h2 className="text-[22px] font-regular text-foreground tracking-tight">
               {OUR_BELIEF_TEXT}
             </h2>
           </div>
@@ -36,11 +36,11 @@ export default function OurBeliefSection() {
           viewport={{ once: true, margin: '-100px' }}
           className="w-full flex flex-col gap-6"
         >
-          <p className="text-[24px] leading-tight tracking-tight text-foreground font-regular">
+          <p className="text-[22px] leading-tight tracking-tight text-foreground font-regular">
             {BELIEF_DESCRIPTION}
           </p>
 
-          <div className="w-full aspect-video rounded-md overflow-hidden bg-foreground/5">
+          <div className="w-full aspect-video overflow-hidden bg-foreground/5">
             <img
               src="https://guxjkdyjeyrscewv.public.blob.vercel-storage.com/faizur-rehman-aLq9KNZ4rjo-unsplash.jpg"
               alt="Our belief"
