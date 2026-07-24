@@ -23,7 +23,7 @@ export default function CartPage() {
             </Link>
           </div>
         ) : (
-          <div className="max-w-5xl mx-auto flex flex-col">
+          <div className="max-w-full px-1 mx-auto flex flex-col">
             {items.map((item) => (
               <div
                 key={item.id}
