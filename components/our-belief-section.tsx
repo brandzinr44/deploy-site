@@ -21,7 +21,7 @@ export default function OurBeliefSection() {
           className="w-full flex flex-col gap-6"
         >
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-foreground flex-shrink-0" />
+            <span className="w-[14px] h-[14px] bg-foreground flex-shrink-0" />
             <h2 className="text-[22px] font-regular text-foreground tracking-tight">
               {OUR_BELIEF_TEXT}
             </h2>

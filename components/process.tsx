@@ -42,7 +42,7 @@ const processSteps = [
 ]
 
 const DESC_TEXT_CLASS =
-  'text-[13px] md:text-[16px] leading-snug font-normal tracking-tight text-foreground'
+  'text-[22px] leading-snug font-regular tracking-tight text-foreground'
 
 // ─── True line-by-line reveal ─────────────────────────────────────
 function LineReveal({ text }: { text: string }) {
@@ -143,7 +143,7 @@ function ProcessListItem({
         <motion.span
           animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 6 : 0 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="block text-[16px] md:text-[32px] font-medium tracking-tight leading-[1.05] text-foreground"
+          className="block text-[22px] font-regular tracking-tight leading-[1.05] text-foreground"
         >
           {step.title}
         </motion.span>
@@ -177,8 +177,8 @@ export default function Process() {
       <div className="w-full grid grid-cols-2 gap-x-8 md:gap-x-0">
         {/* Left 50% — dot + label, same as before */}
         <div className="w-full flex items-center gap-2 self-start">
-          <span className="w-[12px] h-[12px] bg-foreground" />
-          <span className="text-[22px] font-medium text-foreground tracking-tight uppercase">
+          <span className="w-[14px] h-[14px] bg-foreground" />
+          <span className="text-[22px] font-regular text-foreground tracking-tight uppercase">
             Process
           </span>
         </div>
