@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -95,9 +94,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
-  --font-display: 'Noto Sans Display', sans-serif;
+  --font-sans: 'Helvetica Neue', 'Helvetica', sans-serif;
+  --font-mono: 'Helvetica Neue', 'Helvetica', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -289,8 +287,12 @@
 .hero-svg g:nth-child(6) { animation-delay: 0.3s; }
 
 /* All fonts - Helvetica Neue */
+* {
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+
 body, h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
+  font-weight: 400;
 }
 
 /* Text highlight styling */
