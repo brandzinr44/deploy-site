@@ -352,7 +352,7 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [isMenuOpen])
 
-  const navLinks = ['Work', 'Contact', 'Store']
+  const navLinks = ['Work', 'Contact', 'Premium Store']
 
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
@@ -363,7 +363,7 @@ export default function Header() {
   const handleNavClick = (link: string) => {
     if (link === 'Home') router.push('/')
     else if (link === 'Work') router.push('/work')
-    else if (link === 'Store') router.push('/store')
+    else if (link === 'Premium Store') router.push('/store')
     else if (link === 'Contact') window.open(CONTACT_LINK, '_blank', 'noopener,noreferrer')
   }
 
