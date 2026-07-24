@@ -115,7 +115,7 @@ export default function TemplateProducts() {
                   {/* Add to Bag overlay — slides down from top on hover */}
                   <div className="absolute top-0 left-0 right-0 overflow-hidden">
                     <button
-                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground text-white text-[13px] font-medium tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-full flex items-center justify-center gap-1.5 py-3 bg-foreground text-white text-[22px] font-regular tracking-tight -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       onClick={(e) => e.preventDefault()}
                     >
                       <span>Add to Bag</span>
