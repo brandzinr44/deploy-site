@@ -110,14 +110,14 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="bg-background">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
       </head>
-      <body className="antialiased bg-transparent text-foreground transition-colors duration-300">
+      <body className="antialiased bg-background text-foreground transition-colors duration-300">
         <PageTransition>{children}</PageTransition>
         <Analytics />
       </body>

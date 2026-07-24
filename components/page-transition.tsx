@@ -28,8 +28,10 @@ export default function PageTransition({ children }: PageTransitionProps) {
     }
   }, [])
 
+  // Render children initially, animations handle state changes
+  // This prevents hydration mismatches from client-side state
   if (!isClient) {
-    return children
+    return <>{children}</>
   }
 
   return (
@@ -41,6 +43,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
       <AnimatePresence>
         {showWebReveal && (
           <motion.div
+            suppressHydrationWarning
             aria-hidden
             className="fixed inset-0 z-[9999] bg-background pointer-events-none"
             initial={{ y: 0 }}
@@ -63,6 +66,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
       {/* Page transition overlay */}
       <AnimatePresence initial={false}>
         <motion.div
+          suppressHydrationWarning
           key={pathname}
           aria-hidden
           className="fixed inset-0 z-[100] bg-foreground pointer-events-none"
