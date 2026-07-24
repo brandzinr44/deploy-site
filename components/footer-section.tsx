@@ -201,7 +201,7 @@ function NewsletterRow() {
       custom={3}
       variants={rowVariants}
     >
-      <span className="text-[16px] text-foreground font-medium uppercase">Newsletter</span>
+      <span className="text-[16px] text-foreground font-regular uppercase">Newsletter</span>
       <div className="flex items-center justify-end">
         <form onSubmit={handleSubmit} className="w-full">
           <div className="border border-foreground px-4 py-3 flex items-center justify-between gap-4">
@@ -210,19 +210,19 @@ function NewsletterRow() {
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-transparent text-[16px] text-foreground placeholder-foreground/50 outline-none flex-1"
+              className="bg-transparent text-[22px] text-foreground placeholder-foreground/50 outline-none flex-1"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !email}
-              className="text-[16px] text-foreground font-medium whitespace-nowrap hover:opacity-70 transition-opacity disabled:opacity-50"
+              className="text-[22px] text-foreground font-font-regular whitespace-nowrap hover:opacity-70 transition-opacity disabled:opacity-50"
             >
               {isLoading ? 'Sending...' : 'Enter'}
             </button>
           </div>
           {message && (
-            <p className="text-[12px] text-foreground/70 mt-2">{message}</p>
+            <p className="text-[22px] text-foreground mt-2">{message}</p>
           )}
         </form>
       </div>
@@ -246,13 +246,13 @@ export default function FooterSection() {
           custom={0}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-foreground font-medium uppercase">Nav</span>
+          <span className="text-[22px] text-foreground font-regular uppercase">Nav</span>
           <nav className="flex flex-col gap-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
+                className="text-[22px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
               >
                 <AnimatedText text={link.name} />
               </a>
