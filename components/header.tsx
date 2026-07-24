@@ -129,7 +129,7 @@ function SocialLinkWithAnimation({
     return (
       <div className="flex items-center gap-1 flex-shrink-0">
         <span
-          className={`text-[11px] md:text-[12px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] flex items-center border ${
+          className={`text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border ${
             isPrimary
               ? 'text-foreground border-foreground/40 bg-transparent'
               : 'text-background border-foreground bg-foreground'
@@ -138,7 +138,7 @@ function SocialLinkWithAnimation({
           {social.name}
         </span>
         <span
-          className={`w-7 h-7 rounded-full border flex items-center justify-center flex-shrink-0 ${
+          className={`hidden md:flex w-7 h-7 rounded-full border items-center justify-center flex-shrink-0 ${
             isPrimary
               ? 'border-foreground/40 bg-transparent'
               : 'border-foreground bg-foreground'
@@ -161,7 +161,7 @@ function SocialLinkWithAnimation({
   href={social.link}
   target="_blank"
   rel="noopener noreferrer"
-  className="overflow-hidden flex-shrink-0 h-8"
+  className="overflow-hidden flex-shrink-0 h-8 md:h-auto"
   onMouseEnter={() => setIsHovered(true)}
   onMouseLeave={() => setIsHovered(false)}
   initial={{ opacity: 0, y: 16 }}
@@ -170,13 +170,13 @@ function SocialLinkWithAnimation({
   onClick={onClose}
 >
   <motion.div
-    animate={{ y: isHovered ? -32 : 0 }}
+    animate={{ y: isHovered ? 'calc(-100% - 8px)' : 0 }}
     transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
   >
-    <div className="h-8 flex items-center">
+    <div className="h-8 md:h-auto flex items-center">
       <ButtonContent variant="primary" />
     </div>
-    <div className="h-8 flex items-center">
+    <div className="h-8 md:h-auto flex items-center">
       <ButtonContent variant="secondary" />
     </div>
   </motion.div>
