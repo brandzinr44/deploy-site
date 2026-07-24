@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter, usePathname } from 'next/navigation'
+import { useCart } from '@/lib/cart-context'
 
 
 
@@ -314,9 +315,10 @@ function MobileNavItem({
   )
 }
 
-export default function Header() {
+export default function Header({ preloaderDone }: { preloaderDone?: boolean } = {}) {
   const router = useRouter()
   const pathname = usePathname()
+  const { cartCount } = useCart()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
@@ -440,12 +442,12 @@ export default function Header() {
             <Logo />
           </motion.div>
 
-          {/* Right: Store Icon + Hamburger */}
+          {/* Right: Cart Icon + Hamburger */}
           <div className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80]">
-            {/* Store Icon — fades with the rest of the content */}
+            {/* Cart Icon — fades with the rest of the content, shows live item count */}
             <motion.button
-              onClick={() => router.push('/store')}
-              className="flex items-center justify-center w-7 h-7 flex-shrink-0"
+              onClick={() => router.push('/store/cart')}
+              className="relative flex items-center justify-center w-7 h-7 flex-shrink-0"
               variants={contentItemVariants}
               initial="visible"
               animate={isMenuOpen ? 'hidden' : 'visible'}
@@ -456,6 +458,11 @@ export default function Header() {
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[16px] h-[16px] px-1 rounded-full bg-foreground text-background text-[10px] font-medium leading-none">
+                  {cartCount}
+                </span>
+              )}
             </motion.button>
 
             {/* Hamburger — stays in place, always clickable, just morphs to X */}

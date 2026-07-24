@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { CartProvider } from '@/lib/cart-context'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://lozinr.com'),
@@ -65,6 +66,8 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
 }
+
+
 
 export default function RootLayout({
   children,

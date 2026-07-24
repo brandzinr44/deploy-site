@@ -1,0 +1,91 @@
+'use client'
+
+import Link from 'next/link'
+import Header from '@/components/header'
+import FooterSection from '@/components/footer-section'
+import { useCart } from '@/lib/cart-context'
+
+export default function CartPage() {
+  const { items, updateQuantity, cartTotal } = useCart()
+
+  return (
+    <>
+      <Header preloaderDone={true} />
+      <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 px-3 lg:px-6 pb-20">
+        {items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-32 gap-4">
+            <p className="text-[22px] text-foreground">Your bag is empty.</p>
+            <Link
+              href="/store"
+              className="text-[16px] underline underline-offset-4 text-foreground"
+            >
+              Browse the store
+            </Link>
+          </div>
+        ) : (
+          <div className="max-w-5xl mx-auto flex flex-col">
+            {items.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-start gap-4 md:gap-6 py-8 border-b border-foreground/20"
+              >
+                <div className="w-24 h-24 md:w-40 md:h-40 flex-shrink-0 overflow-hidden bg-foreground/10">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="flex-1 flex flex-col gap-1">
+                  <h3 className="text-[18px] md:text-[24px] font-regular tracking-tight text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-[14px] md:text-[16px] text-foreground/60">
+                    {item.license}
+                  </p>
+                  <p className="text-[14px] md:text-[16px] text-foreground/60">
+                    Qty: {item.quantity}
+                  </p>
+
+                  <div className="flex items-center gap-4 mt-3">
+                    <button
+                      onClick={() => updateQuantity(item.id, 1)}
+                      className="w-7 h-7 flex items-center justify-center border border-foreground/40 rounded-full text-[16px] text-foreground hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      +
+                    </button>
+                    <button
+                      onClick={() => updateQuantity(item.id, -1)}
+                      className="w-7 h-7 flex items-center justify-center border border-foreground/40 rounded-full text-[16px] text-foreground hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      −
+                    </button>
+                  </div>
+                </div>
+
+                <p className="text-[16px] md:text-[20px] font-regular tracking-tight text-foreground flex-shrink-0">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </p>
+              </div>
+            ))}
+
+            <div className="flex items-center justify-between py-8">
+              <span className="text-[20px] md:text-[24px] font-regular tracking-tight text-foreground">
+                Total
+              </span>
+              <span className="text-[20px] md:text-[24px] font-regular tracking-tight text-foreground">
+                ${cartTotal.toFixed(2)}
+              </span>
+            </div>
+
+            <button className="w-full py-4 bg-foreground text-background text-[18px] font-regular tracking-tight uppercase">
+              Checkout
+            </button>
+          </div>
+        )}
+      </main>
+      <FooterSection />
+    </>
+  )
+}
