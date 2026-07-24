@@ -32,7 +32,7 @@ export default function CartPage() {
                   />
                 </div>
 
-                <div className="flex-1 flex flex-col gap-1 text-left">
+                <div className="flex-1 flex flex-col gap-0 text-left">
   <h3 className="text-[22px] font-regular tracking-tight text-foreground text-left">
     {item.title}
   </h3>
