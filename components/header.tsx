@@ -37,79 +37,12 @@ function DesktopNavItem({
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <motion.button
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`text-[22px] font-normal tracking-tight overflow-hidden h-[30px] transition-colors duration-200 ${
-        isActive ? 'text-[#C4714F]' : 'text-foreground'
-      }`}
-    >
-      {/* Primary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -28 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      <motion.button
+        onClick={() => router.push('/')}
+        className="text-[20px] md:text-[20px] font-normal tracking-tight h-full transition-colors duration-200 hover:text-[#C4714F]"
       >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 1, y: 0 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 0,
-                    y: -20,
-                  }
-                : {
-                    opacity: 1,
-                    y: 0,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : index * 0.02,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
-
-      {/* Secondary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -33 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: 20,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : 0,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
-    </motion.button>
+        ADNAN
+      </motion.button>
   )
 }
 
@@ -157,30 +90,14 @@ function SocialLinkWithAnimation({
   }
 
   return (
-    <motion.a
-  href={social.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="overflow-hidden flex-shrink-0 h-8 md:h-auto"
-  onMouseEnter={() => setIsHovered(true)}
-  onMouseLeave={() => setIsHovered(false)}
-  initial={{ opacity: 0, y: 16 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-  onClick={onClose}
->
-  <motion.div
-    animate={{ y: isHovered ? 'calc(-100% - 8px)' : 0 }}
-    transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-  >
-    <div className="h-8 md:h-auto flex items-center">
-      <ButtonContent variant="primary" />
-    </div>
-    <div className="h-8 md:h-auto flex items-center">
-      <ButtonContent variant="secondary" />
-    </div>
-  </motion.div>
-</motion.a>
+      <motion.a
+        href={CONTACT_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[14px] md:text-[20px] font-normal tracking-tight border border-foreground rounded-full px-4 py-2 hover:bg-foreground hover:text-background transition-colors duration-200 hidden md:block"
+      >
+        Contact
+      </motion.a>
   )
 }
 

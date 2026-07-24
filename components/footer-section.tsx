@@ -201,10 +201,10 @@ function NewsletterRow() {
       custom={3}
       variants={rowVariants}
     >
-      <span className="text-[16px] text-foreground font-medium">Newsletter</span>
+      <span className="text-[16px] text-foreground font-medium uppercase">Newsletter</span>
       <div className="flex items-center justify-end">
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="border border-foreground rounded-lg px-4 py-3 flex items-center justify-between gap-4">
+          <div className="border border-foreground px-4 py-3 flex items-center justify-between gap-4">
             <input
               type="email"
               placeholder="Email address"
@@ -246,7 +246,7 @@ export default function FooterSection() {
           custom={0}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-foreground font-medium">Nav</span>
+          <span className="text-[16px] text-foreground font-medium uppercase">Nav</span>
           <nav className="flex flex-col gap-0">
             {navLinks.map((link) => (
               <a
@@ -269,7 +269,7 @@ export default function FooterSection() {
           custom={1}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-foreground font-medium">Social</span>
+          <span className="text-[16px] text-foreground font-medium uppercase">Social</span>
           <div className="flex flex-col gap-0">
             {socialLinks.map((link) => (
               <a
@@ -294,7 +294,7 @@ export default function FooterSection() {
           custom={2}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-foreground font-medium">Address</span>
+          <span className="text-[16px] text-foreground font-medium uppercase">Address</span>
           <div>
             <a
               href="mailto:adnan.lozinr@gmail.com"
