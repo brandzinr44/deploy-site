@@ -22,14 +22,14 @@ function WorkHero() {
 
   useEffect(() => { setIsMounted(true) }, [])
 
- const heroImage = '/work-hero.svg'
+  const heroImage = '/work-hero.svg'
 
   return (
     <div
-  ref={heroRef}
-  className="relative w-screen -mx-[calc(50vw-50%)] overflow-hidden"
-  style={{ height: 'min(100vh, calc(100vw * 16 / 9))' }}
->
+      ref={heroRef}
+      className="relative w-screen -mx-[calc(50vw-50%)] overflow-hidden"
+      style={{ height: 'min(100vh, calc(100vw * 16 / 9))' }}
+    >
       {heroImage && (
         <motion.div
           className="w-full h-full"
@@ -44,19 +44,33 @@ function WorkHero() {
       )}
 
       {/* Gradient — same as about page */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-background" />
 
-      {/* "Work" title — bottom-left */}
-     <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-8">
-        <motion.h1
-          className="text-[40px] md:text-[108px] font-medium tracking-tighter leading-[0.9] text-white"
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          Work
-        </motion.h1>
+      {/* "Amazing Work" title — centered, looping slide animation */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden px-2 lg:px-4">
+        <div className="overflow-hidden h-[36px] md:h-[187px]">
+          <motion.div
+            className="flex flex-col"
+            animate={{ y: ['0%', '0%', '-50%', '-50%'] }}
+            transition={{
+              duration: 5.5,
+              times: [0, 0.42, 0.58, 1],
+              repeat: Infinity,
+              ease: [0.76, 0, 0.24, 1],
+            }}
+          >
+            <motion.h1
+              animate={{ scale: [1, 1, 0.985, 1, 1] }}
+              transition={{ duration: 5.5, times: [0, 0.4, 0.5, 0.6, 1], repeat: Infinity, ease: 'easeInOut' }}
+              className="text-[40px] md:text-[208px] font-medium tracking-tighter leading-[0.9] text-foreground text-center"
+            >
+              Great Work
+            </motion.h1>
+            <h1 className="text-[40px] md:text-[208px] font-medium tracking-tighter leading-[0.9] text-foreground text-center">
+              Great Work
+            </h1>
+          </motion.div>
+        </div>
       </div>
     </div>
   )

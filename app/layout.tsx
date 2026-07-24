@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { CartProvider } from '@/lib/cart-context'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://lozinr.com'),
@@ -10,19 +11,19 @@ export const metadata: Metadata = {
   },
   description: 'Lozinr is a brand identity studio helping funded startups and ambitious founders build distinctive brands through strategy, identity systems, and timeless design.',
   keywords: [
-'brand identity studio',
-'brand identity designer',
-'branding for startups',
-'startup branding',
-'brand strategy',
-'visual identity',
-'logo designer',
-'logo design',
-'branding studio',
-'brand identity agency',
-'Adnan Akif',
-'Lozinr'
-],
+    'brand identity studio',
+    'brand identity designer',
+    'branding for startups',
+    'startup branding',
+    'brand strategy',
+    'visual identity',
+    'logo designer',
+    'logo design',
+    'branding studio',
+    'brand identity agency',
+    'Adnan Akif',
+    'Lozinr'
+  ],
   authors: [{ name: 'Adnan Akif' }],
   creator: 'Adnan Akif',
   publisher: 'Lozinr',
@@ -90,21 +91,21 @@ export default function RootLayout({
     },
     areaServed: 'Worldwide',
     serviceType: [
-'Brand Strategy',
-'Brand Identity',
-'Visual Identity System',
-'Logo Identity',
-'Brand Guidelines'
-],
+      'Brand Strategy',
+      'Brand Identity',
+      'Visual Identity System',
+      'Logo Identity',
+      'Brand Guidelines'
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Branding Services',
       url: 'https://lozinr.com/services',
     },
     sameAs: [
-      'https://www.instagram.com/adnan.o.akif/',
-      'https://web.facebook.com/adnan.o.akif',
-      'https://www.youtube.com/adnan.o.akif',
+      'https://www.instagram.com/adnaanakif/',
+      'https://www.facebook.com/adnaanakif',
+      'https://www.youtube.com/adnaanakif',
     ],
   }
 
@@ -117,7 +118,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-background text-foreground transition-colors duration-300">
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
         <Analytics />
       </body>
     </html>
