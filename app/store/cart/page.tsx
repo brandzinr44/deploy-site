@@ -27,9 +27,9 @@ export default function CartPage() {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="flex items-start gap-4 md:gap-6 py-8 border-b border-foreground/20"
+                className="flex items-start gap-4 md:gap-6 py-8 border-b border-foreground"
               >
-                <div className="w-34 h-10 md:w-50 md:h-40 flex-shrink-0 overflow-hidden bg-foreground/10">
+                <div className="w-34 h-10 md:w-50 md:h-40 flex-shrink-0 overflow-hidden bg-foreground">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -37,32 +37,32 @@ export default function CartPage() {
                   />
                 </div>
 
-                <div className="flex-1 flex flex-col gap-1">
-                  <h3 className="text-[18px] md:text-[24px] font-regular tracking-tight text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-[14px] md:text-[16px] text-foreground/60">
-                    {item.license}
-                  </p>
-                  <p className="text-[14px] md:text-[16px] text-foreground/60">
-                    Qty: {item.quantity}
-                  </p>
+                <div className="flex-1 flex flex-col gap-1 text-left">
+  <h3 className="text-[22px] font-regular tracking-tight text-foreground text-left">
+    {item.title}
+  </h3>
+  <p className="text-[14px] md:text-[16px] text-foreground text-left">
+    {item.license}
+  </p>
+  <p className="text-[14px] md:text-[16px] text-foreground/60 text-left">
+    Qty: {item.quantity}
+  </p>
 
-                  <div className="flex items-center gap-2 mt-3">
-                    <button
-                      onClick={() => updateQuantity(item.id, 1)}
-                      className="w-9 h-9 flex items-center justify-center text-[16px] text-foreground"
-                    >
-                      +
-                    </button>
-                    <button
-                      onClick={() => updateQuantity(item.id, -1)}
-                      className="w-9 h-9 flex items-center justify-center text-[16px] text-foreground"
-                    >
-                      −
-                    </button>
-                  </div>
-                </div>
+  <div className="flex items-center gap-3 mt-3">
+    <button
+      onClick={() => updateQuantity(item.id, 1)}
+      className="w-9 h-9 flex items-center justify-center text-[22px] text-foreground"
+    >
+      +
+    </button>
+    <button
+      onClick={() => updateQuantity(item.id, -1)}
+      className="w-9 h-9 flex items-center justify-center text-[22px] text-foreground"
+    >
+      −
+    </button>
+  </div>
+</div>
 
                 <p className="text-[16px] md:text-[20px] font-regular tracking-tight text-foreground flex-shrink-0">
                   ${(item.price * item.quantity).toFixed(2)}
