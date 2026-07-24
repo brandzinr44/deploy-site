@@ -11,7 +11,7 @@ export default function CartPage() {
   return (
     <>
       <Header preloaderDone={true} />
-      <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 px-3 lg:px-6 pb-20">
+      <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 px-3 lg:px-7 pb-20">
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-32 gap-4">
             <p className="text-[22px] text-foreground">Your bag is empty.</p>
@@ -23,7 +23,7 @@ export default function CartPage() {
             </Link>
           </div>
         ) : (
-          <div className="max-w-full px-1 mx-auto flex flex-col">
+          <div className="max-w-full mx-auto flex flex-col">
             {items.map((item) => (
               <div
                 key={item.id}
