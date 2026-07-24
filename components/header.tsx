@@ -65,42 +65,57 @@ function SocialLinkWithAnimation({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClose}
-      className="relative flex-shrink-0"
+      className="relative flex-shrink-0 overflow-hidden"
     >
       <div className="flex items-center gap-1 flex-shrink-0">
-        {/* Primary Button — slides up on hover */}
+        {/* Primary Button — Letter by letter animation up */}
         <motion.span
-          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground border-foreground/40"
-          animate={{
-            y: isHovered ? -30 : 0,
-            backgroundColor: isHovered ? 'var(--foreground)' : 'rgba(255, 255, 255, 0)',
-            color: isHovered ? 'var(--background)' : 'var(--foreground)',
-            borderColor: isHovered ? 'var(--foreground)' : 'rgba(26, 26, 26, 0.4)',
-          }}
-          initial={{
-            backgroundColor: 'rgba(255, 255, 255, 0)',
-            color: 'var(--foreground)',
-            borderColor: 'rgba(26, 26, 26, 0.4)',
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground border-foreground/40 inline-flex"
+          initial={{ backgroundColor: 'rgba(255, 255, 255, 0)' }}
         >
-          {social.name}
+          {social.name.split('').map((char, idx) => (
+            <motion.span
+              key={idx}
+              animate={
+                isHovered
+                  ? { opacity: 0, y: -20 }
+                  : { opacity: 1, y: 0 }
+              }
+              transition={{
+                delay: isHovered ? idx * 0.03 : idx * 0.02,
+                duration: 0.4,
+                ease: 'easeOut',
+              }}
+              className="inline-block"
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </motion.span>
+          ))}
         </motion.span>
 
-        {/* Secondary Button — slides up from bottom on hover */}
+        {/* Secondary Button — Letter by letter animation from bottom */}
         <motion.span
-          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground bg-foreground absolute"
-          style={{
-            color: 'var(--background)',
-            borderColor: 'var(--foreground)',
-          }}
-          animate={{
-            y: isHovered ? 0 : 30,
-            opacity: isHovered ? 1 : 0,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border bg-foreground text-background border-foreground absolute inline-flex"
         >
-          {social.name}
+          {social.name.split('').map((char, idx) => (
+            <motion.span
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={
+                isHovered
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
+              transition={{
+                delay: isHovered ? idx * 0.03 : 0,
+                duration: 0.4,
+                ease: 'easeOut',
+              }}
+              className="inline-block"
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </motion.span>
+          ))}
         </motion.span>
 
         <motion.span
@@ -267,7 +282,7 @@ export default function Header() {
   const handleNavClick = (link: string) => {
     if (link === 'Home') router.push('/')
     else if (link === 'Work') router.push('/work')
-    else if (link === 'Template System') router.push('/template-system')
+    else if (link === 'Store') router.push('/store')
     else if (link === 'Contact') window.open(CONTACT_LINK, '_blank', 'noopener,noreferrer')
   }
 
