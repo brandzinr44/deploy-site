@@ -22,14 +22,14 @@ function WorkHero() {
 
   useEffect(() => { setIsMounted(true) }, [])
 
- const heroImage = '/work-hero.svg'
+  const heroImage = '/work-hero.svg'
 
   return (
     <div
-  ref={heroRef}
-  className="relative w-screen -mx-[calc(50vw-50%)] overflow-hidden"
-  style={{ height: 'min(100vh, calc(100vw * 16 / 9))' }}
->
+      ref={heroRef}
+      className="relative w-screen -mx-[calc(50vw-50%)] overflow-hidden"
+      style={{ height: 'min(100vh, calc(100vw * 16 / 9))' }}
+    >
       {heroImage && (
         <motion.div
           className="w-full h-full"
@@ -46,10 +46,10 @@ function WorkHero() {
       {/* Gradient — same as about page */}
       <div className="absolute inset-0 bg-background" />
 
-      {/* "Work" title — bottom-left */}
-     <div className="absolute bottom-0 left-0 overflow-hidden px-2 lg:px-4 pb-8 lg:pb-8">
+      {/* "Work" title — centered */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden px-2 lg:px-4">
         <motion.h1
-          className="text-[40px] md:text-[108px] font-medium tracking-tighter leading-[0.9] text-foreground"
+          className="text-[40px] md:text-[108px] font-medium tracking-tighter leading-[0.9] text-foreground text-center"
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
