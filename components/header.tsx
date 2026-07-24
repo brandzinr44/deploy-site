@@ -419,7 +419,7 @@ export default function Header() {
             {/* Desktop Left Nav */}
             <motion.div
               variants={contentItemVariants}
-              className="hidden md:flex items-center gap-1"
+              className="hidden md:flex items-center gap-0"
               style={{ pointerEvents: isMenuOpen ? 'none' : 'auto' }}
             >
               <DesktopNavItem label="Features," onClick={() => router.push('/')} />
