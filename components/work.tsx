@@ -85,18 +85,15 @@ function ProjectRow({
 
       {/* Text — directly below the thumbnail */}
       <div className="flex flex-col gap-3 mt-2">
-        <span className="inline-flex w-fit items-center text-[10px] font-medium text-background tracking-tight bg-foreground rounded-full px-1 py-0.5">
-          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-        </span>
 
-        <h3 className="text-[16px] font-medium text-foreground tracking-tight leading-tight">
+        <h3 className="text-[24px] font-regular text-foreground tracking-tight leading-tight">
           {project.name}
         </h3>
 
         {/* Divider under the title */}
         <div className="h-px w-full bg-foreground" />
 
-        <p className="text-[16px] font-medium text-foreground/80 leading-tight tracking-tight">
+        <p className="text-[20px] font-regualar text-foreground/80 leading-tight tracking-tight">
           {project.description}
         </p>
 
@@ -106,7 +103,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
-            <span className="inline-block text-[10px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
               {project.category}
             </span>
           </motion.div>
@@ -116,7 +113,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <span className="inline-block text-[10px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
               {project.year}
             </span>
           </motion.div>
