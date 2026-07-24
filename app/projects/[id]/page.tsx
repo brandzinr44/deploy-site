@@ -169,17 +169,17 @@ export default function ProjectPage() {
             >
               <div>
                 <h1
-                  className="font-medium tracking-tight text-white leading-none mb-6"
-                  style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}
+                  className="font-regular tracking-tight text-white leading-none mb-6"
+                  style={{ fontSize: 'clamp(32px, 5vw, 108px)' }}
                 >
                   {project.name}
                 </h1>
-                <p className="text-[16px] text-white/80 leading-relaxed tracking-tight font-medium mb-8 max-w-[600px]">
+                <p className="text-[22px] text-white leading-tight tracking-tight font-regular mb-8 max-w-[900px]">
                   {project.description}
                 </p>
                 <div className="flex gap-3 flex-wrap items-center">
                   {project.ctas.map((cta, idx) => (
-                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[13px] font-medium tracking-tight">
+                    <span key={idx} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[16px] font-medium tracking-tight">
                       {cta.label}
                     </span>
                   ))}
