@@ -11,7 +11,7 @@ const navLinks = [
 
 const socialLinks = [
   { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
-  { name: 'X', link: 'https://x.com/adnaanakif' },
+  { name: 'Twitter', link: 'https://x.com/adnaanakif' },
 ]
 
 const rowVariants = {
@@ -137,7 +137,7 @@ function AnimatedLogo() {
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[clamp(65px,18vw,305px)] font-medium tracking-tighter text-foreground leading-none"
+      className="text-[clamp(65px,18vw,310px)] font-medium tracking-tighter text-foreground leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
