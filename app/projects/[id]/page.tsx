@@ -137,7 +137,7 @@ export default function ProjectPage() {
         {/* ─── Project Info ─── */}
         <section
   ref={heroSectionRef}
-  className="relative overflow-hidden flex flex-col justify-end px-2 lg:px-4 pt-32 md:pt-40 pb-16 md:pb-24"
+  className="relative overflow-hidden flex flex-col justify-end px-2 lg:px-4 pt-32 md:pt-40 pb-10"
   style={{ minHeight: 'min(100vh, calc(100vw * 16 / 9))' }}
 >
           {infoImage && (
