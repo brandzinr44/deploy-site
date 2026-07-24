@@ -423,7 +423,7 @@ export default function Header() {
               style={{ pointerEvents: isMenuOpen ? 'none' : 'auto' }}
             >
               <DesktopNavItem label="Features," onClick={() => router.push('/')} />
-              <DesktopNavItem label="Store," onClick={() => router.push('/store')} />
+              <DesktopNavItem label="Premium Store," onClick={() => router.push('/store')} />
               <DesktopNavItem label="Jobs" onClick={() => router.push('/')} />
             </motion.div>
           </motion.div>
