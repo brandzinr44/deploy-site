@@ -42,7 +42,7 @@ const processSteps = [
 ]
 
 const DESC_TEXT_CLASS =
-  'text-[22px] leading-snug font-regular tracking-tight text-foreground'
+  'text-[18px] lg:text-[22px] leading-tight lg:leading-snug font-regular tracking-tight text-foreground'
 
 // ─── True line-by-line reveal ─────────────────────────────────────
 function LineReveal({ text }: { text: string }) {
@@ -143,7 +143,7 @@ function ProcessListItem({
         <motion.span
           animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 6 : 0 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="block text-[24px] lg:text-[48px] font-regular tracking-tight leading-[1.05] text-foreground"
+          className="block text-[32px] lg:text-[48px] font-regular tracking-tight leading-[1.05] text-foreground"
         >
           {step.title}
         </motion.span>
