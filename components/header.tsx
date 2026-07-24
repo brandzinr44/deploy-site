@@ -508,18 +508,7 @@ export default function Header({ preloaderDone }: { preloaderDone?: boolean } = 
             >
               {/* Mobile Single Column — Stacked with Dividers */}
               <div className="md:hidden flex flex-col w-full h-full">
-                {/* Top — SVG Logo (reduced height) */}
-                <div className="flex-none h-[140px] border-b border-foreground flex items-start justify-start pt-8 px-4 overflow-hidden">
-                  <motion.img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wordmark-gWRKyZ4BOkFw33ZwV4Vk6N0fZMNDAc.png"
-                    alt="Lozinr Studio"
-                    className="h-20 w-auto"
-                    initial={{ clipPath: 'inset(0 0 100% 0)' }}
-                    animate={{ clipPath: 'inset(0 0 0% 0)' }}
-                    exit={{ clipPath: 'inset(0 0 100% 0)' }}
-                    transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
-                  />
-                </div>
+                
 
                 {/* Middle — Nav + Social Links */}
                 <div className="flex-1 border-b border-foreground flex flex-col justify-center pt-12 pb-8 px-4">
