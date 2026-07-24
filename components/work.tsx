@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { projectsData } from '@/lib/projects-data'
 
-// ─── Row ─────────────────────────────────────────────────────────
+// ─── Card ────────────────────────────────────────────────────────
 function ProjectRow({
   project,
   index,
@@ -18,7 +18,6 @@ function ProjectRow({
 }) {
   const imgRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
-  const [imgHeight, setImgHeight] = useState(0)
 
   // Tilt on hover
   const rotateX = useMotionValue(0)
@@ -32,20 +31,6 @@ function ProjectRow({
     offset: ['start end', 'end start'],
   })
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
-
-  // Track the image's rendered height so the full-width divider below it
-  // can be positioned correctly even as the column width changes (resize / breakpoints)
-  useEffect(() => {
-    const el = imgRef.current
-    if (!el) return
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setImgHeight(entry.contentRect.height)
-      }
-    })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = imgRef.current?.getBoundingClientRect()
@@ -69,11 +54,9 @@ function ProjectRow({
       href={`/projects/${slug}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={handleLeave}
-      className="relative grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-7 items-start group"
+      className="relative flex flex-col gap-3 group"
     >
-      {/* Image — outer div is the clip + scroll-measurement target,
-          inner motion.div carries both the parallax (y) and the tilt (rotateX/Y).
-          scale-125 gives enough overscan so the ±10% parallax shift never reveals an edge. */}
+      {/* Image */}
       <div
         ref={imgRef}
         onMouseMove={handleMouseMove}
@@ -100,27 +83,17 @@ function ProjectRow({
         </motion.div>
       </div>
 
-      {/* Full-container-width divider, anchored to the row (not the image column),
-          positioned right below the thumbnail's actual rendered height */}
-      <div
-        className="hidden absolute left-0 right-0 h-px bg-foreground"
-        style={{ top: imgHeight + 16 }}
-      />
+      {/* Text — directly below the thumbnail */}
+      <div className="flex flex-col gap-3 mt-2">
 
-      {/* Text — top aligned */}
-      <div className="flex flex-col gap-3 mt-8 md:mt-0">
-        <span className="inline-flex w-fit items-center text-[10px] font-medium text-background tracking-tight bg-foreground rounded-full px-1 py-0.5">
-          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-        </span>
-
-        <h3 className="text-[16px] font-medium text-foreground tracking-tight leading-tight">
+        <h3 className="text-[24px] font-regular text-foreground tracking-tight leading-tight">
           {project.name}
         </h3>
 
         {/* Divider under the title */}
         <div className="h-px w-full bg-foreground" />
 
-        <p className="text-[16px] font-medium text-foreground/80 leading-tight tracking-tight">
+        <p className="text-[20px] font-regualar text-foreground/80 leading-tight tracking-tight">
           {project.description}
         </p>
 
@@ -130,7 +103,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
-            <span className="inline-block text-[10px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
               {project.category}
             </span>
           </motion.div>
@@ -140,7 +113,7 @@ function ProjectRow({
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <span className="inline-block text-[10px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
+            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
               {project.year}
             </span>
           </motion.div>
@@ -156,36 +129,18 @@ export default function Work() {
 
   return (
     <section id="work-section" className="bg-background py-12 md:py-24 px-3 lg:px-6">
-      <div className="flex flex-col md:flex-row md:items-start gap-x-6 md:gap-x-4">
-        {/* Mobile: full width, sits on top. Desktop: 20% column on the left */}
-        <div className="w-full md:w-1/6 flex items-center gap-2 mb-8 md:mb-0 md:self-start">
-          <span className="w-[12px] h-[12px] rounded-full bg-foreground" />
-          <span className="text-[22px] font-medium text-foreground tracking-tight">
-            Work
-          </span>
-        </div>
-
-        {/* Mobile: stacks below "Work", full width. Desktop: 80% column on the right,
-            each row internally split 50/50 = 40/40 of the full section width */}
-        <div className="w-full md:w-4/5 flex flex-col gap-12 md:gap-20">
-          {displayProjects.map((project, i) => (
-            <div key={project.id}>
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <ProjectRow project={project} index={i} total={displayProjects.length} />
-              </motion.div>
-
-              {/* Horizontal divider after every 2 thumbnails on desktop */}
-              {(i + 1) % 2 === 0 && i !== displayProjects.length - 1 && (
-                <div className="hidden md:block h-px bg-foreground/30 mt-12 md:mt-20" />
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-7 gap-y-12 md:gap-y-20">
+        {displayProjects.map((project, i) => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ProjectRow project={project} index={i} total={displayProjects.length} />
+          </motion.div>
+        ))}
       </div>
     </section>
   )

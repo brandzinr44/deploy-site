@@ -124,32 +124,37 @@ function TiltCard({
             />
           </div>
 
-          <div className="pt-3 flex flex-col gap-1">
-            <h3 className="text-[16px] font-medium text-foreground tracking-tight leading-tight">
-              {project.name}
-            </h3>
-            <p className="text-[16px] font-medium text-foreground/60 leading-tight tracking-tight">
-              {project.description}
-            </p>
-            <div className="mt-1 flex items-center gap-2">
-              <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
-              >
-                <span className="inline-block text-[11px] md:text-[12px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
-                  {project.category}
-                </span>
-              </motion.div>
+          <div className="pt-3 flex flex-col gap-3 mt-2">
+            <h3 className="text-[24px] font-regular text-foreground tracking-tight leading-tight">
+          {project.name}
+        </h3>
 
-              <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              >
-                <span className="inline-block text-[11px] md:text-[12px] bg-foreground font-medium tracking-tight text-background rounded-full px-3 py-1">
-                  {project.year}
-                </span>
+        {/* Divider under the title */}
+        <div className="h-px w-full bg-foreground" />
+
+        <p className="text-[20px] font-regualar text-foreground/80 leading-tight tracking-tight">
+          {project.description}
+        </p>
+
+        <div className="flex items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0 }}
+          >
+            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
+              {project.category}
+            </span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          >
+            <span className="inline-block text-[18px] bg-foreground font-regular tracking-tight text-background rounded-full px-3 py-1">
+              {project.year}
+            </span>
               </motion.div>
             </div>
           </div>

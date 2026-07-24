@@ -205,7 +205,7 @@ export const projectsData: Project[] = [
     ],
 
     images: [
-      '#',
+      '/portfolio-workspace.jpg',
     ],
     sections: {
       challenge: {

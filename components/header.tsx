@@ -30,85 +30,18 @@ const SCROLL_THRESHOLD_MOBILE = 1200
 function DesktopNavItem({
   label,
   isActive,
+  onClick,
 }: {
   label: string
   isActive: boolean
+  onClick?: () => void
 }) {
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
     <motion.button
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`text-[22px] font-normal tracking-tight overflow-hidden h-[30px] transition-colors duration-200 ${
-        isActive ? 'text-[#C4714F]' : 'text-foreground'
-      }`}
+      onClick={onClick}
+      className="text-[20px] md:text-[20px] font-normal tracking-tight h-full px-2 transition-colors duration-200 hover:text-[#C4714F]"
     >
-      {/* Primary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -28 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 1, y: 0 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 0,
-                    y: -20,
-                  }
-                : {
-                    opacity: 1,
-                    y: 0,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : index * 0.02,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
-
-      {/* Secondary Text */}
-      <motion.div
-        className="flex"
-        animate={{ y: isHovered ? -33 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      >
-        {label.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={
-              isHovered
-                ? {
-                    opacity: 1,
-                    y: 0,
-                  }
-                : {
-                    opacity: 0,
-                    y: 20,
-                  }
-            }
-            transition={{
-              delay: isHovered ? index * 0.03 : 0,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
-        ))}
-      </motion.div>
+      {label}
     </motion.button>
   )
 }
@@ -124,28 +57,38 @@ function SocialLinkWithAnimation({
 }) {
   const [isHovered, setIsHovered] = useState(false)
 
-  const ButtonContent = ({ variant }: { variant: 'primary' | 'secondary' }) => {
-    const isPrimary = variant === 'primary'
-    return (
+  return (
+    
+      href={social.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClose}
+      className="relative overflow-hidden flex-shrink-0"
+    >
       <div className="flex items-center gap-1 flex-shrink-0">
         <span
-          className={`text-[11px] md:text-[12px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] flex items-center border ${
-            isPrimary
-              ? 'text-foreground border-foreground/40 bg-transparent'
-              : 'text-background border-foreground bg-foreground'
-          }`}
+          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground border-foreground/40 bg-transparent transition-colors duration-300"
+          style={{
+            backgroundColor: isHovered ? 'var(--foreground)' : 'transparent',
+            color: isHovered ? 'var(--background)' : undefined,
+            borderColor: isHovered ? 'var(--foreground)' : undefined,
+          }}
         >
           {social.name}
         </span>
         <span
-          className={`w-7 h-7 rounded-full border flex items-center justify-center flex-shrink-0 ${
-            isPrimary
-              ? 'border-foreground/40 bg-transparent'
-              : 'border-foreground bg-foreground'
-          }`}
+          className="hidden md:flex w-7 h-7 rounded-full border items-center justify-center flex-shrink-0 transition-colors duration-300"
+          style={{
+            backgroundColor: isHovered ? 'var(--foreground)' : 'transparent',
+            borderColor: 'var(--foreground)',
+            opacity: isHovered ? 1 : 0.4,
+          }}
         >
           <svg
-            className={`w-3 h-3 ${isPrimary ? 'text-foreground' : 'text-background'}`}
+            className="w-3 h-3"
+            style={{ color: isHovered ? 'var(--background)' : 'var(--foreground)' }}
             viewBox="0 0 10 10"
             fill="none"
           >
@@ -153,34 +96,7 @@ function SocialLinkWithAnimation({
           </svg>
         </span>
       </div>
-    )
-  }
-
-  return (
-    <motion.a
-  href={social.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="overflow-hidden flex-shrink-0 h-8"
-  onMouseEnter={() => setIsHovered(true)}
-  onMouseLeave={() => setIsHovered(false)}
-  initial={{ opacity: 0, y: 16 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-  onClick={onClose}
->
-  <motion.div
-    animate={{ y: isHovered ? -32 : 0 }}
-    transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-  >
-    <div className="h-8 flex items-center">
-      <ButtonContent variant="primary" />
-    </div>
-    <div className="h-8 flex items-center">
-      <ButtonContent variant="secondary" />
-    </div>
-  </motion.div>
-</motion.a>
+    </a>
   )
 }
 
@@ -313,7 +229,7 @@ export default function Header() {
 
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
-  { name: 'Twitter', link: 'https://x.com/adnaanakif' },
+    { name: 'Twitter', link: 'https://x.com/adnaanakif' },
   ]
 
   const handleNavClick = (link: string) => {
@@ -343,13 +259,13 @@ export default function Header() {
     <>
       {/* Fixed Navbar */}
       <motion.header
-  className="fixed top-0 left-0 right-0 z-[100] w-full"
-  initial={{ y: 0, opacity: 1 }}
-  animate={{ y: isMenuOpen ? -100 : 0, opacity: isMenuOpen ? 0 : 1 }}
-  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
->
+        className="fixed top-0 left-0 right-0 z-[100] w-full"
+        initial={{ y: 0, opacity: 1 }}
+        animate={{ y: isMenuOpen ? -100 : 0, opacity: isMenuOpen ? 0 : 1 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* Background layer — fades in only between threshold from top and threshold from bottom */}
-      <div className="absolute inset-0 bg-background" />
+        <div className="absolute inset-0 bg-background" />
 
         <div className="relative z-10 flex items-center justify-between gap-4 py-3 px-3 lg:px-6 lg:py-4 w-full">
 
@@ -365,9 +281,9 @@ export default function Header() {
 
             {/* Desktop Left Nav */}
             <div className="hidden md:flex items-center gap-1">
-              <DesktopNavItem label="Features," isActive={false} />
-              <DesktopNavItem label="Store," isActive={false} />
-              <DesktopNavItem label="Jobs" isActive={false} />
+              <DesktopNavItem label="Features," isActive={false} onClick={() => router.push('/')} />
+              <DesktopNavItem label="Store," isActive={false} onClick={() => router.push('/')} />
+              <DesktopNavItem label="Jobs" isActive={false} onClick={() => router.push('/')} />
             </div>
           </div>
 
@@ -459,77 +375,77 @@ export default function Header() {
               transition={{ duration: 0.2, delay: 0.25 }}
             >
               {/* Mobile Single Column — Stacked with Dividers */}
-<div className="md:hidden flex flex-col w-full h-full">
-  {/* Top — SVG Logo (reduced height) */}
-  <div className="flex-none h-[170px] border-b border-foreground flex items-start justify-start pt-13 px-4 overflow-hidden">
-    <motion.img
-      src="/menu-logo.svg"
-      alt="Menu Logo"
-      className="h-20 w-auto"
-      initial={{ clipPath: 'inset(0 0 100% 0)' }}
-      animate={{ clipPath: 'inset(0 0 0% 0)' }}
-      exit={{ clipPath: 'inset(0 0 100% 0)' }}
-      transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
-    />
-  </div>
+              <div className="md:hidden flex flex-col w-full h-full">
+                {/* Top — SVG Logo (reduced height) */}
+                <div className="flex-none h-[140px] border-b border-foreground flex items-start justify-start pt-8 px-4 overflow-hidden">
+                  <motion.img
+                    src="/menu-logo.svg"
+                    alt="Menu Logo"
+                    className="h-20 w-auto"
+                    initial={{ clipPath: 'inset(0 0 100% 0)' }}
+                    animate={{ clipPath: 'inset(0 0 0% 0)' }}
+                    exit={{ clipPath: 'inset(0 0 100% 0)' }}
+                    transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
+                  />
+                </div>
 
-  {/* Middle — Nav + Social Links */}
-  <div className="flex-1 border-b border-foreground flex flex-col py-8 px-4">
-    {/* Navigation Items — Top, Left-Aligned */}
-    <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
-      {navLinks.map((link, index) => {
-        const isActive =
-          (link === 'Home'     && pathname === '/')         ||
-          (link === 'Work'     && pathname === '/work')     ||
-          (link === 'Services' && pathname === '/services') ||
-          (link === 'About'    && pathname === '/about')
-        return (
-          <MobileNavItem
-            key={link}
-            label={link}
-            isActive={isActive}
-            delay={0.28 + index * 0.07}
-            isMenuOpen={isMenuOpen}
-            onClick={() => {
-              setIsMenuOpen(false)
-              handleNavClick(link)
-            }}
-          />
-        )
-      })}
-    </div>
+                {/* Middle — Nav + Social Links */}
+                <div className="flex-1 border-b border-foreground flex flex-col py-8 px-4">
+                  {/* Navigation Items — Top, Left-Aligned */}
+                  <div className="flex flex-col items-start justify-start" style={{ lineHeight: '0.7' }}>
+                    {navLinks.map((link, index) => {
+                      const isActive =
+                        (link === 'Home'     && pathname === '/')         ||
+                        (link === 'Work'     && pathname === '/work')     ||
+                        (link === 'Services' && pathname === '/services') ||
+                        (link === 'About'    && pathname === '/about')
+                      return (
+                        <MobileNavItem
+                          key={link}
+                          label={link}
+                          isActive={isActive}
+                          delay={0.28 + index * 0.07}
+                          isMenuOpen={isMenuOpen}
+                          onClick={() => {
+                            setIsMenuOpen(false)
+                            handleNavClick(link)
+                          }}
+                        />
+                      )
+                    })}
+                  </div>
 
-    {/* Social Links — extra gap from nav above */}
-    <div className="flex flex-row items-center gap-3 flex-wrap mt-16">
-      {socialLinks.map((social, index) => (
-        <SocialLinkWithAnimation
-          key={social.name}
-          social={social}
-          index={index}
-          onClose={() => setIsMenuOpen(false)}
-        />
-      ))}
-    </div>
-  </div>
+                  {/* Social Links — extra gap from nav above */}
+                  <div className="flex flex-row items-center gap-3 flex-wrap mt-16">
+                    {socialLinks.map((social, index) => (
+                      <SocialLinkWithAnimation
+                        key={social.name}
+                        social={social}
+                        index={index}
+                        onClose={() => setIsMenuOpen(false)}
+                      />
+                    ))}
+                  </div>
+                </div>
 
-  {/* Bottom — Empty */}
-  <div className="flex-1" />
-</div>
+                {/* Bottom — Empty */}
+                <div className="flex-1" />
+              </div>
 
               {/* Desktop 3-Column Layout */}
               <div className="hidden md:flex inset-0 w-full items-stretch">
                 {/* Left Column — SVG Logo */}
                 <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6 overflow-hidden">
-  <motion.img
-    src="/menu-logo.svg"
-    alt="Menu Logo"
-    className="h-70 w-auto"
-    initial={{ clipPath: 'inset(0 0 100% 0)' }}
-    animate={{ clipPath: 'inset(0 0 0% 0)' }}
-    exit={{ clipPath: 'inset(0 0 100% 0)' }}
-    transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
-  />
-</div>
+                  <motion.img
+                    src="/menu-logo.svg"
+                    alt="Menu Logo"
+                    className="h-70 w-auto"
+                    initial={{ clipPath: 'inset(0 0 100% 0)' }}
+                    animate={{ clipPath: 'inset(0 0 0% 0)' }}
+                    exit={{ clipPath: 'inset(0 0 100% 0)' }}
+                    transition={{ duration: 0.7, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
+                  />
+                </div>
 
                 {/* Middle Column — Navigation */}
                 <div className="flex-1 border-r border-foreground flex flex-col justify-between py-8 px-6">

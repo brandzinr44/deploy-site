@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, FormEvent } from 'react'
 
 const navLinks = [
   
@@ -11,7 +11,7 @@ const navLinks = [
 
 const socialLinks = [
   { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
-  { name: 'X', link: 'https://x.com/adnaanakif' },
+  { name: 'Twitter', link: 'https://x.com/adnaanakif' },
 ]
 
 const rowVariants = {
@@ -137,7 +137,7 @@ function AnimatedLogo() {
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[clamp(65px,18vw,305px)] font-medium tracking-tighter text-foreground leading-none"
+      className="text-[clamp(65px,18vw,310px)] font-medium tracking-tighter text-foreground leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
@@ -160,6 +160,76 @@ function AnimatedLogo() {
   )
 }
 
+function NewsletterRow() {
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!email) return
+
+    setIsLoading(true)
+    setMessage('')
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      if (response.ok) {
+        setMessage('Thank you for subscribing!')
+        setEmail('')
+      } else {
+        setMessage('Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setMessage('Error submitting email.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <motion.div
+      className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: '-40px' }}
+      custom={3}
+      variants={rowVariants}
+    >
+      <span className="text-[20px] text-foreground font-regular uppercase">Newsletter</span>
+      <div className="flex items-center justify-end">
+        <form onSubmit={handleSubmit} className="w-full">
+          <div className="border border-foreground px-4 py-3 flex items-center justify-between gap-4">
+            <input
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="bg-transparent text-[20px] text-foreground placeholder-foreground outline-none flex-1"
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              disabled={isLoading || !email}
+              className="text-[20px] text-foreground font-regular whitespace-nowrap  disabled:opacity-50"
+            >
+              {isLoading ? 'Sending...' : 'Enter'}
+            </button>
+          </div>
+          {message && (
+            <p className="text-[20px] text-foreground mt-2">{message}</p>
+          )}
+        </form>
+      </div>
+    </motion.div>
+  )
+}
+
 export default function FooterSection() {
 
 
@@ -167,34 +237,22 @@ export default function FooterSection() {
     <footer className="relative w-full bg-background">
       <div className="relative z-20 px-5 lg:px-6 pt-0 md:pt-0 pb-1 md:pb-4">
 
-        {/* Row 0 — Divider with tagline */}
+        {/* Row 0 — Nav */}
         <motion.div
-          className="py-3 md:py-10"
+          className="grid grid-cols-2 py-3 md:py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
           custom={0}
           variants={rowVariants}
         >
-          <p className="md:text-[36px] text-[18px] text-foreground font-medium tracking-tight">Built for founders who think long term.</p>
-        </motion.div>
-
-        {/* Row 1 — Nav */}
-        <motion.div
-          className="grid grid-cols-2 py-3 md:py-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: '-40px' }}
-          custom={1}
-          variants={rowVariants}
-        >
-          <span className="text-[16px] text-foreground font-medium">Nav</span>
+          <span className="text-[20px] text-foreground font-regular uppercase">Nav</span>
           <nav className="flex flex-col gap-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
+                className="text-[20px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
               >
                 <AnimatedText text={link.name} />
               </a>
@@ -202,7 +260,32 @@ export default function FooterSection() {
           </nav>
         </motion.div>
 
-        {/* Row 2 — Social */}
+        {/* Row 1 — Social */}
+        <motion.div
+          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: '-40px' }}
+          custom={1}
+          variants={rowVariants}
+        >
+          <span className="text-[20px] text-foreground font-regular uppercase">Social</span>
+          <div className="flex flex-col gap-0">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[20px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
+              >
+                <AnimatedText text={link.name} />
+              </a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Row 2 — Address */}
         <motion.div
           className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
           initial="hidden"
@@ -211,45 +294,23 @@ export default function FooterSection() {
           custom={2}
           variants={rowVariants}
         >
-          <span className="text-[16px] text-foreground font-medium">Social</span>
-          <div className="flex flex-col gap-0">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground w-fit"
-              >
-                <AnimatedText text={link.name} />
-              </a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Row 3 — Address */}
-        <motion.div
-          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: '-40px' }}
-          custom={3}
-          variants={rowVariants}
-        >
-          <span className="text-[16px] text-foreground font-medium">Address</span>
+          <span className="text-[20px] text-foreground font-regular uppercase">Address</span>
           <div>
             <a
               href="mailto:adnan.lozinr@gmail.com"
-              className="text-[16px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
+              className="text-[20px] text-foreground underline underline-offset-4 decoration-foreground block mb-3 w-fit"
             >
               <AnimatedText text="Start a project" />
             </a>
-            <p className="text-[16px] text-foreground leading-snug">
+            <p className="text-[20px] text-foreground leading-snug">
               Based in Bangladesh<br />
               Working Worldwide.
             </p>
           </div>
         </motion.div>
+
+        {/* Row 3 — Newsletter */}
+        <NewsletterRow />
 
       </div>
 
