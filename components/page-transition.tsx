@@ -11,22 +11,26 @@ interface PageTransitionProps {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
+  const [isClient, setIsClient] = useState(false)
   const [showPreloader, setShowPreloader] = useState(true)
   const [showWebReveal, setShowWebReveal] = useState(true)
 
   useEffect(() => {
+    setIsClient(true)
     // Only show preloader on first page load (not on subsequent navigations)
-    if (showPreloader) {
-      // Keep track that we've shown the preloader
-      const hasShownPreloader = sessionStorage.getItem('preloaderShown')
-      if (hasShownPreloader) {
-        setShowPreloader(false)
-        setShowWebReveal(false)
-      } else {
-        sessionStorage.setItem('preloaderShown', 'true')
-      }
+    // Keep track that we've shown the preloader
+    const hasShownPreloader = sessionStorage.getItem('preloaderShown')
+    if (hasShownPreloader) {
+      setShowPreloader(false)
+      setShowWebReveal(false)
+    } else {
+      sessionStorage.setItem('preloaderShown', 'true')
     }
   }, [])
+
+  if (!isClient) {
+    return children
+  }
 
   return (
     <>
