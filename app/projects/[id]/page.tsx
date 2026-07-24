@@ -235,7 +235,7 @@ export default function ProjectPage() {
                           <h3 className="text-[22px] text-foreground uppercase tracking-wide mb-4">
                             Overview
                           </h3>
-                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                          <p className="text-[18px] tracking-tight leading-tight text-foreground">
                             {project.overview}
                           </p>
                         </div>
@@ -243,10 +243,10 @@ export default function ProjectPage() {
 
                       {project.detailChallenge && (
                         <div>
-                          <h3 className="text-[14px] text-foreground/60 uppercase tracking-wide mb-4">
+                          <h3 className="text-[22px] text-foreground uppercase tracking-wide mb-4">
                             Challenge
                           </h3>
-                          <p className="text-[16px] tracking-tight leading-relaxed text-foreground">
+                          <p className="text-[18px] tracking-tight leading-tight text-foreground">
                             {project.detailChallenge.body
                               .split('\n')
                               .filter(line => line.trim())
