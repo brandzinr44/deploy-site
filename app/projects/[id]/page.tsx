@@ -159,13 +159,13 @@ export default function ProjectPage() {
             </div>
           )}
 
-          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-4"
             >
               <div>
                 <h1
