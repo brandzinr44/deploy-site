@@ -136,11 +136,11 @@ function AnimatedLogo() {
   
   return (
     <div ref={containerRef} className="w-full flex justify-center py-0">
-      <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-1">
+      <div className="flex gap-0 w-fit lg:-translate-x-3 -translate-x-0">
   {text.split("").map((char, index) => (
     <motion.span
       key={index}
-      className="text-[clamp(60px,13vw,310px)] font-medium tracking-tighter text-foreground leading-none"
+      className="text-[clamp(55px,13vw,310px)] font-medium tracking-tighter text-foreground leading-none"
       initial={{ y: 60, opacity: 0 }}
       animate={
         isInView
