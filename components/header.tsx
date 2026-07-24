@@ -435,11 +435,11 @@ export default function Header() {
               {/* Desktop 3-Column Layout */}
               <div className="hidden md:flex inset-0 w-full items-stretch">
                 {/* Left Column — SVG Logo */}
-                <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6 overflow-hidden">
+                <div className="flex-1 border-r border-foreground flex items-start justify-left pt-8 px-6">
                   <motion.img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wordmark-gWRKyZ4BOkFw33ZwV4Vk6N0fZMNDAc.png"
                     alt="Lozinr Studio"
-                    className="h-70 w-auto"
+                    className="h-24 w-auto"
                     initial={{ clipPath: 'inset(0 0 100% 0)' }}
                     animate={{ clipPath: 'inset(0 0 0% 0)' }}
                     exit={{ clipPath: 'inset(0 0 100% 0)' }}
