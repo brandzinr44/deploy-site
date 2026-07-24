@@ -53,22 +53,52 @@ const contentItemVariants = {
   },
 }
 
+// Desktop left-nav items — no mount/reveal animation. Hover behaves exactly
+// like the full-screen menu nav hover: text slides up and out while a
+// letter-by-letter staggered duplicate slides up into view. No accent color.
 function DesktopNavItem({
   label,
-  isActive,
   onClick,
 }: {
   label: string
-  isActive: boolean
   onClick?: () => void
 }) {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
-    <motion.button
+    <button
       onClick={onClick}
-      className="text-[20px] md:text-[20px] font-normal tracking-tight h-full px-2 transition-colors duration-200 hover:text-[#C4714F]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="text-[20px] md:text-[20px] font-normal tracking-tight h-full px-2 flex items-center overflow-hidden"
     >
-      {label}
-    </motion.button>
+      <div className="overflow-hidden h-6 relative">
+        <motion.div
+          animate={{ y: isHovered ? -24 : 0 }}
+          transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
+        >
+          {/* Primary text */}
+          <div className="h-6 flex items-center whitespace-nowrap">
+            {label}
+          </div>
+
+          {/* Secondary text — letters stagger in on hover, same pattern as MobileNavItem */}
+          <div className="h-6 flex items-center whitespace-nowrap">
+            {label.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                initial={{ opacity: 0, y: 10 }}
+                animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                transition={{ delay: isHovered ? i * 0.025 : 0, duration: 0.4, ease: 'easeOut' }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </button>
   )
 }
 
@@ -80,16 +110,20 @@ function ArrowGlyph({ color }: { color: string }) {
   )
 }
 
+// Social links now fade/slide in on menu open and reverse (fade/slide out,
+// reverse stagger order) on menu close — mirrors the open animation.
 function SocialLinkWithAnimation({
   social,
   index,
-  delay,
+  enterDelay,
+  exitDelay,
   isMenuOpen,
   onClose,
 }: {
   social: { name: string; link: string }
   index: number
-  delay: number
+  enterDelay: number
+  exitDelay: number
   isMenuOpen: boolean
   onClose: () => void
 }) {
@@ -102,18 +136,18 @@ function SocialLinkWithAnimation({
       setIntroPlayed(false)
       return
     }
-    const playTimer = setTimeout(() => setIntroPlayed(true), delay * 1000)
-    const resetTimer = setTimeout(() => setIntroPlayed(false), delay * 1000 + 650)
+    const playTimer = setTimeout(() => setIntroPlayed(true), enterDelay * 1000)
+    const resetTimer = setTimeout(() => setIntroPlayed(false), enterDelay * 1000 + 650)
     return () => {
       clearTimeout(playTimer)
       clearTimeout(resetTimer)
     }
-  }, [isMenuOpen, delay])
+  }, [isMenuOpen, enterDelay])
 
   const active = isHovered || introPlayed
 
   return (
-    <a
+    <motion.a
       href={social.link}
       target="_blank"
       rel="noopener noreferrer"
@@ -121,6 +155,13 @@ function SocialLinkWithAnimation({
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClose}
       className="flex items-center gap-1.5 flex-shrink-0"
+      initial={{ opacity: 0, y: 16 }}
+      animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={
+        isMenuOpen
+          ? { delay: enterDelay, duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+          : { delay: exitDelay, duration: 0.4, ease: [0.65, 0, 0.35, 1] }
+      }
     >
       {/* Text pill — border only, filled layer rises up from the bottom on hover (and once on menu open) */}
       <div className="relative rounded-full border border-foreground/40 overflow-hidden">
@@ -166,28 +207,38 @@ function SocialLinkWithAnimation({
           <ArrowGlyph color="var(--background)" />
         </motion.div>
       </div>
-    </a>
+    </motion.a>
   )
 }
 
+// Mobile/menu nav items — letters stagger IN on open (top-down order),
+// and stagger OUT in reverse (last item exits first, last letter exits first)
+// on close, mirroring the open animation.
 function MobileNavItem({
   label,
   isActive,
-  delay,
+  enterDelay,
+  exitDelay,
   isMenuOpen,
   onClick,
 }: {
   label: string
   isActive: boolean
-  delay: number
+  enterDelay: number
+  exitDelay: number
   isMenuOpen: boolean
   onClick: () => void
 }) {
   const [isHovered, setIsHovered] = useState(false)
   const [hasEntered, setHasEntered] = useState(false)
 
+  useEffect(() => {
+    if (!isMenuOpen) setHasEntered(false)
+  }, [isMenuOpen])
+
   const primaryVisible = isMenuOpen && !isHovered
   const secondaryVisible = isHovered
+  const charCount = label.length
 
   return (
     <button
@@ -203,7 +254,7 @@ function MobileNavItem({
           animate={{ y: isHovered ? -96 : 0 }}
           transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
         >
-          {/* Primary Text — letter by letter reveal, once, when menu opens */}
+          {/* Primary Text — letter by letter reveal on open, reverse letter-by-letter on close */}
           <div className="flex h-[96px] items-center">
             {label.split('').map((char, index) => (
               <motion.span
@@ -215,9 +266,15 @@ function MobileNavItem({
                     : { opacity: 0, y: isHovered ? -20 : 40 }
                 }
                 transition={
-                  hasEntered
-                    ? { delay: isHovered ? index * 0.025 : 0, duration: 0.5, ease: 'easeOut' }
-                    : { delay: delay + index * 0.03, duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+                  isMenuOpen
+                    ? hasEntered
+                      ? { delay: isHovered ? index * 0.025 : 0, duration: 0.5, ease: 'easeOut' }
+                      : { delay: enterDelay + index * 0.03, duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+                    : {
+                        delay: exitDelay + (charCount - 1 - index) * 0.03,
+                        duration: 0.4,
+                        ease: [0.65, 0, 0.35, 1],
+                      }
                 }
                 onAnimationComplete={() => {
                   if (!hasEntered && isMenuOpen) setHasEntered(true)
@@ -333,8 +390,9 @@ export default function Header() {
           stays put and simply morphs into an X. */}
       <motion.header
         className="fixed top-0 left-0 right-0 z-[100] w-full"
-        initial={{ y: 0, opacity: 1 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: -80, opacity: 0, filter: 'blur(6px)' }}
+        animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
       >
         {/* Background layer */}
         <div className="absolute inset-0 bg-background" />
@@ -364,9 +422,9 @@ export default function Header() {
               className="hidden md:flex items-center gap-1"
               style={{ pointerEvents: isMenuOpen ? 'none' : 'auto' }}
             >
-              <DesktopNavItem label="Features," isActive={false} onClick={() => router.push('/')} />
-              <DesktopNavItem label="Store," isActive={false} onClick={() => router.push('/')} />
-              <DesktopNavItem label="Jobs" isActive={false} onClick={() => router.push('/')} />
+              <DesktopNavItem label="Features," onClick={() => router.push('/')} />
+              <DesktopNavItem label="Store," onClick={() => router.push('/store')} />
+              <DesktopNavItem label="Jobs" onClick={() => router.push('/')} />
             </motion.div>
           </motion.div>
 
@@ -386,6 +444,7 @@ export default function Header() {
           <div className="flex items-center gap-4 flex-shrink-0 ml-auto z-[80]">
             {/* Store Icon — fades with the rest of the content */}
             <motion.button
+              onClick={() => router.push('/store')}
               className="flex items-center justify-center w-7 h-7 flex-shrink-0"
               variants={contentItemVariants}
               initial="visible"
@@ -470,7 +529,8 @@ export default function Header() {
                           key={link}
                           label={link}
                           isActive={isActive}
-                          delay={0.28 + index * 0.09}
+                          enterDelay={0.28 + index * 0.09}
+                          exitDelay={(navLinks.length - 1 - index) * 0.09}
                           isMenuOpen={isMenuOpen}
                           onClick={() => {
                             setIsMenuOpen(false)
@@ -488,7 +548,8 @@ export default function Header() {
                         key={social.name}
                         social={social}
                         index={index}
-                        delay={0.28 + navLinks.length * 0.09 + index * 0.08}
+                        enterDelay={0.28 + navLinks.length * 0.09 + index * 0.08}
+                        exitDelay={(socialLinks.length - 1 - index) * 0.08}
                         isMenuOpen={isMenuOpen}
                         onClose={() => setIsMenuOpen(false)}
                       />
@@ -517,7 +578,8 @@ export default function Header() {
                           key={link}
                           label={link}
                           isActive={isActive}
-                          delay={0.28 + index * 0.09}
+                          enterDelay={0.28 + index * 0.09}
+                          exitDelay={(navLinks.length - 1 - index) * 0.09}
                           isMenuOpen={isMenuOpen}
                           onClick={() => {
                             setIsMenuOpen(false)
@@ -535,7 +597,8 @@ export default function Header() {
                         key={social.name}
                         social={social}
                         index={index}
-                        delay={0.28 + navLinks.length * 0.09 + index * 0.08}
+                        enterDelay={0.28 + navLinks.length * 0.09 + index * 0.08}
+                        exitDelay={(socialLinks.length - 1 - index) * 0.08}
                         isMenuOpen={isMenuOpen}
                         onClose={() => setIsMenuOpen(false)}
                       />
