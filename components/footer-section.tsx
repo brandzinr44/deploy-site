@@ -242,7 +242,7 @@ export default function FooterSection() {
 
         {/* Row 0 — Nav */}
         <motion.div
-          className="grid grid-cols-2 py-3 md:py-4"
+          className="grid grid-cols-2 py-6 md:py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
@@ -265,7 +265,7 @@ export default function FooterSection() {
 
         {/* Row 1 — Social */}
         <motion.div
-          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+          className="grid grid-cols-2 border-t border-foreground py-6 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
@@ -290,7 +290,7 @@ export default function FooterSection() {
 
         {/* Row 2 — Address */}
         <motion.div
-          className="grid grid-cols-2 border-t border-foreground py-3 md:py-10"
+          className="grid grid-cols-2 border-t border-foreground py-6 md:py-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: '-40px' }}
