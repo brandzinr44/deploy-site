@@ -151,7 +151,7 @@ export default function TemplateProducts() {
                   <p className="text-[15px] font-regular text-white leading-snug">
                     {product.description}
                   </p>
-                  <p className="text-[22px] ffont-regular text-white leading-snug">
+                  <p className="text-[22px] font-regular text-white leading-snug">
                     {product.price}
                   </p>
                 </div>
