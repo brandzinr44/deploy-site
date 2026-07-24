@@ -461,7 +461,7 @@ export default function Header() {
               {/* Mobile Single Column — Stacked with Dividers */}
 <div className="md:hidden flex flex-col w-full h-full">
   {/* Top — SVG Logo (reduced height) */}
-  <div className="flex-none h-[170px] border-b border-foreground flex items-start justify-start pt-13 px-4 overflow-hidden">
+  <div className="flex-none h-[140px] border-b border-foreground flex items-start justify-start pt-8 px-4 overflow-hidden">
     <motion.img
       src="/menu-logo.svg"
       alt="Menu Logo"
