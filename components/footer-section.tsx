@@ -197,7 +197,7 @@ function NewsletterRow() {
 
   return (
     <motion.div
-      className="flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-0 border-t border-foreground py-4 md:py-10"
+      className="flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-0 border-t border-foreground py-4 md:py-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: '-40px' }}
@@ -207,7 +207,7 @@ function NewsletterRow() {
       <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Newsletter</span>
       <div className="flex items-center justify-end">
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="border border-foreground px-3 py-2.5 md:px-4 md:py-3 flex items-center justify-between gap-3 md:gap-4">
+          <div className="border border-foreground px-3 py-2.5 md:px-4 md:py-3 flex items-center justify-between gap-1 md:gap-4">
             <input
               type="email"
               placeholder="Email address"
@@ -250,7 +250,7 @@ export default function FooterSection() {
           variants={rowVariants}
         >
           <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Nav</span>
-          <nav className="flex flex-col gap-0">
+          <nav className="flex flex-col gap-1 md:gap-0">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -273,7 +273,7 @@ export default function FooterSection() {
           variants={rowVariants}
         >
           <span className="text-[16px] md:text-[20px] text-foreground font-regular uppercase">Social</span>
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-1 md:gap-0">
             {socialLinks.map((link) => (
               <a
                 key={link.name}
