@@ -65,26 +65,49 @@ function SocialLinkWithAnimation({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClose}
-      className="relative overflow-hidden flex-shrink-0"
+      className="relative flex-shrink-0"
     >
       <div className="flex items-center gap-1 flex-shrink-0">
-        <span
-          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground border-foreground/40 bg-transparent transition-colors duration-300"
-          style={{
+        {/* Primary Button — slides up on hover */}
+        <motion.span
+          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground border-foreground/40 bg-transparent"
+          animate={{
+            y: isHovered ? -30 : 0,
             backgroundColor: isHovered ? 'var(--foreground)' : 'transparent',
             color: isHovered ? 'var(--background)' : undefined,
             borderColor: isHovered ? 'var(--foreground)' : undefined,
           }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           {social.name}
-        </span>
-        <span
-          className="hidden md:flex w-7 h-7 rounded-full border items-center justify-center flex-shrink-0 transition-colors duration-300"
+        </motion.span>
+
+        {/* Secondary Button — slides up from bottom on hover */}
+        <motion.span
+          className="text-[11px] md:text-[18px] font-normal tracking-wide uppercase rounded-full px-2 py-1 whitespace-nowrap h-[24px] md:h-auto flex items-center border text-foreground bg-foreground absolute"
           style={{
-            backgroundColor: isHovered ? 'var(--foreground)' : 'transparent',
+            color: 'var(--background)',
             borderColor: 'var(--foreground)',
+          }}
+          animate={{
+            y: isHovered ? 0 : 30,
+            opacity: isHovered ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
+          {social.name}
+        </motion.span>
+
+        <motion.span
+          className="hidden md:flex w-7 h-7 rounded-full border items-center justify-center flex-shrink-0"
+          style={{
+            borderColor: 'var(--foreground)',
+          }}
+          animate={{
+            backgroundColor: isHovered ? 'var(--foreground)' : 'transparent',
             opacity: isHovered ? 1 : 0.4,
           }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <svg
             className="w-3 h-3"
@@ -94,7 +117,7 @@ function SocialLinkWithAnimation({
           >
             <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </span>
+        </motion.span>
       </div>
     </a>
   )
@@ -230,6 +253,7 @@ export default function Header() {
   const socialLinks = [
     { name: 'Instagram', link: 'https://www.instagram.com/adnaanakif' },
     { name: 'Twitter', link: 'https://x.com/adnaanakif' },
+    { name: 'YouTube', link: 'https://www.youtube.com/@adnaanakif' },
   ]
 
   const handleNavClick = (link: string) => {
